@@ -24,9 +24,137 @@ function tagLabel(type) {
   return map[type] || type;
 }
 
+// ─── Utility: extract short venue name (e.g. "ACL 2025") ───
+function shortVenue(venue, year, type) {
+  const v = venue.toLowerCase();
+  const findings = (type === 'findings');
+  const industry = (type === 'industry');
+  // TACL must come before ACL (since "tacl" contains "acl")
+  if (v.includes('tacl') || v.includes('transactions of the association')) return 'TACL ' + year;
+  if (v.includes('emnlp') && findings)              return 'Findings of EMNLP ' + year;
+  if (v.includes('emnlp') && industry)              return 'EMNLP Industry ' + year;
+  if (v.includes('emnlp'))                          return 'EMNLP ' + year;
+  if (findings && v.includes('acl'))                return 'Findings of ACL ' + year;
+  if (v.includes('acl') && !v.includes('coling'))   return 'ACL ' + year;
+  if (v.includes('naacl'))                          return 'NAACL ' + year;
+  if (v.includes('coling'))                         return 'COLING ' + year;
+  if (v.includes('lrec'))                           return 'LREC ' + year;
+  if (v.includes('iclr'))                           return 'ICLR ' + year;
+  if (v.includes('neurips') || v.includes('nips'))  return 'NeurIPS ' + year;
+  if (v.includes('icml'))                           return 'ICML ' + year;
+  if (v.includes('aaai'))                           return 'AAAI ' + year;
+  if (v.includes('uai') || v.includes('uncertainty in artificial intelligence')) return 'UAI ' + year;
+  if (v.includes('kdd') || v.includes('sigkdd'))    return 'KDD ' + year;
+  if (v.includes('www') || v.includes('web conference')) return 'WWW ' + year;
+  if (v.includes('icprai'))                         return 'ICPRAI ' + year;
+  if (v.includes('sac') || v.includes('sigapp'))    return 'SAC ' + year;
+  if (v.includes('icci'))                           return 'ICCI*CC ' + year;
+  if (v.includes('preprint'))                       return 'Preprint';
+  return venue.split(',')[0].substring(0, 20);
+}
+
+// ─── Utility: get venue-specific tag CSS class ───
+function venueTagClass(venue, type) {
+  const v = venue.toLowerCase();
+  if (v.includes('tacl') || v.includes('transactions of the association')) return 'tag-tacl';
+  if (v.includes('emnlp') && type === 'findings')   return 'tag-findings';
+  if (v.includes('emnlp') && type === 'industry')   return 'tag-industry';
+  if (v.includes('emnlp'))                          return 'tag-emnlp';
+  if (type === 'findings' && v.includes('acl'))     return 'tag-findings';
+  if (v.includes('acl') && !v.includes('coling'))   return 'tag-acl';
+  if (v.includes('iclr'))                           return 'tag-iclr';
+  if (v.includes('neurips') || v.includes('nips'))  return 'tag-neurips';
+  if (v.includes('aaai'))                           return 'tag-aaai';
+  if (v.includes('kdd') || v.includes('sigkdd'))    return 'tag-kdd';
+  if (v.includes('coling'))                         return 'tag-coling';
+  if (v.includes('naacl'))                          return 'tag-naacl';
+  if (v.includes('lrec'))                           return 'tag-lrec';
+  if (v.includes('uai'))                            return 'tag-uai';
+  if (v.includes('www'))                            return 'tag-www';
+  if (type === 'industry')                          return 'tag-industry';
+  if (type === 'findings')                          return 'tag-findings';
+  if (type === 'journal')                           return 'tag-journal';
+  if (type === 'preprint')                          return 'tag-preprint';
+  return 'tag-conf';
+}
+
 // ─── Utility: render links array ───
 function renderLinks(links, cssClass) {
   return links.map(l => `<a href="${l.url}">${l.label}</a>`).join('');
+}
+
+// ─── Utility: render research highlight slider ───
+function renderHighlightSlider() {
+  const slides = PUBLICATIONS.filter(p => p.featured && p.image).slice(0, 5);
+  if (slides.length === 0) return '';
+
+  const slidesHTML = slides.map((p, i) => `
+    <div class="slider-slide" data-index="${i}">
+      <div class="slider-figure">
+        <img src="${p.image}" alt="Figure from: ${p.title}" loading="lazy">
+      </div>
+      <div class="slider-info">
+        <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
+        <h3><a href="${p.links[0]?.url || '#'}">${p.title}</a></h3>
+        <div class="slider-authors">${highlightPI(p.authors)}</div>
+        <div class="slider-venue">${p.venue.split(',').slice(0, 2).join(',')}</div>
+        <div class="slider-links">${renderLinks(p.links)}</div>
+      </div>
+    </div>
+  `).join('');
+
+  const dotsHTML = slides.map((_, i) =>
+    `<button class="slider-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Go to slide ${i + 1}"></button>`
+  ).join('');
+
+  return `
+    <div class="highlight-slider fade-in">
+      <div class="home-section-title">Research Highlights</div>
+      <div class="slider-wrapper">
+        <div class="slider-track" id="sliderTrack">
+          ${slidesHTML}
+        </div>
+        <div class="slider-controls">
+          <div class="slider-dots" id="sliderDots">${dotsHTML}</div>
+          <div class="slider-counter"><span id="sliderCurrent">1</span> / ${slides.length}</div>
+          <div class="slider-arrows">
+            <button class="slider-arrow" id="sliderPrev" aria-label="Previous slide">&#8592;</button>
+            <button class="slider-arrow" id="sliderNext" aria-label="Next slide">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function initSlider() {
+  const track = document.getElementById('sliderTrack');
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.slider-slide');
+  const dots = document.querySelectorAll('#sliderDots .slider-dot');
+  const counter = document.getElementById('sliderCurrent');
+  const total = slides.length;
+  let current = 0;
+  let autoTimer = null;
+
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    if (counter) counter.textContent = current + 1;
+  }
+
+  document.getElementById('sliderPrev')?.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  document.getElementById('sliderNext')?.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.slide); resetAuto(); }));
+
+  // Auto-advance every 6 seconds
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 6000);
+  }
+  resetAuto();
 }
 
 // ═══════════════════════════════════════════════════
@@ -36,13 +164,10 @@ function renderLinks(links, cssClass) {
 function renderHome() {
   const featured = PUBLICATIONS.filter(p => p.featured);
 
-  const recentHTML = featured.map(p => `
+  const recentHTML = featured.slice(0, 5).map(p => `
     <div class="recent-item">
-      <span class="recent-tag ${tagClass(p.type)}">${p.venue.split(',')[0].replace(/Proceedings of the /, '').substring(0, 30)}</span>
+      <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
       <h3><a href="${p.links[0]?.url || '#'}">${p.title}</a></h3>
-      <div class="recent-authors">${highlightPI(p.authors)}</div>
-      <div class="recent-venue">${p.venue.split(',').slice(0, 2).join(',')}</div>
-      <div class="recent-links">${renderLinks(p.links)}</div>
     </div>
   `).join('');
 
@@ -53,24 +178,17 @@ function renderHome() {
     return `<div class="news-item"><div class="news-date">${n.date}</div><p>${n.content}</p></div>`;
   }).join('');
 
-  const positionsHTML = SITE.recruitment.positions.map(p => `
-    <div class="join-pos">
-      <div class="join-pos-title">${p.title}</div>
-      <div class="join-pos-detail">${p.detail}</div>
-    </div>
-  `).join('');
 
   return `
     <div class="welcome fade-in">
       <p class="welcome-intro">${SITE.welcome.intro}</p>
       <p class="welcome-detail">${SITE.welcome.detail}</p>
-      <div class="welcome-links">
-        <a href="#research" onclick="showPage('research');return false;">Research areas</a>
-        <a href="#publications" onclick="showPage('publications');return false;">Publications</a>
-        <a href="${SITE.pi.scholar}" target="_blank">Google Scholar</a>
-        <a href="mailto:${SITE.pi.email}">Contact</a>
+      <div class="join-quote">
+        ${SITE.recruitment.description} (<a href="mailto:yeachan@hufs.ac.kr">yeachan@hufs.ac.kr</a>)
       </div>
     </div>
+
+    ${renderHighlightSlider()}
 
     <div class="home-grid">
       <div class="fade-in">
@@ -82,13 +200,6 @@ function renderHome() {
         <div class="home-section-title">News</div>
         ${newsHTML}
       </div>
-    </div>
-
-    <div class="join-banner fade-in">
-      <h3>${SITE.recruitment.title}</h3>
-      <p class="join-banner-desc">${SITE.recruitment.description}</p>
-      <div class="join-positions">${positionsHTML}</div>
-      <a href="mailto:${SITE.pi.email}" class="join-cta">Contact us</a>
     </div>
   `;
 }
@@ -113,7 +224,7 @@ function renderResearch() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Research</h2>
-        <p>Our research focuses on building efficient, robust, and practical NLP systems.</p>
+        <p>Our research spans AI for Science, Efficient AI, and Natural Language Processing.</p>
       </div>
       <div class="research-grid-page">${cards}</div>
     </div>
@@ -130,14 +241,19 @@ function renderPublications() {
   const years = Object.keys(byYear).sort((a, b) => b - a);
 
   const groupsHTML = years.map(year => {
-    const entries = byYear[year].map(p => `
+    const entries = byYear[year].map(p => {
+      const pdfLink = p.links.find(l => l.label === 'PDF' && l.url !== '#');
+      const pdfHTML = pdfLink ? `<div class="pub-entry-links"><a href="${pdfLink.url}">PDF</a></div>` : '';
+      return `
       <div class="pub-entry">
+        <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
         <h4>${p.title}</h4>
         <div class="pub-authors">${highlightPI(p.authors)}</div>
         <div class="pub-venue-line"><em>${p.venue}</em></div>
-        <div class="pub-entry-links">${renderLinks(p.links)}</div>
+        ${pdfHTML}
       </div>
-    `).join('');
+    `;
+    }).join('');
 
     return `
       <div class="pub-year-group fade-in">
@@ -238,6 +354,11 @@ function showPage(pageName) {
   setTimeout(() => {
     container.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
   }, 100);
+
+  // Init slider if on home page
+  if (pageName === 'home') {
+    setTimeout(initSlider, 150);
+  }
 }
 
 // ═══════════════════════════════════════════════════
@@ -251,10 +372,13 @@ document.addEventListener('DOMContentLoaded', () => {
     `<a href="#${item.id}" data-page="${item.id}">${item.label}</a>`
   ).join('');
 
-  // Build header
-  document.getElementById('labTitle').innerHTML =
-    SITE.labName.replace('Intelligence Lab', '<span>Intelligence Lab</span>');
-  document.getElementById('labSub').textContent = SITE.university;
+  // Build header with logo
+  const headerTop = document.querySelector('.header-top');
+  headerTop.innerHTML = `
+    <a href="#home" class="header-logo-link" onclick="showPage('home');return false;">
+      <img src="images/logo.svg" alt="${SITE.labName}" class="header-logo">
+    </a>
+  `;
 
   // Build footer
   document.getElementById('footerInfo').innerHTML = `

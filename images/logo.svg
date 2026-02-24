@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 48">
+  <!-- Icon: Brain (vertically centered at y=24) -->
+  <g transform="translate(2, 3) scale(0.95)">
+    <!-- Brain left hemisphere -->
+    <path d="M22,22 C22,12 16,7 10,9 C4,11 2,17 4,22 C2,24 1,28 3,32 C5,37 10,39 14,39 C18,39 22,36 22,32 Z"
+          fill="none" stroke="#1e40af" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
+    <!-- Brain right hemisphere -->
+    <path d="M22,22 C22,12 28,7 34,9 C40,11 42,17 40,22 C42,24 43,28 41,32 C39,37 34,39 30,39 C26,39 22,36 22,32 Z"
+          fill="none" stroke="#3b82f6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"/>
+    <!-- Brain center line -->
+    <line x1="22" y1="9" x2="22" y2="39" stroke="#1e40af" stroke-width="1.2" opacity="0.25"/>
+    <!-- Brain folds -->
+    <path d="M10,19 Q16,21 22,19" fill="none" stroke="#1e40af" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+    <path d="M8,28 Q15,26 22,28" fill="none" stroke="#1e40af" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+    <path d="M22,19 Q28,21 34,19" fill="none" stroke="#3b82f6" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+    <path d="M22,28 Q29,26 36,28" fill="none" stroke="#3b82f6" stroke-width="1.2" opacity="0.35" stroke-linecap="round"/>
+    <!-- AI nodes -->
+    <circle cx="12" cy="17" r="2.8" fill="#1e40af" opacity="0.6"/>
+    <circle cx="32" cy="17" r="2.8" fill="#3b82f6" opacity="0.6"/>
+    <circle cx="22" cy="24" r="2.8" fill="#2563eb" opacity="0.7"/>
+    <circle cx="14" cy="32" r="2.2" fill="#1e40af" opacity="0.4"/>
+    <circle cx="30" cy="32" r="2.2" fill="#3b82f6" opacity="0.4"/>
+    <!-- Neural connections -->
+    <line x1="12" y1="17" x2="22" y2="24" stroke="#2563eb" stroke-width="1.1" opacity="0.3"/>
+    <line x1="32" y1="17" x2="22" y2="24" stroke="#2563eb" stroke-width="1.1" opacity="0.3"/>
+    <line x1="14" y1="32" x2="22" y2="24" stroke="#2563eb" stroke-width="1.1" opacity="0.25"/>
+    <line x1="30" y1="32" x2="22" y2="24" stroke="#2563eb" stroke-width="1.1" opacity="0.25"/>
+  </g>
+
+  <!-- LLI Lab title (baseline at y=33 → visual center ≈ 24) -->
+  <text x="50" y="33" font-family="'IBM Plex Sans', sans-serif" font-size="28" font-weight="700" fill="#0d1b2a" letter-spacing="-0.5">
+    <tspan fill="#1e40af">L</tspan><tspan fill="#2563eb">L</tspan><tspan fill="#3b82f6">I</tspan><tspan fill="#0d1b2a"> Lab</tspan>
+  </text>
+
+  <!-- Divider line (centered vertically) -->
+  <line x1="158" y1="8" x2="158" y2="40" stroke="#d1d5db" stroke-width="1"/>
+
+  <!-- Full name + HUFS (vertically centered as a pair around y=24) -->
+  <text x="170" y="21" font-family="'IBM Plex Sans', sans-serif" font-size="12.5" font-weight="500" fill="#4b5563" letter-spacing="0.2">
+    Language &amp; Learning Intelligence Lab
+  </text>
+  <text x="170" y="37" font-family="'IBM Plex Sans', sans-serif" font-size="10.5" font-weight="400" fill="#9ca3af" letter-spacing="0.4">
+    Hankuk University of Foreign Studies
+  </text>
+</svg>

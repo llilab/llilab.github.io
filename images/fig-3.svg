@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light background -->
+  <rect width="600" height="350" fill="#f5f7fa"/>
+  
+  <!-- Title -->
+  <text x="300" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a3a52">
+    SparseFlow: Accelerating Transformers
+  </text>
+  
+  <!-- Transformer block container -->
+  <rect x="50" y="60" width="500" height="240" fill="white" stroke="#bdc3c7" stroke-width="1.5" rx="6"/>
+  
+  <!-- Input embeddings -->
+  <text x="60" y="100" font-size="11" font-weight="bold" fill="#2c3e50">Input Tokens:</text>
+  <rect x="60" y="110" width="25" height="20" fill="#2e7d96" opacity="0.8" rx="2"/>
+  <text x="73" y="125" font-size="9" text-anchor="middle" fill="white">t₁</text>
+  <rect x="90" y="110" width="25" height="20" fill="#2e7d96" opacity="0.8" rx="2"/>
+  <text x="103" y="125" font-size="9" text-anchor="middle" fill="white">t₂</text>
+  <rect x="120" y="110" width="25" height="20" fill="#2e7d96" opacity="0.8" rx="2"/>
+  <text x="133" y="125" font-size="9" text-anchor="middle" fill="white">t₃</text>
+  <rect x="150" y="110" width="25" height="20" fill="#2e7d96" opacity="0.8" rx="2"/>
+  <text x="163" y="125" font-size="9" text-anchor="middle" fill="white">t₄</text>
+  <rect x="180" y="110" width="25" height="20" fill="#95a5a6" opacity="0.4" rx="2" stroke="#95a5a6" stroke-width="1"/>
+  <text x="193" y="125" font-size="8" text-anchor="middle" fill="#7f8c8d">...</text>
+  
+  <!-- Attention paths - Dense -->
+  <text x="60" y="160" font-size="11" font-weight="bold" fill="#2c3e50">Attention Flow:</text>
+  
+  <!-- Dense paths (faded) -->
+  <line x1="73" y1="135" x2="73" y2="170" stroke="#bdc3c7" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+  <line x1="103" y1="135" x2="103" y2="170" stroke="#bdc3c7" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+  <line x1="133" y1="135" x2="133" y2="170" stroke="#bdc3c7" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+  <line x1="163" y1="135" x2="163" y2="170" stroke="#bdc3c7" stroke-width="1" opacity="0.4" stroke-dasharray="2,2"/>
+  
+  <!-- Sparse attention paths (highlighted) -->
+  <line x1="73" y1="135" x2="133" y2="180" stroke="#1abc9c" stroke-width="2.5" opacity="0.7"/>
+  <line x1="103" y1="135" x2="163" y2="180" stroke="#1abc9c" stroke-width="2.5" opacity="0.7"/>
+  <line x1="103" y1="135" x2="73" y2="180" stroke="#1abc9c" stroke-width="2.5" opacity="0.7"/>
+  <line x1="133" y1="135" x2="103" y2="180" stroke="#1abc9c" stroke-width="2.5" opacity="0.7"/>
+  <line x1="133" y1="135" x2="193" y2="180" stroke="#1abc9c" stroke-width="2.5" opacity="0.7"/>
+  
+  <!-- Output representation -->
+  <rect x="60" y="180" width="25" height="20" fill="#1abc9c" opacity="0.9" rx="2"/>
+  <text x="73" y="195" font-size="8" text-anchor="middle" fill="white">h₁</text>
+  <rect x="90" y="180" width="25" height="20" fill="#1abc9c" opacity="0.9" rx="2"/>
+  <text x="103" y="195" font-size="8" text-anchor="middle" fill="white">h₂</text>
+  <rect x="120" y="180" width="25" height="20" fill="#1abc9c" opacity="0.9" rx="2"/>
+  <text x="133" y="195" font-size="8" text-anchor="middle" fill="white">h₃</text>
+  <rect x="150" y="180" width="25" height="20" fill="#1abc9c" opacity="0.9" rx="2"/>
+  <text x="163" y="195" font-size="8" text-anchor="middle" fill="white">h₄</text>
+  
+  <!-- Feed-forward layer -->
+  <text x="60" y="230" font-size="11" font-weight="bold" fill="#2c3e50">FFN (Selective):</text>
+  
+  <rect x="60" y="240" width="20" height="20" fill="#3498db" opacity="0.8" rx="2"/>
+  <rect x="90" y="240" width="20" height="20" fill="#3498db" opacity="0.6" rx="2" stroke="#3498db" stroke-width="1"/>
+  <rect x="120" y="240" width="20" height="20" fill="#3498db" opacity="0.8" rx="2"/>
+  <rect x="150" y="240" width="20" height="20" fill="#95a5a6" opacity="0.2" rx="2" stroke="#95a5a6" stroke-width="1"/>
+  
+  <!-- Sparsity info box -->
+  <rect x="280" y="90" width="240" height="170" fill="#fffaf0" stroke="#f39c12" stroke-width="1.5" rx="4"/>
+  
+  <text x="290" y="110" font-size="12" font-weight="bold" fill="#1a3a52">Sparsity Benefits:</text>
+  
+  <text x="295" y="135" font-size="10" fill="#2c3e50">• Reduced computation</text>
+  <text x="295" y="155" font-size="10" fill="#2c3e50">• Selective attention heads</text>
+  <text x="295" y="175" font-size="10" fill="#2c3e50">• Lower memory footprint</text>
+  <text x="295" y="195" font-size="10" fill="#2c3e50">• Faster inference</text>
+  
+  <text x="295" y="225" font-size="9" fill="#7f8c8d" font-style="italic">Sparse paths highlighted in teal</text>
+  
+  <!-- Legend -->
+  <line x1="295" y1="240" x2="320" y2="240" stroke="#1abc9c" stroke-width="2.5" opacity="0.7"/>
+  <text x="325" y="244" font-size="9" fill="#2c3e50">Active paths</text>
+</svg>

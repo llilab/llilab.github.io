@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="350" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light background -->
+  <rect width="600" height="350" fill="#f5f7fa"/>
+  
+  <!-- Title -->
+  <text x="300" y="25" font-size="16" font-weight="bold" text-anchor="middle" fill="#1a3a52">
+    Curriculum Debiasing for PEFT
+  </text>
+  
+  <!-- Stage 1: Easy Samples -->
+  <rect x="40" y="70" width="110" height="220" fill="#e8f4f8" stroke="#2e7d96" stroke-width="2" rx="4"/>
+  <text x="95" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a52">Stage 1</text>
+  <text x="95" y="112" font-size="10" text-anchor="middle" fill="#2c3e50">Easy Samples</text>
+  
+  <!-- Easy samples representation -->
+  <circle cx="75" cy="150" r="6" fill="#2e7d96" opacity="0.8"/>
+  <circle cx="115" cy="150" r="6" fill="#2e7d96" opacity="0.8"/>
+  <circle cx="75" cy="180" r="6" fill="#2e7d96" opacity="0.8"/>
+  <circle cx="115" cy="180" r="6" fill="#2e7d96" opacity="0.8"/>
+  <circle cx="75" cy="210" r="6" fill="#2e7d96" opacity="0.8"/>
+  
+  <!-- Stage 2: Medium Difficulty -->
+  <rect x="200" y="70" width="110" height="220" fill="#f0e8f8" stroke="#7e57c2" stroke-width="2" rx="4"/>
+  <text x="255" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a52">Stage 2</text>
+  <text x="255" y="112" font-size="10" text-anchor="middle" fill="#2c3e50">Medium</text>
+  <text x="255" y="127" font-size="10" text-anchor="middle" fill="#2c3e50">Samples</text>
+  
+  <!-- Medium samples -->
+  <circle cx="230" cy="150" r="6" fill="#7e57c2" opacity="0.7"/>
+  <circle cx="280" cy="150" r="6" fill="#7e57c2" opacity="0.7"/>
+  <circle cx="230" cy="175" r="6" fill="#7e57c2" opacity="0.7"/>
+  <circle cx="280" cy="175" r="6" fill="#7e57c2" opacity="0.7"/>
+  <circle cx="255" cy="205" r="6" fill="#7e57c2" opacity="0.7"/>
+  <circle cx="230" cy="230" r="5" fill="#95a5a6" opacity="0.4"/>
+  
+  <!-- Stage 3: Hard & Debiased -->
+  <rect x="360" y="70" width="110" height="220" fill="#fff3e0" stroke="#f39c12" stroke-width="2" rx="4"/>
+  <text x="415" y="95" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3a52">Stage 3</text>
+  <text x="415" y="112" font-size="10" text-anchor="middle" fill="#2c3e50">Hard Samples</text>
+  <text x="415" y="127" font-size="10" text-anchor="middle" fill="#2c3e50">(Debiased)</text>
+  
+  <!-- Hard samples with bias removal -->
+  <circle cx="385" cy="150" r="6" fill="#f39c12" opacity="0.7"/>
+  <circle cx="445" cy="150" r="6" fill="#f39c12" opacity="0.7"/>
+  <circle cx="415" cy="175" r="6" fill="#f39c12" opacity="0.7"/>
+  <circle cx="385" cy="200" r="6" fill="#f39c12" opacity="0.7"/>
+  <circle cx="445" cy="200" r="6" fill="#f39c12" opacity="0.7"/>
+  
+  <!-- Bias filter icons -->
+  <g opacity="0.6">
+    <rect x="390" y="235" width="50" height="35" fill="none" stroke="#e74c3c" stroke-width="1.5" rx="2"/>
+    <circle cx="410" cy="250" r="8" fill="none" stroke="#e74c3c" stroke-width="1.5"/>
+    <line x1="405" y1="245" x2="415" y2="255" stroke="#e74c3c" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Arrows showing progression -->
+  <defs>
+    <marker id="arrowhead-stage" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2e7d96"/>
+    </marker>
+  </defs>
+  
+  <line x1="153" y1="180" x2="197" y2="180" stroke="#2e7d96" stroke-width="2.5" marker-end="url(#arrowhead-stage)"/>
+  <line x1="313" y1="180" x2="357" y2="180" stroke="#7e57c2" stroke-width="2.5" marker-end="url(#arrowhead-stage)"/>
+  
+  <!-- Bottom label -->
+  <text x="300" y="330" font-size="11" text-anchor="middle" fill="#2c3e50" font-style="italic">
+    Progressive difficulty → Bias removal in later stages
+  </text>
+</svg>

@@ -42,22 +42,7 @@ const SITE = {
   // "Join Us" recruitment banner (Home page)
   recruitment: {
     title: 'Join Our Lab',
-    description: `We are looking for motivated researchers to join the Language &amp; Learning Intelligence Lab.
-      If you are passionate about NLP, efficient deep learning, or AI-driven education, we'd love to hear from you.`,
-    positions: [
-      {
-        title: 'M.S. / Ph.D. Students',
-        detail: 'Full-time graduate positions with funding. Research on efficient LLMs, PEFT, and AI for language education.',
-      },
-      {
-        title: 'Research Interns',
-        detail: 'Undergraduate or external interns (6+ months preferred). Hands-on experience with NLP research projects.',
-      },
-      {
-        title: 'Visiting Researchers',
-        detail: 'Short- or long-term visits welcome. Collaborative research on shared topics of interest.',
-      },
-    ],
+    description: 'We are looking for motivated M.S./Ph.D. students and research interns.<br>Please contact us at',
   },
 
   // Navigation tabs

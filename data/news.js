@@ -14,28 +14,28 @@
  */
 const NEWS = [
   {
-    date: 'Jul 2025',
-    content: 'Two papers accepted at <strong>ACL 2025</strong> (main conference) on memory-efficient LLM fine-tuning and curriculum debiasing for PEFT.',
+    date: 'Apr 2026',
+    content: '"KnowProxy: Adapting Large Language Models by Knowledge-guided Proxy" accepted at <strong>ICLR 2026</strong>.',
     highlight: true,
   },
   {
-    date: 'Nov 2024',
-    content: 'Three papers presented at <strong>EMNLP 2024</strong> including MolTRES (main) and two industry track papers on molecular property prediction and materials science.',
+    date: '2026',
+    content: '"A Survey on Memory-Efficient Fine-Tuning for Large Language Models" accepted at <strong>TACL 2026</strong> (to be presented at ACL 2026).',
     highlight: false,
   },
   {
-    date: 'Aug 2024',
-    content: 'Two papers accepted at <strong>ACL 2024</strong>: SparseFlow on efficient transformers and a study on robust PEFT for noisy label learning.',
+    date: 'Feb 2026',
+    content: 'LLI Lab website is now live!',
     highlight: false,
   },
   {
-    date: 'Dec 2023',
-    content: 'Two papers presented at <strong>EMNLP 2023</strong>: Leap-of-Thought on dynamic token routing and bias mitigation in NLU.',
+    date: 'Oct 2025',
+    content: '"Bridging the Gap Between Molecule and Textual Descriptions via Substructure-aware Alignment" accepted at <strong>EMNLP 2025</strong>.',
     highlight: false,
   },
   {
-    date: 'Jul 2023',
-    content: 'Paper on <strong>Client-Customized Adaptation</strong> for federated learning accepted at ACL 2023 Findings.',
+    date: 'Jul 2025',
+    content: '"Forward Knows Efficient Backward Path" and "Curriculum Debiasing" accepted at <strong>ACL 2025</strong>.',
     highlight: false,
   },
 ];
