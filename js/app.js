@@ -96,9 +96,6 @@ function renderHighlightSlider() {
       <div class="slider-info">
         <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
         <h3><a href="${p.links[0]?.url || '#'}">${p.title}</a></h3>
-        <div class="slider-authors">${highlightPI(p.authors)}</div>
-        <div class="slider-venue">${p.venue.split(',').slice(0, 2).join(',')}</div>
-        <div class="slider-links">${renderLinks(p.links)}</div>
       </div>
     </div>
   `).join('');
@@ -180,15 +177,14 @@ function renderHome() {
 
 
   return `
+    ${renderHighlightSlider()}
+
     <div class="welcome fade-in">
       <p class="welcome-intro">${SITE.welcome.intro}</p>
-      <p class="welcome-detail">${SITE.welcome.detail}</p>
       <div class="join-quote">
         ${SITE.recruitment.description} (<a href="mailto:yeachan@hufs.ac.kr">yeachan@hufs.ac.kr</a>)
       </div>
     </div>
-
-    ${renderHighlightSlider()}
 
     <div class="home-grid">
       <div class="fade-in">
