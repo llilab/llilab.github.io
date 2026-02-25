@@ -1,6 +1,6 @@
 /**
  * ═══════════════════════════════════════════════════
- *  LLI Lab Website — SPA Router & Page Renderers
+ *  LAI Lab Website — SPA Router & Page Renderers
  *
  *  This file reads from the data/* files and renders
  *  each page dynamically. You should NOT need to edit
@@ -89,13 +89,11 @@ function renderHighlightSlider() {
   if (slides.length === 0) return '';
 
   const slidesHTML = slides.map((p, i) => `
-    <div class="slider-slide" data-index="${i}">
-      <div class="slider-figure">
-        <img src="${p.image}" alt="Figure from: ${p.title}" loading="lazy">
-      </div>
-      <div class="slider-info">
+    <div class="slider-slide" data-index="${i}" style="background-image:url('${p.image}')">
+      <div class="slider-overlay">
         <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
         <h3><a href="${p.links[0]?.url || '#'}">${p.title}</a></h3>
+        <div class="slider-venue">${p.venue}</div>
       </div>
     </div>
   `).join('');
@@ -169,9 +167,6 @@ function renderHome() {
   `).join('');
 
   const newsHTML = NEWS.map(n => {
-    if (n.highlight) {
-      return `<div class="news-highlight"><div class="news-date">${n.date}</div><p>${n.content}</p></div>`;
-    }
     return `<div class="news-item"><div class="news-date">${n.date}</div><p>${n.content}</p></div>`;
   }).join('');
 
@@ -182,7 +177,7 @@ function renderHome() {
     <div class="welcome fade-in">
       <p class="welcome-intro">${SITE.welcome.intro}</p>
       <div class="join-quote">
-        ${SITE.recruitment.description} (<a href="mailto:yeachan@hufs.ac.kr">yeachan@hufs.ac.kr</a>)
+        ${SITE.recruitment.description}(<a href="mailto:yeachan@hufs.ac.kr">yeachan [at] hufs.ac.kr</a>)
       </div>
     </div>
 
@@ -238,15 +233,14 @@ function renderPublications() {
 
   const groupsHTML = years.map(year => {
     const entries = byYear[year].map(p => {
-      const pdfLink = p.links.find(l => l.label === 'PDF' && l.url !== '#');
-      const pdfHTML = pdfLink ? `<div class="pub-entry-links"><a href="${pdfLink.url}">PDF</a></div>` : '';
+      const tagsHTML = (p.tags && p.tags.length) ? `<div class="pub-tags">${p.tags.map(t => `<span class="pub-hashtag">#${t}</span>`).join('')}</div>` : '';
       return `
       <div class="pub-entry">
         <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
         <h4>${p.title}</h4>
         <div class="pub-authors">${highlightPI(p.authors)}</div>
         <div class="pub-venue-line"><em>${p.venue}</em></div>
-        ${pdfHTML}
+        ${tagsHTML}
       </div>
     `;
     }).join('');
@@ -271,26 +265,15 @@ function renderPublications() {
 }
 
 function renderProjects() {
-  const entries = PROJECTS.map(p => {
-    const statusClass = p.status === 'active' ? 'st-active' : 'st-done';
-    const statusLabel = p.status === 'active' ? 'Active' : 'Completed';
-    return `
-      <div class="project-entry fade-in">
-        <span class="project-entry-status ${statusClass}">${statusLabel}</span>
-        <h3>${p.title}</h3>
-        <p>${p.description}</p>
-        <div class="project-meta">${p.period}</div>
-      </div>
-    `;
-  }).join('');
-
   return `
     <div class="subpage">
       <div class="subpage-header">
         <h2>Projects</h2>
-        <p>Ongoing and completed research projects.</p>
       </div>
-      ${entries}
+      <div style="display:flex; flex-direction:column; align-items:center; padding:3rem 0 4rem;">
+        <img src="images/updating.svg" alt="Updating" style="width:80px; height:80px; margin-bottom:1.25rem;">
+        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.95rem;">This page is currently being updated.<br>Please check back soon.</p>
+      </div>
     </div>
   `;
 }
@@ -380,13 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('footerInfo').innerHTML = `
     <strong>${SITE.labName}</strong><br>
     ${SITE.department}, ${SITE.university}<br>
-    ${SITE.address}<br>
-    PI: ${SITE.pi.name} · <a href="mailto:${SITE.pi.email}">${SITE.pi.email}</a>
+    ${SITE.address}
   `;
   document.getElementById('footerLinks').innerHTML = `
-    &copy; ${new Date().getFullYear()} ${SITE.labShort}, HUFS<br>
-    <a href="${SITE.pi.scholar}" target="_blank">Google Scholar</a>
-    <a href="${SITE.pi.aclAnthology}" target="_blank">ACL Anthology</a>
+    &copy; ${new Date().getFullYear()} ${SITE.labShort}, HUFS
   `;
 
   // Nav click handlers

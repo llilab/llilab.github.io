@@ -1,6 +1,6 @@
-# LLI Lab Website
+# LAI Lab Website
 
-**Language & Learning Intelligence Lab** — Hankuk University of Foreign Studies (HUFS)
+**Language & Adaptive Intelligence Lab** — Hankuk University of Foreign Studies (HUFS)
 
 A static website for Prof. Yeachan Kim's research lab.
 

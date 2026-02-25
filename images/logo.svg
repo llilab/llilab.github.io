@@ -29,7 +29,7 @@
 
   <!-- LLI Lab title (baseline at y=33 → visual center ≈ 24) -->
   <text x="50" y="33" font-family="'IBM Plex Sans', sans-serif" font-size="28" font-weight="700" fill="#0d1b2a" letter-spacing="-0.5">
-    <tspan fill="#1e40af">L</tspan><tspan fill="#2563eb">L</tspan><tspan fill="#3b82f6">I</tspan><tspan fill="#0d1b2a"> Lab</tspan>
+    <tspan fill="#1e40af">L</tspan><tspan fill="#2563eb">A</tspan><tspan fill="#3b82f6">I</tspan><tspan fill="#0d1b2a"> Lab</tspan>
   </text>
 
   <!-- Divider line (centered vertically) -->
@@ -37,7 +37,7 @@
 
   <!-- Full name + HUFS (vertically centered as a pair around y=24) -->
   <text x="170" y="21" font-family="'IBM Plex Sans', sans-serif" font-size="12.5" font-weight="500" fill="#4b5563" letter-spacing="0.2">
-    Language &amp; Learning Intelligence Lab
+    Language &amp; Adaptive Intelligence Lab
   </text>
   <text x="170" y="37" font-family="'IBM Plex Sans', sans-serif" font-size="10.5" font-weight="400" fill="#9ca3af" letter-spacing="0.4">
     Hankuk University of Foreign Studies

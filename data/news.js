@@ -19,13 +19,13 @@ const NEWS = [
     highlight: true,
   },
   {
-    date: '2026',
+    date: 'Jan 2026',
     content: '"A Survey on Memory-Efficient Fine-Tuning for Large Language Models" accepted at <strong>TACL 2026</strong> (to be presented at ACL 2026).',
     highlight: false,
   },
   {
     date: 'Feb 2026',
-    content: 'LLI Lab website is now live!',
+    content: 'LAI Lab website is now live!',
     highlight: false,
   },
   {

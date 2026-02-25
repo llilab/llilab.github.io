@@ -7,10 +7,10 @@
  */
 const SITE = {
   // Lab info (shown in header & footer)
-  labName: 'Language & Learning Intelligence Lab',
-  labShort: 'LLI Lab',
+  labName: 'Language & Adaptive Intelligence Lab',
+  labShort: 'LAI Lab',
   university: 'Hankuk University of Foreign Studies (HUFS)',
-  department: 'Dept. of Computer Science',
+  department: 'Division of Language & AI',
   address: '107 Imun-ro, Dongdaemun-gu, Seoul, Republic of Korea',
 
   // Principal Investigator
@@ -30,13 +30,15 @@ const SITE = {
 
   // Welcome message (Home page)
   welcome: {
-    intro: `Welcome to the <strong>Language &amp; Learning Intelligence Lab (LLI Lab)</strong>.
-      We investigate methods at the intersection of natural language processing and intelligent language education.
-      Our research spans efficient large language models, parameter-efficient fine-tuning,
-      and AI-driven tools that support language learners and educators.`,
-    detail: `Led by Prof. Yeachan Kim, the lab is part of the Department of Computer Science at
-      Hankuk University of Foreign Studies (HUFS), Seoul. We are particularly interested in
-      making modern NLP systems more efficient, robust, and applicable to real-world language learning scenarios.`,
+    intro: `Welcome to the <strong>Language &amp; Adaptive Intelligence Lab (LAI Lab)</strong>.
+      We pursue research in natural language processing, with a focus on building efficient and adaptive large language models.
+      Our work covers a broad range of topics including model efficiency, robust fine-tuning,
+      and language applications across diverse real-world domains such as science and industry.`,
+    detail: `Led by Prof. Yeachan Kim, the lab is part of the Division of Language & AI at
+      Hankuk University of Foreign Studies (HUFS), Seoul. We aim to develop language models that are not only powerful
+      but also practical — lightweight enough for real deployment and adaptable to specialized tasks.
+      We actively collaborate across disciplines and welcome students who share our passion for
+      advancing the frontiers of NLP and language intelligence.`,
   },
 
   // "Join Us" recruitment banner (Home page)
@@ -53,6 +55,5 @@ const SITE = {
     { id: 'research',     label: 'Research' },
     { id: 'publications', label: 'Publications' },
     { id: 'projects',     label: 'Projects' },
-    { id: 'applications', label: 'Applications' },
   ],
 };

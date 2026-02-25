@@ -13,6 +13,7 @@
  *    year     — Publication year (number)
  *    type     — "conf" | "journal" | "findings" | "industry" | "preprint"
  *    links    — Array of { label, url } for PDF/Code/Demo/BibTeX
+ *    tags     — Array of keyword hashtags
  *    featured — true to show on Home page "Recent Research"
  *    image    — (optional) path to paper figure image for homepage slider
  * ═══════════════════════════════════════════════════
@@ -26,10 +27,10 @@ const PUBLICATIONS = [
     venue: 'International Conference on Learning Representations (ICLR), 2026',
     year: 2026,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['LLM Adaptation', 'Knowledge Distillation', 'Parameter Efficiency'],
     featured: true,
+    image: 'images/iclr26.png',
   },
 
   // ──────────── 2025 ────────────
@@ -39,10 +40,21 @@ const PUBLICATIONS = [
     venue: 'Transactions of the Association for Computational Linguistics (TACL), 2026',
     year: 2026,
     type: 'journal',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['LLM', 'Memory Efficiency', 'Fine-Tuning'],
     featured: true,
+    image: 'images/tacl.png',
+  },
+  {
+    title: 'Bridging the Gap Between Molecule and Textual Descriptions via Substructure-aware Alignment',
+    authors: 'Hyuntae Park*, Yeachan Kim*, SangKeun Lee',
+    venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2025',
+    year: 2025,
+    type: 'conf',
+    links: [],
+    tags: ['Molecular NLP', 'Cross-modal Alignment', 'Scientific Language'],
+    featured: true,
+    image: 'images/emnlp25_molbridge.png',
   },
   {
     title: 'Forward Knows Efficient Backward Path: Saliency-Guided Memory-Efficient Fine-tuning of Large Language Models',
@@ -50,11 +62,10 @@ const PUBLICATIONS = [
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2025',
     year: 2025,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: 'https://aclanthology.org/2025.acl-long.459/' },
-    ],
+    links: [],
+    tags: ['LLM', 'Memory-Efficient Training', 'Saliency'],
     featured: true,
-    image: 'images/fig-1.svg',
+    image: 'images/acl25_forward_knows.png',
   },
   {
     title: 'Curriculum Debiasing: Toward Robust Parameter-Efficient Fine-Tuning Against Dataset Biases',
@@ -62,22 +73,10 @@ const PUBLICATIONS = [
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2025',
     year: 2025,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: 'https://aclanthology.org/2025.acl-long.469/' },
-    ],
+    links: [],
+    tags: ['PEFT', 'Debiasing', 'Robustness'],
     featured: true,
-    image: 'images/fig-2.svg',
-  },
-  {
-    title: 'Bridging the Gap Between Molecule and Textual Descriptions via Substructure-aware Alignment',
-    authors: 'Hyuntae Park, Yeachan Kim, SangKeun Lee',
-    venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2025',
-    year: 2025,
-    type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
-    featured: true,
+    image: 'images/acl25_curriculum_debias.png',
   },
 
   // ──────────── 2024 ────────────
@@ -87,21 +86,19 @@ const PUBLICATIONS = [
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2024',
     year: 2024,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: 'https://aclanthology.org/2024.acl-long.323/' },
-    ],
+    links: [],
+    tags: ['Transformer', 'Sparsity', 'Inference Efficiency'],
     featured: true,
     image: 'images/fig-3.svg',
   },
   {
     title: 'Towards Robust and Generalized Parameter-Efficient Fine-Tuning for Noisy Label Learning',
-    authors: 'Yeachan Kim, Junho Kim, SangKeun Lee',
+    authors: 'Yeachan Kim*, Junho Kim*, SangKeun Lee',
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2024',
     year: 2024,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['PEFT', 'Noisy Labels', 'Robustness'],
     featured: true,
     image: 'images/fig-5.svg',
   },
@@ -111,9 +108,8 @@ const PUBLICATIONS = [
     venue: 'Findings of ACL, 2024',
     year: 2024,
     type: 'findings',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Korean NLP', 'Tokenization', 'Character Representation'],
     featured: false,
   },
   {
@@ -122,9 +118,8 @@ const PUBLICATIONS = [
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2024',
     year: 2024,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: 'https://aclanthology.org/2024.emnlp-main.788/' },
-    ],
+    links: [],
+    tags: ['Molecular NLP', 'Representation Learning', 'Property Prediction'],
     featured: false,
   },
   {
@@ -133,9 +128,8 @@ const PUBLICATIONS = [
     venue: 'EMNLP 2024 Industry Track',
     year: 2024,
     type: 'industry',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Molecular NLP', 'Contrastive Learning', 'Property Prediction'],
     featured: false,
   },
   {
@@ -144,31 +138,28 @@ const PUBLICATIONS = [
     venue: 'EMNLP 2024 Industry Track',
     year: 2024,
     type: 'industry',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Materials Science', 'Domain Adaptation', 'Knowledge Transfer'],
     featured: false,
   },
   {
     title: 'MELT: Materials-aware Continued Pre-training for Language Model Adaptation to Materials Science',
-    authors: 'Junho Kim, Yeachan Kim, Jun-Hyung Park, Yerim Oh, Suho Kim, SangKeun Lee',
+    authors: 'Junho Kim*, Yeachan Kim*, Jun-Hyung Park, Yerim Oh, Suho Kim, SangKeun Lee',
     venue: 'Findings of EMNLP, 2024',
     year: 2024,
     type: 'findings',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Materials Science', 'Continued Pretraining', 'Domain Adaptation'],
     featured: false,
   },
   {
     title: 'Zero-shot Commonsense Reasoning over Machine Imagination',
-    authors: 'Hyuntae Park, Yeachan Kim, Jun-Hyung Park, SangKeun Lee',
+    authors: 'Hyuntae Park*, Yeachan Kim*, Jun-Hyung Park, SangKeun Lee',
     venue: 'Findings of EMNLP, 2024',
     year: 2024,
     type: 'findings',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Commonsense Reasoning', 'Zero-shot', 'Knowledge Generation'],
     featured: false,
   },
   {
@@ -177,9 +168,8 @@ const PUBLICATIONS = [
     venue: 'International Conference on Pattern Recognition and Artificial Intelligence (ICPRAI), 2024',
     year: 2024,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Token Pruning', 'Seq2Seq', 'Inference Efficiency'],
     featured: false,
   },
 
@@ -190,21 +180,19 @@ const PUBLICATIONS = [
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2023',
     year: 2023,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Transformer', 'Token Routing', 'Inference Efficiency'],
     featured: true,
     image: 'images/fig-4.svg',
   },
   {
     title: 'Client-Customized Adaptation for Parameter-Efficient Federated Learning',
-    authors: 'Yeachan Kim, Junho Kim, Wing-Lam Mok, Jun-Hyung Park, SangKeun Lee',
+    authors: 'Yeachan Kim*, Junho Kim*, Wing-Lam Mok, Jun-Hyung Park, SangKeun Lee',
     venue: 'Findings of ACL, 2023',
     year: 2023,
     type: 'findings',
-    links: [
-      { label: 'PDF', url: 'https://aclanthology.org/2023.findings-acl.75/' },
-    ],
+    links: [],
+    tags: ['Federated Learning', 'PEFT', 'Personalization'],
     featured: false,
   },
   {
@@ -213,9 +201,8 @@ const PUBLICATIONS = [
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2023',
     year: 2023,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Debiasing', 'NLU', 'Robustness'],
     featured: false,
   },
   {
@@ -224,9 +211,8 @@ const PUBLICATIONS = [
     venue: 'AAAI Conference on Artificial Intelligence (AAAI), 2023',
     year: 2023,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Model Compression', 'Pruning', 'CNN'],
     featured: false,
   },
   {
@@ -235,9 +221,8 @@ const PUBLICATIONS = [
     venue: 'Conference on Uncertainty in Artificial Intelligence (UAI), 2023',
     year: 2023,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Adversarial Training', 'Robustness', 'Generalization'],
     featured: false,
   },
 
@@ -248,20 +233,18 @@ const PUBLICATIONS = [
     venue: 'ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2022',
     year: 2022,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Active Learning', 'Data Selection', 'Core-set'],
     featured: false,
   },
   {
     title: 'Context-based Virtual Adversarial Training for Text Classification with Noisy Labels',
-    authors: 'Do-Myoung Lee, Yeachan Kim, Chang-gyun Seo',
+    authors: 'Do-Myoung Lee*, Yeachan Kim*, Chang-gyun Seo',
     venue: 'Language Resources and Evaluation Conference (LREC), 2022',
     year: 2022,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Noisy Labels', 'Text Classification', 'Semi-supervised'],
     featured: false,
   },
 
@@ -272,9 +255,8 @@ const PUBLICATIONS = [
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2020',
     year: 2020,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Word Embeddings', 'Compression', 'Efficiency'],
     featured: false,
   },
   {
@@ -283,9 +265,8 @@ const PUBLICATIONS = [
     venue: 'Findings of EMNLP, 2020',
     year: 2020,
     type: 'findings',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Pretraining', 'Text Classification', 'Transfer Learning'],
     featured: false,
   },
   {
@@ -294,9 +275,8 @@ const PUBLICATIONS = [
     venue: 'Language Resources and Evaluation Conference (LREC), 2020',
     year: 2020,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: 'https://aclanthology.org/2020.lrec-1.587/' },
-    ],
+    links: [],
+    tags: ['Word Representation', 'OOV', 'Semantic Networks'],
     featured: false,
   },
   {
@@ -305,9 +285,8 @@ const PUBLICATIONS = [
     venue: 'ACM/SIGAPP Symposium on Applied Computing (SAC), 2020',
     year: 2020,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Text Classification', 'Personalization', 'User Modeling'],
     featured: false,
   },
 
@@ -318,9 +297,8 @@ const PUBLICATIONS = [
     venue: 'The Web Conference (WWW), 2019',
     year: 2019,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Text Classification', 'Scalability', 'Transfer Learning'],
     featured: false,
   },
 
@@ -331,9 +309,8 @@ const PUBLICATIONS = [
     venue: 'International Conference on Computational Linguistics (COLING), 2018',
     year: 2018,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Word Representation', 'Subword', 'Morphology'],
     featured: false,
   },
   {
@@ -342,9 +319,8 @@ const PUBLICATIONS = [
     venue: 'IEEE International Conference on Cognitive Informatics & Cognitive Computing (ICCI*CC), 2018',
     year: 2018,
     type: 'conf',
-    links: [
-      { label: 'PDF', url: '#' },
-    ],
+    links: [],
+    tags: ['Text Classification', 'Hierarchical', 'Category Embedding'],
     featured: false,
   },
 ];
