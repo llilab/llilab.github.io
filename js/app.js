@@ -177,7 +177,7 @@ function renderHome() {
     <div class="welcome fade-in">
       <p class="welcome-intro">${SITE.welcome.intro}</p>
       <div class="join-quote">
-        ${SITE.recruitment.description}(<a href="mailto:yeachan@hufs.ac.kr">yeachan [at] hufs.ac.kr</a>)
+        ${SITE.recruitment.description} <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">Apply here</a>
       </div>
     </div>
 
@@ -355,7 +355,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const headerTop = document.querySelector('.header-top');
   headerTop.innerHTML = `
     <a href="#home" class="header-logo-link" onclick="showPage('home');return false;">
-      <img src="images/logo.svg" alt="${SITE.labName}" class="header-logo">
+      <img src="images/lai_logo.png" alt="${SITE.labName}" class="header-logo">
+      <span class="header-logo-title">${SITE.labShort}</span>
+      <span class="header-logo-divider"></span>
+      <div class="header-logo-text">
+        <span class="header-logo-subtitle">${SITE.labName}</span>
+        <span class="header-logo-univ">${SITE.university}</span>
+      </div>
     </a>
   `;
 

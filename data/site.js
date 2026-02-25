@@ -32,7 +32,7 @@ const SITE = {
   welcome: {
     intro: `Welcome to the <strong>Language &amp; Adaptive Intelligence Lab (LAI Lab)</strong>.
       We pursue research in natural language processing, with a focus on building efficient and adaptive large language models.
-      Our work covers a broad range of topics including model efficiency, robust fine-tuning,
+      Our work covers a broad range of topics including model efficiency, reliable adaptation and alignment,
       and language applications across diverse real-world domains such as science and industry.`,
     detail: `Led by Prof. Yeachan Kim, the lab is part of the Division of Language & AI at
       Hankuk University of Foreign Studies (HUFS), Seoul. We aim to develop language models that are not only powerful
@@ -44,7 +44,7 @@ const SITE = {
   // "Join Us" recruitment banner (Home page)
   recruitment: {
     title: 'Join Our Lab',
-    description: 'We are looking for motivated M.S./Ph.D. students and research interns.<br>Please contact us at',
+    description: 'We are looking for motivated M.S./Ph.D. students and research interns.<br>If you are interested, please apply through the form.',
   },
 
   // Navigation tabs
