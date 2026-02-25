@@ -450,12 +450,7 @@ footer {
 
 /* Slider Controls */
 .slider-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65rem 1.25rem;
-  border-top: 1px solid var(--border-light);
-  background: var(--bg);
+  display: none;
 }
 
 .slider-dots {
@@ -479,28 +474,31 @@ footer {
 }
 
 .slider-arrows {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
   display: flex;
-  gap: 0.5rem;
-  margin-left: auto;
+  gap: 0.4rem;
+  z-index: 10;
 }
 
 .slider-arrow {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg);
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
   color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  font-size: 0.8rem;
+  transition: background 0.2s, color 0.2s;
+  backdrop-filter: blur(4px);
 }
 .slider-arrow:hover {
-  background: var(--blue-pale);
-  border-color: var(--blue);
+  background: rgba(255, 255, 255, 1);
   color: var(--blue);
 }
 

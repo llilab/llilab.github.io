@@ -109,13 +109,9 @@ function renderHighlightSlider() {
         <div class="slider-track" id="sliderTrack">
           ${slidesHTML}
         </div>
-        <div class="slider-controls">
-          <div class="slider-dots" id="sliderDots">${dotsHTML}</div>
-          <div class="slider-counter"><span id="sliderCurrent">1</span> / ${slides.length}</div>
-          <div class="slider-arrows">
-            <button class="slider-arrow" id="sliderPrev" aria-label="Previous slide">&#8592;</button>
-            <button class="slider-arrow" id="sliderNext" aria-label="Next slide">&#8594;</button>
-          </div>
+        <div class="slider-arrows">
+          <button class="slider-arrow" id="sliderPrev" aria-label="Previous slide">&#8592;</button>
+          <button class="slider-arrow" id="sliderNext" aria-label="Next slide">&#8594;</button>
         </div>
       </div>
     </div>
