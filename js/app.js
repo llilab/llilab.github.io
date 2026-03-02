@@ -297,15 +297,124 @@ function renderApplications() {
   `;
 }
 
+function renderGallery() {
+  const items = GALLERY.map(g => `
+    <div class="gallery-item fade-in">
+      <div class="gallery-img-wrap">
+        <img src="${g.image}" alt="${g.caption}" class="gallery-img">
+      </div>
+      <div class="gallery-caption">
+        <p>${g.caption}</p>
+        ${g.date ? `<span class="gallery-date">${g.date}</span>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="subpage">
+      <div class="subpage-header">
+        <h2>Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        ${items}
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; padding:3rem 0 2rem;">
+        <img src="images/updating.svg" alt="Updating" style="width:60px; height:60px; margin-bottom:1rem;">
+        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.9rem;">More photos coming soon.</p>
+      </div>
+    </div>
+  `;
+}
+
+function renderProfessor() {
+  const p = PROFESSOR;
+  const pi = SITE.pi;
+
+  const bioHTML = p.bio.map(para => `<p class="prof-bio-para">${para}</p>`).join('');
+
+  const eduHTML = p.education.length
+    ? `<div class="prof-section fade-in">
+        <h3>Education</h3>
+        ${p.education.map(e => `
+          <div class="prof-entry">
+            <div class="prof-entry-main">${e.degree}</div>
+            <div class="prof-entry-sub">${e.institution}${e.year ? ' &middot; ' + e.year : ''}</div>
+          </div>
+        `).join('')}
+      </div>`
+    : '';
+
+  const expHTML = p.experience.length
+    ? `<div class="prof-section fade-in">
+        <h3>Experience</h3>
+        ${p.experience.map(e => `
+          <div class="prof-entry">
+            <div class="prof-entry-main">${e.role}</div>
+            <div class="prof-entry-sub">${e.organization}${e.period ? ' &middot; ' + e.period : ''}</div>
+          </div>
+        `).join('')}
+      </div>`
+    : '';
+
+  const awardsHTML = p.awards && p.awards.length
+    ? `<div class="prof-section fade-in">
+        <h3>Honors &amp; Awards</h3>
+        ${p.awards.map(a => `
+          <div class="prof-entry">
+            <div class="prof-entry-main">${a.title}</div>
+            <div class="prof-entry-sub">${a.organization}${a.year ? ' &middot; ' + a.year : ''}</div>
+          </div>
+        `).join('')}
+      </div>`
+    : '';
+
+  // Build contact links
+  const links = [];
+  if (pi.email) links.push(`<a href="mailto:${pi.email}">Email</a>`);
+  if (pi.scholar) links.push(`<a href="${pi.scholar}" target="_blank">Google Scholar</a>`);
+  if (pi.aclAnthology) links.push(`<a href="${pi.aclAnthology}" target="_blank">ACL Anthology</a>`);
+  if (pi.github) links.push(`<a href="${pi.github}" target="_blank">GitHub</a>`);
+  if (pi.homepage) links.push(`<a href="${pi.homepage}" target="_blank">Homepage</a>`);
+
+  return `
+    <div class="subpage">
+      <div class="subpage-header">
+        <h2>Professor</h2>
+      </div>
+      <div class="prof-profile fade-in">
+        <div class="prof-photo-wrap">
+          <img src="${p.photo}" alt="${pi.name}" class="prof-photo"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'prof-photo-placeholder\\'>${pi.name.split(' ').map(n=>n[0]).join('')}</div>';">
+        </div>
+        <div class="prof-info">
+          <h2 class="prof-name">${pi.name}</h2>
+          <div class="prof-title">${pi.title}</div>
+          <div class="prof-affiliation">${SITE.department}<br>${SITE.university}</div>
+          <div class="prof-office">Office: Faculty Building (교수회관) 520</div>
+          <div class="prof-links">${links.join('')}</div>
+        </div>
+      </div>
+      <div class="prof-bio fade-in">
+        ${bioHTML}
+      </div>
+      ${expHTML}
+      ${eduHTML}
+      ${awardsHTML}
+    </div>
+  `;
+}
+
 // ═══════════════════════════════════════════════════
 //  ROUTER
 // ═══════════════════════════════════════════════════
 
 const PAGE_RENDERERS = {
   home: renderHome,
+  professor: renderProfessor,
   research: renderResearch,
   publications: renderPublications,
   projects: renderProjects,
+  gallery: renderGallery,
   applications: renderApplications,
 };
 

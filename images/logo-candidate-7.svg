@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- Candidate 7: LAI monogram inside a shield/hexagonal frame -->
+  <defs>
+    <linearGradient id="g7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Hexagon frame -->
+  <g transform="translate(6, 4)">
+    <polygon points="32,0 60,14 60,54 32,68 4,54 4,14"
+      fill="none" stroke="url(#g7)" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <!-- L stroke -->
+    <path d="M16,16 L16,52 L30,52" fill="none" stroke="#1e40af" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+    <!-- A stroke, connected to L -->
+    <path d="M26,52 L36,20 L46,52" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- A crossbar -->
+    <line x1="30" y1="40" x2="42" y2="40" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+    <!-- I stroke -->
+    <line x1="52" y1="20" x2="52" y2="52" stroke="#3b82f6" stroke-width="4" stroke-linecap="round"/>
+    <!-- I dot -->
+    <circle cx="52" cy="14" r="3" fill="#3b82f6"/>
+  </g>
+
+  <!-- LAI Lab text -->
+  <text x="80" y="34" font-family="'IBM Plex Sans', sans-serif" font-size="24" font-weight="700" letter-spacing="-0.3">
+    <tspan fill="#1e40af">L</tspan><tspan fill="#2563eb">A</tspan><tspan fill="#3b82f6">I</tspan><tspan fill="#0d1b2a" font-weight="400"> Lab</tspan>
+  </text>
+
+  <!-- Subtitle under logo text -->
+  <text x="80" y="52" font-family="'IBM Plex Sans', sans-serif" font-size="10" font-weight="500" fill="#94a3b8" letter-spacing="1.2">
+    LANGUAGE &amp; ADAPTIVE INTELLIGENCE
+  </text>
+
+  <!-- Divider -->
+  <line x1="310" y1="14" x2="310" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- HUFS -->
+  <text x="324" y="38" font-family="'IBM Plex Sans', sans-serif" font-size="11.5" font-weight="400" fill="#94a3b8" letter-spacing="0.3">
+    Hankuk University of Foreign Studies
+  </text>
+  <text x="324" y="54" font-family="'IBM Plex Sans', sans-serif" font-size="10" font-weight="400" fill="#cbd5e1" letter-spacing="0.3">
+    Division of Language &amp; AI
+  </text>
+</svg>

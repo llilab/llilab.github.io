@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- Candidate 2: Node/network icon + typography -->
+  <!-- Network icon -->
+  <g transform="translate(8, 8)">
+    <!-- Nodes -->
+    <circle cx="16" cy="10" r="5" fill="#1e40af" opacity="0.8"/>
+    <circle cx="48" cy="10" r="5" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="32" cy="32" r="6" fill="#2563eb"/>
+    <circle cx="10" cy="54" r="4.5" fill="#1e40af" opacity="0.6"/>
+    <circle cx="54" cy="54" r="4.5" fill="#3b82f6" opacity="0.6"/>
+    <!-- Connections -->
+    <line x1="16" y1="10" x2="32" y2="32" stroke="#2563eb" stroke-width="1.5" opacity="0.35"/>
+    <line x1="48" y1="10" x2="32" y2="32" stroke="#2563eb" stroke-width="1.5" opacity="0.35"/>
+    <line x1="10" y1="54" x2="32" y2="32" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+    <line x1="54" y1="54" x2="32" y2="32" stroke="#2563eb" stroke-width="1.5" opacity="0.3"/>
+    <line x1="16" y1="10" x2="48" y2="10" stroke="#93c5fd" stroke-width="1" opacity="0.25"/>
+    <line x1="10" y1="54" x2="54" y2="54" stroke="#93c5fd" stroke-width="1" opacity="0.25"/>
+  </g>
+
+  <!-- LAI Lab text -->
+  <text x="78" y="52" font-family="'IBM Plex Sans', sans-serif" font-size="34" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#1e40af">L</tspan><tspan fill="#2563eb">A</tspan><tspan fill="#3b82f6">I</tspan><tspan fill="#0d1b2a" font-weight="400"> Lab</tspan>
+  </text>
+
+  <!-- Divider -->
+  <line x1="198" y1="16" x2="198" y2="64" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Full name + HUFS -->
+  <text x="212" y="35" font-family="'IBM Plex Sans', sans-serif" font-size="13" font-weight="500" fill="#475569" letter-spacing="0.2">
+    Language &amp; Adaptive Intelligence Lab
+  </text>
+  <text x="212" y="55" font-family="'IBM Plex Sans', sans-serif" font-size="11" font-weight="400" fill="#94a3b8" letter-spacing="0.3">
+    Hankuk University of Foreign Studies
+  </text>
+</svg>

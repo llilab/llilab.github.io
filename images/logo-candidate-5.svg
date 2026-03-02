@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- Candidate 5: LAI letters as architectural structure — the A forms a bridge/peak -->
+  <defs>
+    <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(4, 8)">
+    <!-- L: thick vertical + horizontal base -->
+    <path d="M2,2 L2,58 L22,58" fill="none" stroke="url(#g5)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- A: triangle peak with crossbar, shared leg with L -->
+    <path d="M22,58 L37,8 L52,58" fill="none" stroke="url(#g5)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="27" y1="40" x2="47" y2="40" stroke="#60a5fa" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- I: vertical with node dots -->
+    <line x1="62" y1="8" x2="62" y2="58" stroke="url(#g5)" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="62" cy="8" r="4" fill="#3b82f6"/>
+
+    <!-- Neural connection dots emanating from I -->
+    <circle cx="72" cy="20" r="2.5" fill="#93c5fd" opacity="0.6"/>
+    <circle cx="74" cy="38" r="2" fill="#93c5fd" opacity="0.45"/>
+    <circle cx="71" cy="52" r="2.2" fill="#93c5fd" opacity="0.5"/>
+    <line x1="62" y1="20" x2="72" y2="20" stroke="#93c5fd" stroke-width="1" opacity="0.4"/>
+    <line x1="62" y1="38" x2="74" y2="38" stroke="#93c5fd" stroke-width="1" opacity="0.35"/>
+    <line x1="62" y1="52" x2="71" y2="52" stroke="#93c5fd" stroke-width="1" opacity="0.35"/>
+  </g>
+
+  <!-- Lab text -->
+  <text x="92" y="52" font-family="'IBM Plex Sans', sans-serif" font-size="32" font-weight="300" fill="#475569" letter-spacing="-0.5">
+    Lab
+  </text>
+
+  <!-- Divider -->
+  <line x1="158" y1="14" x2="158" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Full name + HUFS -->
+  <text x="172" y="33" font-family="'IBM Plex Sans', sans-serif" font-size="13" font-weight="500" fill="#475569" letter-spacing="0.2">
+    Language &amp; Adaptive Intelligence Lab
+  </text>
+  <text x="172" y="53" font-family="'IBM Plex Sans', sans-serif" font-size="11" font-weight="400" fill="#94a3b8" letter-spacing="0.3">
+    Hankuk University of Foreign Studies
+  </text>
+</svg>

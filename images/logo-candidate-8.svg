@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- Candidate 8: LAI lettermarks with language lines (text/speech) flowing into neural dots (intelligence) -->
+  <defs>
+    <linearGradient id="g8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(6, 6)">
+    <!-- L -->
+    <path d="M4,4 L4,60 L24,60" fill="none" stroke="url(#g8)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- A connected to L -->
+    <path d="M24,60 L40,10 L56,60" fill="none" stroke="url(#g8)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="30" y1="42" x2="50" y2="42" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
+
+    <!-- I -->
+    <line x1="68" y1="14" x2="68" y2="60" stroke="url(#g8)" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Language motif: horizontal text lines flowing from L -->
+    <line x1="0" y1="16" x2="16" y2="16" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
+    <line x1="0" y1="24" x2="12" y2="24" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" opacity="0.4"/>
+    <line x1="0" y1="32" x2="14" y2="32" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Intelligence motif: neural network nodes emanating from I top -->
+    <circle cx="68" cy="8" r="4.5" fill="#2563eb"/>
+    <!-- Branching nodes -->
+    <circle cx="80" cy="4" r="2.5" fill="#60a5fa" opacity="0.7"/>
+    <circle cx="82" cy="18" r="2" fill="#93c5fd" opacity="0.6"/>
+    <circle cx="78" cy="30" r="2.2" fill="#93c5fd" opacity="0.5"/>
+    <!-- Connections from I head -->
+    <line x1="72" y1="6" x2="78" y2="4" stroke="#60a5fa" stroke-width="1.2" opacity="0.5"/>
+    <line x1="72" y1="10" x2="80" y2="18" stroke="#93c5fd" stroke-width="1" opacity="0.4"/>
+    <line x1="70" y1="20" x2="76" y2="30" stroke="#93c5fd" stroke-width="1" opacity="0.35"/>
+    <!-- Subtle connection between last text line and A -->
+    <path d="M14,32 Q20,36 24,40" fill="none" stroke="#bfdbfe" stroke-width="1" opacity="0.35"/>
+  </g>
+
+  <!-- Lab text -->
+  <text x="98" y="52" font-family="'IBM Plex Sans', sans-serif" font-size="32" font-weight="300" fill="#475569" letter-spacing="-0.5">
+    Lab
+  </text>
+
+  <!-- Divider -->
+  <line x1="168" y1="14" x2="168" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Full name + HUFS -->
+  <text x="182" y="33" font-family="'IBM Plex Sans', sans-serif" font-size="13" font-weight="500" fill="#475569" letter-spacing="0.2">
+    Language &amp; Adaptive Intelligence Lab
+  </text>
+  <text x="182" y="53" font-family="'IBM Plex Sans', sans-serif" font-size="11" font-weight="400" fill="#94a3b8" letter-spacing="0.3">
+    Hankuk University of Foreign Studies
+  </text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- Candidate 9: LAI inside a rounded frame — A as a speech/thought bubble shape, I as neural pulse -->
+  <defs>
+    <linearGradient id="g9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="60%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(4, 4)">
+    <!-- Rounded frame -->
+    <rect x="0" y="0" width="76" height="68" rx="16" fill="url(#g9)"/>
+
+    <!-- L — white -->
+    <path d="M14,14 L14,54 L28,54" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- A — styled as speech/thought bubble peak -->
+    <path d="M28,54 L40,16 L52,54" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- A crossbar — looks like text line inside the A -->
+    <line x1="33" y1="40" x2="47" y2="40" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+    <!-- Small text lines below A crossbar — language hint -->
+    <line x1="35" y1="47" x2="45" y2="47" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- I — with pulse/spark at top (intelligence) -->
+    <line x1="62" y1="22" x2="62" y2="54" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+    <!-- Spark/star at top of I -->
+    <circle cx="62" cy="14" r="4" fill="#ffffff" opacity="0.9"/>
+    <line x1="62" y1="8" x2="62" y2="10" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <line x1="56" y1="14" x2="58" y2="14" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <line x1="66" y1="14" x2="68" y2="14" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <line x1="58" y1="10" x2="59.5" y2="11.5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/>
+    <line x1="66" y1="10" x2="64.5" y2="11.5" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/>
+  </g>
+
+  <!-- Lab text -->
+  <text x="92" y="50" font-family="'IBM Plex Sans', sans-serif" font-size="30" font-weight="700" letter-spacing="-0.3">
+    <tspan fill="#1e40af">LAI</tspan><tspan fill="#475569" font-weight="300"> Lab</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="92" y="65" font-family="'IBM Plex Sans', sans-serif" font-size="9.5" font-weight="500" fill="#94a3b8" letter-spacing="1">
+    LANGUAGE &amp; ADAPTIVE INTELLIGENCE
+  </text>
+
+  <!-- Divider -->
+  <line x1="330" y1="14" x2="330" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- HUFS -->
+  <text x="344" y="38" font-family="'IBM Plex Sans', sans-serif" font-size="11.5" font-weight="400" fill="#94a3b8" letter-spacing="0.3">
+    Hankuk University of Foreign Studies
+  </text>
+  <text x="344" y="54" font-family="'IBM Plex Sans', sans-serif" font-size="10" font-weight="400" fill="#cbd5e1" letter-spacing="0.3">
+    Division of Language &amp; AI
+  </text>
+</svg>

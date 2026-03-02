@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" width="480" height="80">
+  <!-- Candidate 6: LAI as interlocking/overlapping letterforms -->
+  <defs>
+    <linearGradient id="g6a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="g6b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(4, 6)">
+    <!-- L: bold geometric -->
+    <path d="M4,4 L4,62 L28,62" fill="none" stroke="url(#g6a)" stroke-width="7" stroke-linecap="square"/>
+
+    <!-- A: overlapping with L's base — creates visual link -->
+    <path d="M20,62 L40,4 L60,62" fill="none" stroke="url(#g6b)" stroke-width="7" stroke-linecap="square" stroke-linejoin="miter"/>
+    <!-- A crossbar as a highlight -->
+    <line x1="28" y1="38" x2="52" y2="38" stroke="#60a5fa" stroke-width="4" stroke-linecap="square" opacity="0.6"/>
+
+    <!-- I: with a bright top square/diamond accent -->
+    <line x1="72" y1="14" x2="72" y2="62" stroke="#3b82f6" stroke-width="7" stroke-linecap="square"/>
+    <!-- I top accent: diamond -->
+    <polygon points="72,0 78,6 72,12 66,6" fill="#2563eb"/>
+  </g>
+
+  <!-- Lab text -->
+  <text x="94" y="54" font-family="'IBM Plex Sans', sans-serif" font-size="34" font-weight="300" fill="#64748b" letter-spacing="-0.5">
+    Lab
+  </text>
+
+  <!-- Divider -->
+  <line x1="170" y1="14" x2="170" y2="66" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Full name + HUFS -->
+  <text x="184" y="33" font-family="'IBM Plex Sans', sans-serif" font-size="13" font-weight="500" fill="#475569" letter-spacing="0.2">
+    Language &amp; Adaptive Intelligence Lab
+  </text>
+  <text x="184" y="53" font-family="'IBM Plex Sans', sans-serif" font-size="11" font-weight="400" fill="#94a3b8" letter-spacing="0.3">
+    Hankuk University of Foreign Studies
+  </text>
+</svg>
