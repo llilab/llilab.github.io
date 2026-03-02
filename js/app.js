@@ -408,6 +408,59 @@ function renderProfessor() {
 //  ROUTER
 // ═══════════════════════════════════════════════════
 
+function renderJoinUs() {
+  const positions = [
+    {
+      title: 'M.S. / Ph.D. Students',
+      description: 'We are looking for motivated graduate students interested in NLP, large language models, and efficient AI. Students will have the opportunity to work on cutting-edge research and publish at top-tier venues.',
+      qualifications: [
+        'Strong interest in NLP or machine learning',
+        'Self-motivated with good communication skills',
+      ],
+    },
+    {
+      title: 'Research Interns',
+      description: 'We welcome undergraduate students and visiting researchers who want to gain hands-on research experience. Interns will collaborate closely with lab members on ongoing projects.',
+      qualifications: [
+        'Currently enrolled in a relevant undergraduate or graduate program',
+        'Basic knowledge of machine learning and NLP',
+        'Ability to commit at least 3 months',
+      ],
+    },
+  ];
+
+  const positionsHTML = positions.map(pos => `
+    <div class="joinus-position fade-in">
+      <h3>${pos.title}</h3>
+      <p>${pos.description}</p>
+      <div class="joinus-quals">
+        <span class="joinus-quals-label">Preferred Qualifications</span>
+        ${pos.qualifications.map(q => `<div class="joinus-qual-item">${q}</div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="subpage">
+      <div class="subpage-header">
+        <h2>Join Us</h2>
+        <p>We are always looking for talented and passionate individuals to join our lab.</p>
+      </div>
+
+      <div class="joinus-banner fade-in">
+        <p>If you are interested in joining LAI Lab, please apply through the form below or contact us via email.</p>
+        <div class="joinus-actions">
+          <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank" class="joinus-btn">Apply Here</a>
+          <a href="mailto:${SITE.pi.email}" class="joinus-btn joinus-btn-outline">Email Us</a>
+        </div>
+      </div>
+
+      <div class="joinus-section-title">Open Positions</div>
+      ${positionsHTML}
+    </div>
+  `;
+}
+
 const PAGE_RENDERERS = {
   home: renderHome,
   professor: renderProfessor,
@@ -415,6 +468,7 @@ const PAGE_RENDERERS = {
   publications: renderPublications,
   projects: renderProjects,
   gallery: renderGallery,
+  joinus: renderJoinUs,
   applications: renderApplications,
 };
 
