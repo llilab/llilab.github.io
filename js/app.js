@@ -420,11 +420,10 @@ function renderJoinUs() {
     },
     {
       title: 'Research Interns',
-      description: 'We welcome undergraduate students and visiting researchers who want to gain hands-on research experience. Interns will collaborate closely with lab members on ongoing projects.',
+      description: 'We welcome undergraduate students who want to gain hands-on research experience and prepare for graduate studies (M.S./Ph.D.).',
       qualifications: [
         'Currently enrolled in a relevant undergraduate or graduate program',
         'Basic knowledge of machine learning and NLP',
-        'Ability to commit at least 3 months',
       ],
     },
   ];
