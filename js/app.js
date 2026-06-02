@@ -326,7 +326,7 @@ function renderGallery() {
   `;
 }
 
-function renderProfessor() {
+function professorProfileHTML() {
   const p = PROFESSOR;
   const pi = SITE.pi;
 
@@ -377,11 +377,7 @@ function renderProfessor() {
   if (pi.homepage) links.push(`<a href="${pi.homepage}" target="_blank">Homepage</a>`);
 
   return `
-    <div class="subpage">
-      <div class="subpage-header">
-        <h2>Professor</h2>
-      </div>
-      <div class="prof-profile fade-in">
+      <div class="prof-profile fade-in" style="border-bottom:none; padding-bottom:0;">
         <div class="prof-photo-wrap">
           <img src="${p.photo}" alt="${pi.name}" class="prof-photo"
                onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'prof-photo-placeholder\\'>${pi.name.split(' ').map(n=>n[0]).join('')}</div>';">
@@ -394,12 +390,74 @@ function renderProfessor() {
           <div class="prof-links">${links.join('')}</div>
         </div>
       </div>
-      <div class="prof-bio fade-in">
-        ${bioHTML}
+  `;
+}
+
+function renderMembers() {
+  const initials = (name) =>
+    name.trim().split(/\s+/).map(n => n[0]).join('').substring(0, 2).toUpperCase();
+
+  function card(m) {
+    const photoHTML = m.photo
+      ? `<img src="${m.photo}" alt="${m.name}" class="member-photo"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'member-photo-placeholder\\'>${initials(m.name)}</div>';">`
+      : `<div class="member-photo-placeholder">${initials(m.name)}</div>`;
+
+    const emailHTML = m.email
+      ? `<div class="member-email"><a href="mailto:${m.email}">${m.email}</a></div>`
+      : '';
+
+    const links = [];
+    if (m.scholar)  links.push(`<a href="${m.scholar}" target="_blank" title="Google Scholar">Scholar</a>`);
+    if (m.github)   links.push(`<a href="${m.github}" target="_blank" title="GitHub">GitHub</a>`);
+    if (m.homepage) links.push(`<a href="${m.homepage}" target="_blank" title="Homepage">Homepage</a>`);
+    const linksHTML = links.length ? `<div class="member-links">${links.join('')}</div>` : '';
+
+    const interestsHTML = (m.interests && m.interests.length)
+      ? `<div class="member-interests">${m.interests.map(i => `<span class="member-interest">${i}</span>`).join('')}</div>`
+      : '';
+
+    return `
+      <div class="member-card fade-in">
+        <div class="member-photo-wrap">${photoHTML}</div>
+        <div class="member-name">${m.name}</div>
+        <div class="member-role">${m.role}</div>
+        ${interestsHTML}
+        ${emailHTML}
+        ${linksHTML}
       </div>
-      ${expHTML}
-      ${eduHTML}
-      ${awardsHTML}
+    `;
+  }
+
+  const sectionsHTML = MEMBER_GROUPS.map(g => {
+    const people = MEMBERS.filter(m => m.group === g.id);
+    if (!people.length && !g.showWhenEmpty) return '';
+    const body = people.length
+      ? `<div class="member-grid">${people.map(card).join('')}</div>`
+      : (g.emptyText ? `<p class="member-empty">${g.emptyText}</p>` : '');
+    return `
+      <div class="member-section fade-in">
+        <div class="member-group-title">${g.label}</div>
+        ${body}
+      </div>
+    `;
+  }).join('');
+
+  const facultyHTML = `
+    <div class="member-section">
+      <div class="member-group-title">Faculty</div>
+      ${professorProfileHTML()}
+    </div>
+  `;
+
+  return `
+    <div class="subpage">
+      <div class="subpage-header">
+        <h2>Members</h2>
+        <p>Meet the people who make up the LAI Lab.</p>
+      </div>
+      ${facultyHTML}
+      ${sectionsHTML}
     </div>
   `;
 }
@@ -462,7 +520,7 @@ function renderJoinUs() {
 
 const PAGE_RENDERERS = {
   home: renderHome,
-  professor: renderProfessor,
+  members: renderMembers,
   research: renderResearch,
   publications: renderPublications,
   projects: renderProjects,

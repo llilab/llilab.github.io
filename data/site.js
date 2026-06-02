@@ -52,7 +52,7 @@ const SITE = {
   // `id` must match a renderer in js/app.js
   nav: [
     { id: 'home',         label: 'Home' },
-    { id: 'professor',    label: 'Professor' },
+    { id: 'members',      label: 'Members' },
     { id: 'research',     label: 'Research' },
     { id: 'publications', label: 'Publications' },
     { id: 'projects',     label: 'Projects' },
