@@ -19,6 +19,7 @@ const RESEARCH = [
   {
     title: 'AI for Science (AI4Science)',
     description: 'We develop language model-based approaches for scientific discovery, including molecular property prediction, chemical language representation learning, and domain-adaptive pre-training for materials science. Our work bridges NLP techniques with domain-specific scientific knowledge.',
+    description_ko: '분자 물성 예측, 화학 언어 표현 학습, 재료과학을 위한 도메인 적응형 사전학습 등 과학적 발견을 위한 언어 모델 기반 접근법을 연구합니다. NLP 기법과 도메인 특화 과학 지식을 연결하는 것을 목표로 합니다.',
     keywords: ['Molecular Property Prediction', 'Chemical Language Models', 'Materials Science NLP', 'Domain Adaptation'],
     bgClass: 'ri-efficient',
     svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
@@ -55,6 +56,7 @@ const RESEARCH = [
   {
     title: 'Efficient AI',
     description: 'We develop methods to reduce the computational cost of large-scale models without sacrificing performance. Our work includes dynamic token routing, information flow sparsification, memory-efficient training, model compression, and active learning for data-efficient training.',
+    description_ko: '성능을 희생하지 않으면서 대규모 모델의 연산 비용을 줄이는 방법을 연구합니다. 동적 토큰 라우팅, 정보 흐름 희소화, 메모리 효율적 학습, 모델 압축, 데이터 효율적 학습을 위한 능동 학습 등을 포함합니다.',
     keywords: ['Sparse Transformers', 'Dynamic Token Routing', 'Memory-Efficient Training', 'Model Compression', 'Active Learning'],
     bgClass: 'ri-peft',
     svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
@@ -89,6 +91,7 @@ const RESEARCH = [
   {
     title: 'Natural Language Processing (NLP)',
     description: 'We conduct foundational research in NLP including parameter-efficient fine-tuning, representation learning, robust training under noisy labels and dataset biases, and text classification.',
+    description_ko: '파라미터 효율적 미세조정, 표현 학습, 잡음 레이블 및 데이터셋 편향 하에서의 강건한 학습, 텍스트 분류 등 NLP의 기초 연구를 수행합니다.',
     keywords: ['Parameter-Efficient Fine-Tuning', 'Robust Training', 'Representation Learning', 'Text Classification'],
     bgClass: 'ri-repr',
     svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">

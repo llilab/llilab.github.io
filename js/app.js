@@ -8,6 +8,35 @@
  * ═══════════════════════════════════════════════════
  */
 
+// ─── Language (i18n) state ───
+// Menu labels and page/section titles stay in English;
+// only descriptive body content is translated.
+let LANG = localStorage.getItem('lang') || 'en';
+
+// Pick a value based on the current language.
+// `ko` falls back to `en` when a translation is missing.
+function L(en, ko) {
+  return (LANG === 'ko' && ko != null && ko !== '') ? ko : en;
+}
+
+// Track the currently displayed page so we can re-render on language switch.
+let currentPage = 'home';
+
+function setLang(lang) {
+  if (lang === LANG) return;
+  LANG = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = (lang === 'ko') ? 'ko' : 'en';
+  updateLangToggle();
+  showPage(currentPage);
+}
+
+function updateLangToggle() {
+  document.querySelectorAll('.lang-toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === LANG);
+  });
+}
+
 // ─── Utility: highlight PI name in author strings ───
 function highlightPI(authors) {
   const name = SITE.piNameInPapers;
@@ -163,7 +192,7 @@ function renderHome() {
   `).join('');
 
   const newsHTML = NEWS.map(n => {
-    return `<div class="news-item"><div class="news-date">${n.date}</div><p>${n.content}</p></div>`;
+    return `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
   }).join('');
 
 
@@ -171,9 +200,9 @@ function renderHome() {
     ${renderHighlightSlider()}
 
     <div class="welcome fade-in">
-      <p class="welcome-intro">${SITE.welcome.intro}</p>
+      <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
       <div class="join-quote">
-        ${SITE.recruitment.description} <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">Apply here</a>
+        ${L(SITE.recruitment.description, SITE.recruitment.description_ko)} <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">${L('Apply here', '지원하기')}</a>
       </div>
     </div>
 
@@ -181,7 +210,7 @@ function renderHome() {
       <div class="fade-in">
         <div class="home-section-title">Recent Research</div>
         ${recentHTML}
-        <a href="#publications" class="view-all" onclick="showPage('publications');return false;">View all publications</a>
+        <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
       </div>
       <div class="fade-in">
         <div class="home-section-title">News</div>
@@ -199,7 +228,7 @@ function renderResearch() {
       </div>
       <div class="research-card-body">
         <h3>${r.title}</h3>
-        <p>${r.description}</p>
+        <p>${L(r.description, r.description_ko)}</p>
         <div class="research-keywords">
           ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
         </div>
@@ -211,7 +240,7 @@ function renderResearch() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Research</h2>
-        <p>Our research spans AI for Science, Efficient AI, and Natural Language Processing.</p>
+        <p>${L('Our research spans AI for Science, Efficient AI, and Natural Language Processing.', '우리 연구는 과학을 위한 AI(AI for Science), 효율적 AI, 자연어 처리를 아우릅니다.')}</p>
       </div>
       <div class="research-grid-page">${cards}</div>
     </div>
@@ -253,7 +282,7 @@ function renderPublications() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Publications</h2>
-        <p>Selected papers. See <a href="${SITE.pi.scholar}" target="_blank">Google Scholar</a> for a complete list.</p>
+        <p>${L('Selected papers. See', '선별된 논문 목록입니다. 전체 목록은')} <a href="${SITE.pi.scholar}" target="_blank">Google Scholar</a>${L(' for a complete list.', '를 참고해 주세요.')}</p>
       </div>
       ${groupsHTML}
     </div>
@@ -268,7 +297,7 @@ function renderProjects() {
       </div>
       <div style="display:flex; flex-direction:column; align-items:center; padding:3rem 0 4rem;">
         <img src="images/updating.svg" alt="Updating" style="width:80px; height:80px; margin-bottom:1.25rem;">
-        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.95rem;">This page is currently being updated.<br>Please check back soon.</p>
+        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.95rem;">${L('This page is currently being updated.<br>Please check back soon.', '이 페이지는 현재 업데이트 중입니다.<br>곧 다시 확인해 주세요.')}</p>
       </div>
     </div>
   `;
@@ -280,7 +309,7 @@ function renderApplications() {
       <div class="app-entry-icon">${a.icon}</div>
       <div>
         <h3>${a.title}</h3>
-        <p>${a.description}</p>
+        <p>${L(a.description, a.description_ko)}</p>
         <div class="app-entry-links">${renderLinks(a.links)}</div>
       </div>
     </div>
@@ -290,7 +319,7 @@ function renderApplications() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Applications</h2>
-        <p>Research prototypes and tools developed by our lab.</p>
+        <p>${L('Research prototypes and tools developed by our lab.', '연구실에서 개발한 연구 프로토타입과 도구입니다.')}</p>
       </div>
       ${entries}
     </div>
@@ -320,7 +349,7 @@ function renderGallery() {
       </div>
       <div style="display:flex; flex-direction:column; align-items:center; padding:3rem 0 2rem;">
         <img src="images/updating.svg" alt="Updating" style="width:60px; height:60px; margin-bottom:1rem;">
-        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.9rem;">More photos coming soon.</p>
+        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.9rem;">${L('More photos coming soon.', '더 많은 사진이 곧 공개됩니다.')}</p>
       </div>
     </div>
   `;
@@ -471,44 +500,57 @@ function renderJoinUs() {
     {
       title: 'M.S. / Ph.D. Students',
       description: 'We are looking for motivated graduate students interested in NLP, large language models, and efficient AI. Students will have the opportunity to work on cutting-edge research and publish at top-tier venues.',
+      description_ko: 'NLP, 대규모 언어 모델, 효율적 AI에 관심 있는 열정적인 대학원생을 모집합니다. 최신 연구에 참여하고 최고 수준의 학회·저널에 논문을 게재할 기회를 갖게 됩니다.',
       qualifications: [
         'Strong interest in NLP or machine learning',
         'Self-motivated with good communication skills',
+      ],
+      qualifications_ko: [
+        'NLP 또는 기계학습에 대한 깊은 관심',
+        '자기주도적이며 원활한 의사소통 능력',
       ],
     },
     {
       title: 'Research Interns',
       description: 'We welcome undergraduate students who want to gain hands-on research experience and prepare for graduate studies (M.S./Ph.D.).',
+      description_ko: '실전 연구 경험을 쌓고 대학원(석·박사) 진학을 준비하고자 하는 학부생을 환영합니다.',
       qualifications: [
         'Currently enrolled in a relevant undergraduate or graduate program',
         'Basic knowledge of machine learning and NLP',
       ],
+      qualifications_ko: [
+        '관련 학부 또는 대학원 과정에 재학 중',
+        '기계학습과 NLP에 대한 기초 지식',
+      ],
     },
   ];
 
-  const positionsHTML = positions.map(pos => `
+  const positionsHTML = positions.map(pos => {
+    const quals = (LANG === 'ko' && pos.qualifications_ko) ? pos.qualifications_ko : pos.qualifications;
+    return `
     <div class="joinus-position fade-in">
       <h3>${pos.title}</h3>
-      <p>${pos.description}</p>
+      <p>${L(pos.description, pos.description_ko)}</p>
       <div class="joinus-quals">
-        <span class="joinus-quals-label">Preferred Qualifications</span>
-        ${pos.qualifications.map(q => `<div class="joinus-qual-item">${q}</div>`).join('')}
+        <span class="joinus-quals-label">${L('Preferred Qualifications', '우대 사항')}</span>
+        ${quals.map(q => `<div class="joinus-qual-item">${q}</div>`).join('')}
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 
   return `
     <div class="subpage">
       <div class="subpage-header">
         <h2>Join Us</h2>
-        <p>We are always looking for talented and passionate individuals to join our lab.</p>
+        <p>${L('We are always looking for talented and passionate individuals to join our lab.', '저희 연구실은 재능 있고 열정적인 분들을 언제나 환영합니다.')}</p>
       </div>
 
       <div class="joinus-banner fade-in">
-        <p>If you are interested in joining LAI Lab, please apply through the form below or contact us via email.</p>
+        <p>${L('If you are interested in joining LAI Lab, please apply through the form below or contact us via email.', 'LAI Lab 합류에 관심이 있으시다면 아래 양식을 통해 지원하거나 이메일로 문의해 주세요.')}</p>
         <div class="joinus-actions">
-          <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank" class="joinus-btn">Apply Here</a>
-          <a href="mailto:${SITE.pi.email}" class="joinus-btn joinus-btn-outline">Email Us</a>
+          <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank" class="joinus-btn">${L('Apply Here', '지원하기')}</a>
+          <a href="mailto:${SITE.pi.email}" class="joinus-btn joinus-btn-outline">${L('Email Us', '이메일 문의')}</a>
         </div>
       </div>
 
@@ -532,6 +574,8 @@ const PAGE_RENDERERS = {
 function showPage(pageName) {
   const renderer = PAGE_RENDERERS[pageName];
   if (!renderer) return;
+
+  currentPage = pageName;
 
   // Render content
   const container = document.getElementById('page-container');
@@ -561,11 +605,28 @@ function showPage(pageName) {
 // ═══════════════════════════════════════════════════
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Build nav from SITE config
+  // Reflect stored language on the root element
+  document.documentElement.lang = (LANG === 'ko') ? 'ko' : 'en';
+
+  // Build nav from SITE config (menu labels stay in English)
   const nav = document.getElementById('mainNav');
   nav.innerHTML = SITE.nav.map(item =>
     `<a href="#${item.id}" data-page="${item.id}">${item.label}</a>`
   ).join('');
+
+  // Language toggle (EN / 한글) — pushed to the right of the nav
+  const langToggle = document.createElement('div');
+  langToggle.className = 'lang-toggle';
+  langToggle.innerHTML = `
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="ko">KOR</button>
+  `;
+  nav.appendChild(langToggle);
+  langToggle.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-lang]');
+    if (btn) setLang(btn.dataset.lang);
+  });
+  updateLangToggle();
 
   // Build header with logo
   const headerTop = document.querySelector('.header-top');

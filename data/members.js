@@ -27,6 +27,15 @@ const MEMBER_GROUPS = [
   { id: 'alumni', label: 'Alumni', showWhenEmpty: true, emptyText: '' },
 ];
 
+// Korean labels for member roles (mapped from the English `role` string)
+const ROLE_KO = {
+  'Ph.D. Student': '박사과정',
+  'M.S. Student': '석사과정',
+  'M.S./Ph.D. Student': '석·박사통합과정',
+  'Research Intern': '연구 인턴',
+  'Undergraduate Intern': '학부 인턴',
+};
+
 const MEMBERS = [
   {
     name: 'Zheng Xu',
