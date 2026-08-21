@@ -14,10 +14,16 @@
  */
 const NEWS = [
   {
+    date: 'Aug 2026',
+    content: '"Rethinking Gradient Flow Through Frozen Blocks for Memory-Efficient Block-Coordinate Training" accepted at <strong>EMNLP 2026</strong>.',
+    content_ko: '"Rethinking Gradient Flow Through Frozen Blocks for Memory-Efficient Block-Coordinate Training" 논문이 <strong>EMNLP 2026</strong>에 게재 승인되었습니다.',
+    highlight: true,
+  },
+  {
     date: 'Apr 2026',
     content: '"KnowProxy: Adapting Large Language Models by Knowledge-guided Proxy" accepted at <strong>ICLR 2026</strong>.',
     content_ko: '"KnowProxy: Adapting Large Language Models by Knowledge-guided Proxy" 논문이 <strong>ICLR 2026</strong>에 게재 승인되었습니다.',
-    highlight: true,
+    highlight: false,
   },
   {
     date: 'Jan 2026',

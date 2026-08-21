@@ -22,6 +22,18 @@ const PUBLICATIONS = [
 
   // ──────────── 2026 ────────────
   {
+    title: 'Rethinking Gradient Flow Through Frozen Blocks for Memory-Efficient Block-Coordinate Training',
+    area: 'efficient',
+    authors: 'Yeachan Kim',
+    venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2026',
+    year: 2026,
+    type: 'conf',
+    links: [],
+    tags: ['Memory Efficiency', 'Block-Coordinate Training', 'Gradient Flow'],
+    featured: true,
+    image: 'images/emnlp26_frost.png',
+  },
+  {
     title: 'KnowProxy: Adapting Large Language Models by Knowledge-guided Proxy',
     area: 'efficient',
     authors: 'Gukhyeon Lee*, Yeachan Kim*, SangKeun Lee',

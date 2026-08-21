@@ -61,7 +61,6 @@ const SITE = {
   nav: [
     { id: 'home',         label: 'Home' },
     { id: 'members',      label: 'Members' },
-    { id: 'research',     label: 'Research' },
     { id: 'publications', label: 'Publications' },
     { id: 'joinus',       label: 'Join Us' },
   ],
