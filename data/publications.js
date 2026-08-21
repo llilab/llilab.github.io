@@ -23,6 +23,7 @@ const PUBLICATIONS = [
   // ──────────── 2026 ────────────
   {
     title: 'KnowProxy: Adapting Large Language Models by Knowledge-guided Proxy',
+    area: 'efficient',
     authors: 'Gukhyeon Lee*, Yeachan Kim*, SangKeun Lee',
     venue: 'International Conference on Learning Representations (ICLR), 2026',
     year: 2026,
@@ -36,6 +37,7 @@ const PUBLICATIONS = [
   // ──────────── 2025 ────────────
   {
     title: 'A Survey on Memory-Efficient Fine-Tuning for Large Language Models',
+    area: 'efficient',
     authors: 'Yeachan Kim*, Mingyu Lee*, SangKeun Lee',
     venue: 'Transactions of the Association for Computational Linguistics (TACL), 2026',
     year: 2026,
@@ -47,6 +49,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Bridging the Gap Between Molecule and Textual Descriptions via Substructure-aware Alignment',
+    area: 'ai4science',
     authors: 'Hyuntae Park*, Yeachan Kim*, SangKeun Lee',
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2025',
     year: 2025,
@@ -58,6 +61,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Forward Knows Efficient Backward Path: Saliency-Guided Memory-Efficient Fine-tuning of Large Language Models',
+    area: 'efficient',
     authors: 'Yeachan Kim, SangKeun Lee',
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2025',
     year: 2025,
@@ -69,6 +73,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Curriculum Debiasing: Toward Robust Parameter-Efficient Fine-Tuning Against Dataset Biases',
+    area: 'nlp',
     authors: 'Mingyu Lee, Yeachan Kim, Wing-Lam Mok, SangKeun Lee',
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2025',
     year: 2025,
@@ -82,6 +87,7 @@ const PUBLICATIONS = [
   // ──────────── 2024 ────────────
   {
     title: 'SparseFlow: Accelerating Transformers by Sparsifying Information Flows',
+    area: 'efficient',
     authors: 'Yeachan Kim, SangKeun Lee',
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2024',
     year: 2024,
@@ -93,6 +99,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Towards Robust and Generalized Parameter-Efficient Fine-Tuning for Noisy Label Learning',
+    area: 'nlp',
     authors: 'Yeachan Kim*, Junho Kim*, SangKeun Lee',
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2024',
     year: 2024,
@@ -104,6 +111,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'KOMBO: Korean Character Representations Based on the Combination Rules of Subcharacters',
+    area: 'nlp',
     authors: 'SungHo Kim, Juhyeong Park, Yeachan Kim, SangKeun Lee',
     venue: 'Findings of ACL, 2024',
     year: 2024,
@@ -114,6 +122,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'MolTRES: Improving Chemical Language Representation Learning for Molecular Property Prediction',
+    area: 'ai4science',
     authors: 'Jun-Hyung Park, Yeachan Kim, Mingyu Lee, Hyuntae Park, SangKeun Lee',
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2024',
     year: 2024,
@@ -124,6 +133,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Moleco: Molecular Contrastive Learning with Chemical Language Models for Molecular Property Prediction',
+    area: 'ai4science',
     authors: 'Jun-Hyung Park, Hyuntae Park, Yeachan Kim, Woosang Lim, SangKeun Lee',
     venue: 'EMNLP 2024 Industry Track',
     year: 2024,
@@ -134,6 +144,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'SEED: Semantic Knowledge Transfer for Language Model Adaptation to Materials Science',
+    area: 'ai4science',
     authors: 'Yeachan Kim, Jun-Hyung Park, SungHo Kim, Juhyeong Park, Sangyun Kim, SangKeun Lee',
     venue: 'EMNLP 2024 Industry Track',
     year: 2024,
@@ -144,6 +155,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'MELT: Materials-aware Continued Pre-training for Language Model Adaptation to Materials Science',
+    area: 'ai4science',
     authors: 'Junho Kim*, Yeachan Kim*, Jun-Hyung Park, Yerim Oh, Suho Kim, SangKeun Lee',
     venue: 'Findings of EMNLP, 2024',
     year: 2024,
@@ -154,6 +166,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Zero-shot Commonsense Reasoning over Machine Imagination',
+    area: 'nlp',
     authors: 'Hyuntae Park*, Yeachan Kim*, Jun-Hyung Park, SangKeun Lee',
     venue: 'Findings of EMNLP, 2024',
     year: 2024,
@@ -164,6 +177,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Dynamic Layer-Wise Token Pruning for Sequence-to-Sequence Transformer Inference',
+    area: 'efficient',
     authors: 'Ji Hun Keom, Yeachan Kim, Sung Ju Lee, SangKeun Lee',
     venue: 'International Conference on Pattern Recognition and Artificial Intelligence (ICPRAI), 2024',
     year: 2024,
@@ -176,6 +190,7 @@ const PUBLICATIONS = [
   // ──────────── 2023 ────────────
   {
     title: 'Leap-of-Thought: Accelerating Transformers via Dynamic Token Routing',
+    area: 'efficient',
     authors: 'Yeachan Kim, Junho Kim, Jun-Hyung Park, Mingyu Lee, SangKeun Lee',
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2023',
     year: 2023,
@@ -187,6 +202,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Client-Customized Adaptation for Parameter-Efficient Federated Learning',
+    area: 'efficient',
     authors: 'Yeachan Kim*, Junho Kim*, Wing-Lam Mok, Jun-Hyung Park, SangKeun Lee',
     venue: 'Findings of ACL, 2023',
     year: 2023,
@@ -197,6 +213,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Improving Bias Mitigation through Bias Experts in Natural Language Understanding',
+    area: 'nlp',
     authors: 'Eojin Jeon, Mingyu Lee, Juhyeong Park, Yeachan Kim, Wing-Lam Mok, SangKeun Lee',
     venue: 'Conference on Empirical Methods in Natural Language Processing (EMNLP), 2023',
     year: 2023,
@@ -207,6 +224,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Dynamic Structure Pruning for Compressing CNNs',
+    area: 'efficient',
     authors: 'Jun-Hyung Park, Yeachan Kim, Junho Kim, Joon-Young Choi, SangKeun Lee',
     venue: 'AAAI Conference on Artificial Intelligence (AAAI), 2023',
     year: 2023,
@@ -217,6 +235,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Phase-shifted Adversarial Training',
+    area: 'nlp',
     authors: 'Yeachan Kim, Seongyeon Kim, Ihyeok Seo, Bonggun Shin',
     venue: 'Conference on Uncertainty in Artificial Intelligence (UAI), 2023',
     year: 2023,
@@ -229,6 +248,7 @@ const PUBLICATIONS = [
   // ──────────── 2022 ────────────
   {
     title: 'In Defense of Core-set: A Density-aware Core-set Selection for Active Learning',
+    area: 'efficient',
     authors: 'Yeachan Kim, Bonggun Shin',
     venue: 'ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), 2022',
     year: 2022,
@@ -239,6 +259,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Context-based Virtual Adversarial Training for Text Classification with Noisy Labels',
+    area: 'nlp',
     authors: 'Do-Myoung Lee*, Yeachan Kim*, Chang-gyun Seo',
     venue: 'Language Resources and Evaluation Conference (LREC), 2022',
     year: 2022,
@@ -251,6 +272,7 @@ const PUBLICATIONS = [
   // ──────────── 2020 ────────────
   {
     title: 'Adaptive Compression of Word Embeddings',
+    area: 'efficient',
     authors: 'Yeachan Kim, Kang-Min Kim, SangKeun Lee',
     venue: 'Annual Meeting of the Association for Computational Linguistics (ACL), 2020',
     year: 2020,
@@ -261,6 +283,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Multi-pretraining for Large-scale Text Classification',
+    area: 'nlp',
     authors: 'Kang-Min Kim, Bumsu Hyeon, Yeachan Kim, Jun-Hyung Park, SangKeun Lee',
     venue: 'Findings of EMNLP, 2020',
     year: 2020,
@@ -271,6 +294,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Representation Learning for Unseen Words by Bridging Subwords to Semantic Networks',
+    area: 'nlp',
     authors: 'Yeachan Kim, Kang-Min Kim, SangKeun Lee',
     venue: 'Language Resources and Evaluation Conference (LREC), 2020',
     year: 2020,
@@ -281,6 +305,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Personalizing Large-scale Text Classification by Modeling Individual Differences',
+    area: 'nlp',
     authors: 'Jungho Lee, Byung-Ju Choi, Yeachan Kim, Kang-Min Kim, Woo-Jong Ryu, SangKeun Lee',
     venue: 'ACM/SIGAPP Symposium on Applied Computing (SAC), 2020',
     year: 2020,
@@ -293,6 +318,7 @@ const PUBLICATIONS = [
   // ──────────── 2019 ────────────
   {
     title: 'From Small-scale to Large-scale Text Classification',
+    area: 'nlp',
     authors: 'Kang-Min Kim, Yeachan Kim, Jungho Lee, Ji-Min Lee, SangKeun Lee',
     venue: 'The Web Conference (WWW), 2019',
     year: 2019,
@@ -305,6 +331,7 @@ const PUBLICATIONS = [
   // ──────────── 2018 ────────────
   {
     title: 'Learning to Generate Word Representations using Subword Information',
+    area: 'nlp',
     authors: 'Yeachan Kim, Kang-Min Kim, Ji-Min Lee, SangKeun Lee',
     venue: 'International Conference on Computational Linguistics (COLING), 2018',
     year: 2018,
@@ -315,6 +342,7 @@ const PUBLICATIONS = [
   },
   {
     title: 'Improving Open Directory Project-Based Text Classification with Hierarchical Category Embedding',
+    area: 'nlp',
     authors: 'Ji-Min Lee, Kang-Min Kim, Yeachan Kim, SangKeun Lee',
     venue: 'IEEE International Conference on Cognitive Informatics & Cognitive Computing (ICCI*CC), 2018',
     year: 2018,

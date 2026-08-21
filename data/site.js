@@ -63,7 +63,6 @@ const SITE = {
     { id: 'members',      label: 'Members' },
     { id: 'research',     label: 'Research' },
     { id: 'publications', label: 'Publications' },
-    { id: 'projects',     label: 'Projects' },
     { id: 'joinus',       label: 'Join Us' },
   ],
 };

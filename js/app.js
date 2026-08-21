@@ -221,20 +221,40 @@ function renderHome() {
 }
 
 function renderResearch() {
-  const cards = RESEARCH.map(r => `
-    <div class="research-card fade-in">
-      <div class="research-card-img ${r.bgClass}">
-        ${r.svg || ''}
+  const pubsLabel = L('Related Publications', '관련 게재 논문');
+
+  const items = RESEARCH.map((r, i) => {
+    // Related publications for this area, newest first
+    const related = r.id
+      ? PUBLICATIONS.filter(p => p.area === r.id).sort((a, b) => b.year - a.year)
+      : [];
+
+    const pubsHTML = related.length ? `
+      <div class="research-pubs">
+        <div class="research-pubs-label">${pubsLabel}</div>
+        <ul class="research-pub-list">
+          ${related.map(p => `
+            <li class="research-pub">
+              <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
+              <span class="research-pub-title">${p.title}</span>
+            </li>
+          `).join('')}
+        </ul>
       </div>
-      <div class="research-card-body">
+    ` : '';
+
+    return `
+      <div class="research-item fade-in">
+        <div class="research-item-num">0${i + 1}</div>
         <h3>${r.title}</h3>
         <p>${L(r.description, r.description_ko)}</p>
         <div class="research-keywords">
           ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
         </div>
+        ${pubsHTML}
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   return `
     <div class="subpage">
@@ -242,7 +262,7 @@ function renderResearch() {
         <h2>Research</h2>
         <p>${L('Our research spans AI for Science, Efficient AI, and Natural Language Processing.', '우리 연구는 과학을 위한 AI(AI for Science), 효율적 AI, 자연어 처리를 아우릅니다.')}</p>
       </div>
-      <div class="research-grid-page">${cards}</div>
+      <div class="research-items">${items}</div>
     </div>
   `;
 }
