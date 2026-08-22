@@ -9,7 +9,9 @@
  *                'Research Intern', 'Undergraduate Intern'
  *    interests : array of research-interest keywords (optional)
  *    photo     : path to photo in images/members/ (optional)
- *                If the file is missing, initials are shown.
+ *                Use 'images/members/placeholder.svg' when the
+ *                member has no photo yet.
+ *                If left empty or the file is missing, initials are shown.
  *    email     : email address (optional)
  *    github    : GitHub URL (optional)
  *    homepage  : personal homepage URL (optional)
@@ -41,7 +43,7 @@ const MEMBERS = [
     name: 'Zheng Xu',
     role: 'Research Intern',
     group: 'team',
-    interests: ['Large Language Models'],
+    interests: ['AI4Science'],
     photo: 'images/members/zheng_xu.jpg',
     email: 'zheng.xu9158@gmail.com',
     github: '',
@@ -74,6 +76,16 @@ const MEMBERS = [
     interests: ['Efficiency'],
     photo: 'images/members/jin_hui_kim.jpg',
     email: 'kkkjh46@hufs.ac.kr',
+    github: '',
+    homepage: '',
+  },
+  {
+    name: 'Yeonjoo Yoo',
+    role: 'Undergraduate Intern',
+    group: 'team',
+    interests: ['Efficiency'],
+    photo: 'images/members/placeholder.svg',   // replace with images/members/yoo_yeonjoo.jpg when available
+    email: 'yyj@hufs.ac.kr',
     github: '',
     homepage: '',
   },

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 170" width="135" height="170" role="img" aria-label="No photo available">
+  <!--
+    Member photo placeholder.
+    Person icon from Bootstrap Icons (person-fill) — MIT License
+    https://github.com/twbs/icons  ·  Copyright (c) 2019-2024 The Bootstrap Authors
+  -->
+  <rect width="135" height="170" fill="#eff6ff"/>
+  <g transform="translate(29.5 47) scale(4.75)" fill="#bfd3f2">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+  </g>
+</svg>
