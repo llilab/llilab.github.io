@@ -182,40 +182,43 @@ function initSlider() {
 // ═══════════════════════════════════════════════════
 
 function renderHome() {
-  const featured = PUBLICATIONS.filter(p => p.featured);
-
-  const recentHTML = featured.slice(0, 5).map(p => `
-    <div class="recent-item">
-      <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
-      <h3><a href="${p.links[0]?.url || '#'}">${p.title}</a></h3>
-    </div>
-  `).join('');
-
   const newsHTML = NEWS.map(n => {
     return `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
   }).join('');
 
-
   return `
     ${renderHighlightSlider()}
 
-    <div class="welcome fade-in">
-      <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
-      <div class="join-quote">
-        ${L(SITE.recruitment.description, SITE.recruitment.description_ko)} <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">${L('Apply here', '지원하기')}</a>
+    <div class="join-quote join-quote-banner fade-in">
+      ${L(SITE.recruitment.description, SITE.recruitment.description_ko)}
+      <div class="join-quote-actions">
+        <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">${L('Apply here', '지원하기')}</a>
       </div>
     </div>
 
     <div class="home-grid">
-      <div class="fade-in">
-        <div class="home-section-title">Recent Research</div>
-        ${recentHTML}
+      <div class="home-main fade-in">
+        <div class="home-section-title">${L('Welcome', '환영합니다')}</div>
+        <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
+
+        <div class="directions">
+          <div class="directions-label">${L('Research Directions', '연구 방향')}</div>
+          <ul class="direction-list">
+            ${RESEARCH.map(r => `
+              <li class="direction-item">
+                <span class="direction-title">${r.title}</span>
+                <span class="direction-keywords">${r.keywords.join(' · ')}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+
         <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
       </div>
-      <div class="fade-in">
+      <aside class="home-side fade-in">
         <div class="home-section-title">News</div>
         ${newsHTML}
-      </div>
+      </aside>
     </div>
   `;
 }
@@ -260,7 +263,7 @@ function renderResearch() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Research</h2>
-        <p>${L('Our research spans AI for Science, Efficient AI, and Natural Language Processing.', '우리 연구는 과학을 위한 AI(AI for Science), 효율적 AI, 자연어 처리를 아우릅니다.')}</p>
+        <p>${L('Our research spans AI for Science, Efficient AI, Reliable & Robust AI, and LLM Agents.', '우리 연구는 과학을 위한 AI, 효율적 AI, 신뢰할 수 있는 AI, 그리고 LLM 에이전트를 아우릅니다.')}</p>
       </div>
       <div class="research-items">${items}</div>
     </div>

@@ -18,7 +18,7 @@
 const RESEARCH = [
   {
     id: 'ai4science',
-    title: 'AI for Science (AI4Science)',
+    title: 'AI for Science',
     description: 'We develop language model-based approaches for scientific discovery, including molecular property prediction, chemical language representation learning, and domain-adaptive pre-training for materials science. Our work bridges NLP techniques with domain-specific scientific knowledge.',
     description_ko: '분자 물성 예측, 화학 언어 표현 학습, 재료과학을 위한 도메인 적응형 사전학습 등 과학적 발견을 위한 언어 모델 기반 접근법을 연구합니다. NLP 기법과 도메인 특화 과학 지식을 연결하는 것을 목표로 합니다.',
     keywords: ['Molecular Property Prediction', 'Chemical Language Models', 'Materials Science NLP', 'Domain Adaptation'],
@@ -92,10 +92,10 @@ const RESEARCH = [
   },
   {
     id: 'nlp',
-    title: 'Natural Language Processing (NLP)',
+    title: 'Reliable & Robust AI',
     description: 'We conduct foundational research in NLP including parameter-efficient fine-tuning, representation learning, robust training under noisy labels and dataset biases, and text classification.',
     description_ko: '파라미터 효율적 미세조정, 표현 학습, 잡음 레이블 및 데이터셋 편향 하에서의 강건한 학습, 텍스트 분류 등 NLP의 기초 연구를 수행합니다.',
-    keywords: ['Parameter-Efficient Fine-Tuning', 'Robust Training', 'Representation Learning', 'Text Classification'],
+    keywords: ['Robust Training', 'Bias Mitigation', 'Parameter-Efficient Fine-Tuning', 'Representation Learning'],
     bgClass: 'ri-repr',
     svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
       <!-- Input text doc -->
@@ -132,5 +132,14 @@ const RESEARCH = [
       <!-- Label -->
       <text x="180" y="180" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#7c3aed" opacity="0.5" text-anchor="middle" font-weight="500">Language Understanding &amp; Generation</text>
     </svg>`,
+  },
+  {
+    id: 'agent',
+    title: 'LLM Agents',
+    description: 'We study language model agents that plan, use tools, and act in external environments, with a focus on reliable multi-step reasoning, memory, and collaboration between multiple agents.',
+    description_ko: '계획을 세우고 도구를 사용하며 외부 환경에서 동작하는 언어 모델 에이전트를 연구합니다. 신뢰할 수 있는 다단계 추론, 메모리, 여러 에이전트 간 협업에 중점을 둡니다.',
+    keywords: ['Tool Use', 'Planning & Reasoning', 'Memory & Retrieval', 'Multi-Agent Collaboration'],
+    bgClass: 'ri-edu',
+    svg: ``,
   },
 ];

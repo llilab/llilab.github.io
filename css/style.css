@@ -19,6 +19,7 @@ html { overflow-y: scroll; }
   --border-light: #f3f4f6;
   --bg: #ffffff;
   --surface: #f9fafb;
+  --content: 960px;
   --sans: 'IBM Plex Sans', 'Noto Sans KR', -apple-system, sans-serif;
   --serif: 'IBM Plex Serif', 'Noto Sans KR', Georgia, serif;
 }
@@ -37,7 +38,7 @@ header {
 }
 
 .header-top {
-  max-width: 800px; margin: 0 auto;
+  max-width: var(--content); margin: 0 auto;
   padding: 1.2rem 2rem 0;
 }
 
@@ -64,7 +65,7 @@ header {
 
 /* NAV */
 .main-nav {
-  max-width: 800px; margin: 0 auto;
+  max-width: var(--content); margin: 0 auto;
   padding: 0 2rem;
   display: flex; align-items: center; gap: 0;
   overflow-x: auto;
@@ -100,16 +101,35 @@ header {
 .lang-toggle button.active { background: var(--blue); color: #fff; }
 
 /* ═══════════════ LAYOUT ═══════════════ */
-.page { max-width: 800px; margin: 0 auto; padding: 0 2rem; }
+.page { max-width: var(--content); margin: 0 auto; padding: 0 2rem; }
 .page-content { display: none; }
 .page-content.active { display: block; }
 
 /* ═══════════════ HOME ═══════════════ */
 
 /* Welcome */
-.welcome {
-  padding: 3rem 0 2.5rem;
-  border-bottom: 1px solid var(--border);
+.welcome { padding: 0 0 2rem; }
+
+/* Research directions list (home, under the welcome text) */
+.directions { margin-top: 1.5rem; }
+.directions-label {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-light); margin-bottom: 0.75rem;
+}
+.direction-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+.direction-item {
+  position: relative; padding-left: 0.9rem;
+  display: flex; flex-direction: column; gap: 0.15rem;
+}
+.direction-item::before {
+  content: ''; position: absolute; left: 0; top: 0.62em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--blue-light);
+}
+.direction-title {
+  font-size: 0.92rem; font-weight: 600; color: var(--navy); line-height: 1.5;
+}
+.direction-keywords {
+  font-size: 0.82rem; color: var(--text-light); line-height: 1.6;
 }
 
 .welcome-intro {
@@ -136,9 +156,14 @@ header {
 
 /* Two-column */
 .home-grid {
-  display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem;
-  padding: 2.5rem 0 4rem;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 3.5rem;
+  padding: 2rem 0 4rem;
+  align-items: start;
 }
+/* Left column: welcome + recent research */
+.home-main { min-width: 0; }
+/* Right column: news, top-aligned with the welcome text */
+.home-side { min-width: 0; }
 
 .home-section-title {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -387,7 +412,7 @@ footer {
   margin-top: 2rem;
 }
 .footer-inner {
-  max-width: 800px; margin: 0 auto;
+  max-width: var(--content); margin: 0 auto;
   display: flex; justify-content: space-between; align-items: start;
   gap: 2rem; flex-wrap: wrap;
 }
@@ -430,6 +455,28 @@ footer {
   text-decoration: underline;
 }
 
+/* Full-width recruitment banner right under the highlight slider */
+.join-quote-banner {
+  margin: 1.75rem 0 0;
+  padding: 1.15rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  background: var(--blue-pale);
+  border: 1px solid var(--sky);
+}
+.join-quote-banner a {
+  font-weight: 600;
+  color: var(--blue);
+}
+/* Apply / email links */
+.join-quote-actions {
+  display: flex; justify-content: center; align-items: center;
+  gap: 0.75rem; flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+.join-quote-actions a { margin-left: 0; }
+
 /* ═══════════════ RESEARCH HIGHLIGHT SLIDER ═══════════════ */
 .highlight-slider {
   padding: 1.5rem 0 1.25rem;
@@ -456,7 +503,7 @@ footer {
 .slider-slide {
   min-width: 100%;
   position: relative;
-  min-height: 320px;
+  min-height: 280px;
   background-size: 100% auto;
   background-position: center top;
   background-repeat: no-repeat;
@@ -570,8 +617,9 @@ footer {
 
 @media (max-width: 700px) {
   .slider-slide {
-    min-height: 280px;
-    background-size: cover;
+    min-height: 260px;
+    background-size: contain;
+    background-position: center top;
   }
   .slider-overlay {
     padding: 1.5rem 1.25rem;
