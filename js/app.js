@@ -282,13 +282,20 @@ function renderPublications() {
   const groupsHTML = years.map(year => {
     const entries = byYear[year].map(p => {
       const tagsHTML = (p.tags && p.tags.length) ? `<div class="pub-tags">${p.tags.map(t => `<span class="pub-hashtag">#${t}</span>`).join('')}</div>` : '';
+      const figHTML = p.image
+        ? `<img src="${p.image}" alt="" loading="lazy"
+               onerror="this.parentElement.classList.add('is-empty');this.remove();">`
+        : '';
       return `
       <div class="pub-entry">
-        <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
-        <h4>${p.title}</h4>
-        <div class="pub-authors">${highlightPI(p.authors)}</div>
-        <div class="pub-venue-line"><em>${p.venue}</em></div>
-        ${tagsHTML}
+        <div class="pub-figure${p.image ? '' : ' is-empty'}">${figHTML}</div>
+        <div class="pub-body">
+          <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
+          <h4>${p.title}</h4>
+          <div class="pub-authors">${highlightPI(p.authors)}</div>
+          <div class="pub-venue-line"><em>${p.venue}</em></div>
+          ${tagsHTML}
+        </div>
       </div>
     `;
     }).join('');

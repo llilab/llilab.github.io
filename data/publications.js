@@ -131,6 +131,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Korean NLP', 'Tokenization', 'Character Representation'],
     featured: false,
+    image: 'images/papers/kombo.png',
   },
   {
     title: 'MolTRES: Improving Chemical Language Representation Learning for Molecular Property Prediction',
@@ -142,6 +143,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Molecular NLP', 'Representation Learning', 'Property Prediction'],
     featured: false,
+    image: 'images/papers/moltres.png',
   },
   {
     title: 'Moleco: Molecular Contrastive Learning with Chemical Language Models for Molecular Property Prediction',
@@ -153,6 +155,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Molecular NLP', 'Contrastive Learning', 'Property Prediction'],
     featured: false,
+    image: 'images/papers/moleco.png',
   },
   {
     title: 'SEED: Semantic Knowledge Transfer for Language Model Adaptation to Materials Science',
@@ -164,6 +167,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Materials Science', 'Domain Adaptation', 'Knowledge Transfer'],
     featured: false,
+    image: 'images/papers/seed.png',
   },
   {
     title: 'MELT: Materials-aware Continued Pre-training for Language Model Adaptation to Materials Science',
@@ -175,6 +179,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Materials Science', 'Continued Pretraining', 'Domain Adaptation'],
     featured: false,
+    image: 'images/papers/melt.png',
   },
   {
     title: 'Zero-shot Commonsense Reasoning over Machine Imagination',
@@ -186,6 +191,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Commonsense Reasoning', 'Zero-shot', 'Knowledge Generation'],
     featured: false,
+    image: 'images/papers/imagine.png',
   },
   {
     title: 'Dynamic Layer-Wise Token Pruning for Sequence-to-Sequence Transformer Inference',
@@ -222,6 +228,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Federated Learning', 'PEFT', 'Personalization'],
     featured: false,
+    image: 'images/papers/c2a.png',
   },
   {
     title: 'Improving Bias Mitigation through Bias Experts in Natural Language Understanding',
@@ -233,6 +240,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Debiasing', 'NLU', 'Robustness'],
     featured: false,
+    image: 'images/papers/bias_experts.png',
   },
   {
     title: 'Dynamic Structure Pruning for Compressing CNNs',
@@ -244,6 +252,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Model Compression', 'Pruning', 'CNN'],
     featured: false,
+    image: 'images/papers/dyn_struct_pruning.png',
   },
   {
     title: 'Phase-shifted Adversarial Training',
@@ -255,6 +264,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Adversarial Training', 'Robustness', 'Generalization'],
     featured: false,
+    image: 'images/papers/phase_at.png',
   },
 
   // ──────────── 2022 ────────────
@@ -268,6 +278,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Active Learning', 'Data Selection', 'Core-set'],
     featured: false,
+    image: 'images/papers/coreset.png',
   },
   {
     title: 'Context-based Virtual Adversarial Training for Text Classification with Noisy Labels',
@@ -279,6 +290,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Noisy Labels', 'Text Classification', 'Semi-supervised'],
     featured: false,
+    image: 'images/papers/context_vat.png',
   },
 
   // ──────────── 2020 ────────────
@@ -292,6 +304,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Word Embeddings', 'Compression', 'Efficiency'],
     featured: false,
+    image: 'images/papers/adacomp.png',
   },
   {
     title: 'Multi-pretraining for Large-scale Text Classification',
@@ -303,6 +316,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Pretraining', 'Text Classification', 'Transfer Learning'],
     featured: false,
+    image: 'images/papers/multi_pretraining.png',
   },
   {
     title: 'Representation Learning for Unseen Words by Bridging Subwords to Semantic Networks',
@@ -314,6 +328,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Word Representation', 'OOV', 'Semantic Networks'],
     featured: false,
+    image: 'images/papers/unseen_words.png',
   },
   {
     title: 'Personalizing Large-scale Text Classification by Modeling Individual Differences',
@@ -351,6 +366,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Word Representation', 'Subword', 'Morphology'],
     featured: false,
+    image: 'images/papers/subword_gen.png',
   },
   {
     title: 'Improving Open Directory Project-Based Text Classification with Hierarchical Category Embedding',

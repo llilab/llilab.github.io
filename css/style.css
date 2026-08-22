@@ -262,8 +262,31 @@ header {
   display: inline-block;
 }
 
-.pub-entry { margin-bottom: 1.25rem; padding-left: 1rem; border-left: 2px solid var(--border-light); }
+.pub-entry {
+  margin-bottom: 1.25rem; padding-left: 1rem;
+  border-left: 2px solid var(--border-light);
+  display: grid; grid-template-columns: 150px 1fr; gap: 1rem; align-items: start;
+}
 .pub-entry:hover { border-left-color: var(--blue); }
+.pub-body { min-width: 0; }
+
+/* Paper figure thumbnail — a visual anchor, not something to read.
+   Figures are cropped from each paper's framework diagram. */
+.pub-figure {
+  width: 150px; height: 94px; overflow: hidden;
+  border: 1px solid var(--border); border-radius: 6px;
+  background: #fff; display: flex; align-items: center; justify-content: center;
+}
+.pub-figure img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  display: block;
+}
+.pub-figure.is-empty { background: var(--border-light); border-style: dashed; }
+
+@media (max-width: 700px) {
+  .pub-entry { grid-template-columns: 100px 1fr; gap: 0.75rem; }
+  .pub-figure { width: 100px; height: 63px; }
+}
 
 .pub-entry h4 { font-size: 0.92rem; font-weight: 600; line-height: 1.5; margin-bottom: 0.15rem; }
 .pub-authors { font-size: 0.82rem; color: var(--text-light); }
