@@ -107,7 +107,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Transformer', 'Sparsity', 'Inference Efficiency'],
     featured: true,
-    image: 'images/fig-3.svg',
+    image: 'images/papers/sparseflow.png',
   },
   {
     title: 'Towards Robust and Generalized Parameter-Efficient Fine-Tuning for Noisy Label Learning',
@@ -119,7 +119,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['PEFT', 'Noisy Labels', 'Robustness'],
     featured: true,
-    image: 'images/fig-5.svg',
+    image: 'images/papers/clear.png',
   },
   {
     title: 'KOMBO: Korean Character Representations Based on the Combination Rules of Subcharacters',
@@ -216,7 +216,7 @@ const PUBLICATIONS = [
     links: [],
     tags: ['Transformer', 'Token Routing', 'Inference Efficiency'],
     featured: true,
-    image: 'images/fig-4.svg',
+    image: 'images/papers/leap_of_thought.png',
   },
   {
     title: 'Client-Customized Adaptation for Parameter-Efficient Federated Learning',
