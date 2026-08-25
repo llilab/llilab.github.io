@@ -189,10 +189,14 @@ function renderHome() {
   return `
     ${renderHighlightSlider()}
 
-    <div class="join-quote join-quote-banner fade-in">
-      ${L(SITE.recruitment.description, SITE.recruitment.description_ko)}
-      <div class="join-quote-actions">
-        <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">${L('Apply here', '지원하기')}</a>
+    <div class="join-banner fade-in">
+      <span class="join-banner-mark" aria-hidden="true"></span>
+      <div class="join-banner-body">
+        <div class="join-banner-title">${SITE.recruitment.title}</div>
+        <p>${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>
+        <div class="join-banner-actions">
+          <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank">${L('Apply here', '지원하기')}</a>
+        </div>
       </div>
     </div>
 
