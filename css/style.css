@@ -20,8 +20,13 @@ html { overflow-y: scroll; }
   --bg: #ffffff;
   --surface: #f9fafb;
   --content: 960px;
-  --sans: 'IBM Plex Sans', 'Noto Sans KR', -apple-system, sans-serif;
-  --serif: 'IBM Plex Serif', 'Noto Sans KR', Georgia, serif;
+  /* Pretendard covers Latin and Hangul in one family, so EN/KO keep the
+     same metrics and the layout does not shift on language switch.
+     The site uses no serif face; --serif is kept as an alias so the
+     existing var(--serif) call sites stay valid. */
+  --sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+          system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --serif: var(--sans);
 }
 
 html { scroll-behavior: smooth; }
@@ -46,8 +51,8 @@ header {
 .header-logo-link:hover { text-decoration: none; opacity: 0.85; }
 .header-logo { height: 58px; width: auto; display: block; }
 .header-logo-title {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 34px; font-weight: 800; color: #0d1b2a; letter-spacing: 0.5px;
+  font-family: var(--sans);
+  font-size: 34px; font-weight: 700; color: #0d1b2a; letter-spacing: 0.5px;
   line-height: 1;
 }
 .header-logo-divider {
@@ -84,21 +89,29 @@ header {
 .main-nav a.active { color: var(--navy); border-bottom-color: var(--blue); font-weight: 600; }
 
 /* Language toggle (EN / 한글) */
+/* Segmented control: a tinted track with a rounded white thumb for the
+   active language. The thumb carries its own radius rather than being
+   clipped by the track, so both of its edges stay round. */
 .lang-toggle {
   margin-left: auto; flex-shrink: 0;
-  display: inline-flex; align-items: center;
-  border: 1px solid var(--border); border-radius: 999px;
-  overflow: hidden; background: var(--bg);
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 3px;
+  background: #f1f5f9;
+  border-radius: 999px;
 }
 .lang-toggle button {
   appearance: none; border: none; background: transparent; cursor: pointer;
-  padding: 0.28rem 0.7rem;
-  font-family: inherit; font-size: 0.78rem; font-weight: 600; line-height: 1;
-  color: var(--text-secondary);
-  transition: background 0.2s, color 0.2s;
+  padding: 0.26rem 0.68rem;
+  font-family: inherit; font-size: 0.75rem; font-weight: 600; line-height: 1;
+  color: var(--text-light);
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .lang-toggle button:hover { color: var(--navy); }
-.lang-toggle button.active { background: var(--blue); color: #fff; }
+.lang-toggle button.active {
+  background: var(--bg); color: var(--navy);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+}
 
 /* ═══════════════ LAYOUT ═══════════════ */
 .page { max-width: var(--content); margin: 0 auto; padding: 0 2rem; }
@@ -562,13 +575,16 @@ footer {
   flex-direction: column;
   justify-content: flex-end;
   padding: 1rem 2.25rem;
+  /* Hold near-opaque well past the caption block: titles wrap to two or
+     three lines depending on length, and the top line must not fall into
+     the transparent part of the ramp. */
   background: linear-gradient(
     to top,
-    rgba(255, 255, 255, 0.97) 0%,
-    rgba(255, 255, 255, 0.88) 25%,
-    rgba(255, 255, 255, 0.45) 50%,
-    rgba(255, 255, 255, 0.1) 70%,
-    rgba(255, 255, 255, 0) 85%
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.95) 40%,
+    rgba(255, 255, 255, 0.75) 58%,
+    rgba(255, 255, 255, 0.30) 75%,
+    rgba(255, 255, 255, 0) 90%
   );
 }
 
