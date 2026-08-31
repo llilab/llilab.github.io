@@ -17,8 +17,8 @@
  *                  the figure, venue, and authors are taken from there.
  *                  `note` is a one-line summary shown under the title.
  *
- *  Papers of the area that are not highlighted are listed
- *  automatically underneath, so nothing has to be repeated here.
+ *  Only the highlighted papers appear on the Research page; the full
+ *  list lives on the Publications page.
  * ═══════════════════════════════════════════════════
  */
 const RESEARCH = [

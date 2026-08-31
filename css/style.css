@@ -441,27 +441,9 @@ header {
   .research-highlight-fig { width: 100%; height: 130px; }
 }
 
-/* Related publications under each research item */
-.research-pubs {
-  margin-top: 1.25rem; padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
-}
-.research-pubs-label {
+.research-section-label {
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text-light); margin-bottom: 0.7rem;
-}
-.research-pub-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-.research-pub {
-  display: grid; grid-template-columns: auto 1fr; gap: 0.6rem;
-  align-items: baseline; justify-items: start;
-}
-.research-pub .recent-tag { margin-bottom: 0; white-space: nowrap; }
-.research-pub-title {
-  font-size: 0.85rem; color: var(--text); line-height: 1.45;
-}
-
-@media (max-width: 720px) {
-  .research-pub { grid-template-columns: 1fr; gap: 0.25rem; }
 }
 
 /* Projects page */

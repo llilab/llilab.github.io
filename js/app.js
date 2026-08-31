@@ -239,22 +239,17 @@ function renderResearch() {
   PUBLICATIONS.forEach(p => { byTitle[p.title] = p; });
 
   const highlightsLabel = L('Representative Work', '대표 연구');
-  const moreLabel = L('More in this area', '이 분야의 다른 논문');
 
   const items = RESEARCH.map((r, i) => {
-    // Highlights are named in data/research.js; everything else in the area
-    // is listed underneath so no paper has to be entered twice.
+    // Highlights are named by title in data/research.js; the figure, venue
+    // and authors come from data/publications.js, so nothing is repeated.
     const picks = (r.highlights || [])
       .map(h => ({ ...h, pub: byTitle[h.title] }))
       .filter(h => h.pub);
-    const picked = new Set(picks.map(h => h.title));
-    const rest = PUBLICATIONS
-      .filter(p => p.area === r.id && !picked.has(p.title))
-      .sort((a, b) => b.year - a.year);
 
     const highlightsHTML = picks.length ? `
       <div class="research-highlights">
-        <div class="research-pubs-label">${highlightsLabel}</div>
+        <div class="research-section-label">${highlightsLabel}</div>
         ${picks.map(h => {
           const p = h.pub;
           const figHTML = p.image
@@ -278,20 +273,6 @@ function renderResearch() {
       </div>
     ` : '';
 
-    const restHTML = rest.length ? `
-      <div class="research-pubs">
-        <div class="research-pubs-label">${moreLabel}</div>
-        <ul class="research-pub-list">
-          ${rest.map(p => `
-            <li class="research-pub">
-              <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
-              <span class="research-pub-title">${p.title}</span>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-    ` : '';
-
     return `
       <section class="research-item fade-in">
         <div class="research-item-num">0${i + 1}</div>
@@ -301,7 +282,6 @@ function renderResearch() {
           ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
         </div>
         ${highlightsHTML}
-        ${restHTML}
       </section>
     `;
   }).join('');
@@ -314,6 +294,7 @@ function renderResearch() {
               '우리 연구는 과학을 위한 AI, 효율적 AI, 신뢰할 수 있는 AI, 그리고 LLM 에이전트를 아우릅니다. 각 분야마다 현재 연구를 가장 잘 보여주는 대표 논문을 함께 소개합니다.')}</p>
       </div>
       <div class="research-items">${items}</div>
+      <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
     </div>
   `;
 }
