@@ -94,12 +94,4 @@ const RESEARCH = [
       },
     ],
   },
-  {
-    id: 'agent',
-    title: 'LLM Agents',
-    description: 'A newer direction for the lab. We study language model agents that plan, use tools, and act in external environments, with a focus on reliable multi-step reasoning, memory, and collaboration between multiple agents.',
-    description_ko: '연구실에서 새롭게 시작한 방향입니다. 계획을 세우고 도구를 사용하며 외부 환경에서 동작하는 언어 모델 에이전트를 연구하며, 신뢰할 수 있는 다단계 추론, 메모리, 여러 에이전트 간 협업에 중점을 둡니다.',
-    keywords: ['Tool Use', 'Planning & Reasoning', 'Memory & Retrieval', 'Multi-Agent Collaboration'],
-    highlights: [],
-  },
 ];

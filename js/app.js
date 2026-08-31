@@ -290,8 +290,8 @@ function renderResearch() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Research</h2>
-        <p>${L('Our research spans AI for Science, Efficient AI, Reliable & Robust AI, and LLM Agents. Each area below opens with the papers that best represent where the work stands now.',
-              '우리 연구는 과학을 위한 AI, 효율적 AI, 신뢰할 수 있는 AI, 그리고 LLM 에이전트를 아우릅니다. 각 분야마다 현재 연구를 가장 잘 보여주는 대표 논문을 함께 소개합니다.')}</p>
+        <p>${L('Our research spans AI for Science, Efficient AI, and Reliable & Robust AI. Each area below opens with the papers that best represent where the work stands now.',
+              '우리 연구는 과학을 위한 AI, 효율적 AI, 신뢰할 수 있는 AI를 아우릅니다. 각 분야마다 현재 연구를 가장 잘 보여주는 대표 논문을 함께 소개합니다.')}</p>
       </div>
       <div class="research-items">${items}</div>
       <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
