@@ -183,13 +183,14 @@ function initSlider() {
 
 function renderHome() {
   const newsHTML = NEWS.map(n => {
-    // Badge on the left: venue logo for a paper, funding agency for a grant.
-    // Items without one collapse to a single column rather than leaving a gap.
-    const badge = n.image
-      ? `<div class="news-logo"><img src="${n.image}" alt="${n.imageAlt || ''}" loading="lazy"
-             onerror="this.closest('.news-item').classList.add('no-logo');this.parentElement.remove();"></div>`
+    // The venue / agency logo sits behind the text as a faded watermark on the
+    // right, the way the recruitment banner carries the lab mark. Space in this
+    // column is too tight for a logo of its own.
+    const mark = n.image
+      ? `<img class="news-mark" src="${n.image}" alt="" aria-hidden="true" loading="lazy"
+             onerror="this.remove();">`
       : '';
-    return `<div class="news-item${n.image ? '' : ' no-logo'}">${badge}<div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div></div>`;
+    return `<div class="news-item">${mark}<div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div></div>`;
   }).join('');
 
   return `

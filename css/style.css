@@ -239,32 +239,29 @@ header {
 }
 .view-all::after { content: ' →'; }
 
-/* News — a venue / agency badge on the left, the item text on the right. */
+/* News — the venue / agency logo rides behind the text as a faded watermark
+   on the right, since the column is too narrow to give it its own space. */
 .news-item {
+  position: relative; overflow: hidden;
   margin-bottom: 0; padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border-light);
   border-radius: 6px;
   transition: background 0.2s;
-  display: grid; grid-template-columns: 60px 1fr; gap: 0.85rem;
-  align-items: start;
 }
-.news-item.no-logo { grid-template-columns: 1fr; }
 .news-item:last-child { border-bottom: none; }
 .news-item:hover { background: var(--blue-pale); }
 
-.news-body { min-width: 0; }
-
-.news-logo {
-  width: 60px; height: 36px; overflow: hidden;
-  border-radius: 6px; background: #fff;
-  display: flex; align-items: center; justify-content: center;
-  margin-top: 0.1rem;
+.news-mark {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  width: 150px; max-height: 64px; object-fit: contain;
+  opacity: 0.15; pointer-events: none; user-select: none;
 }
-.news-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.news-item:hover .news-mark { opacity: 0.2; }
+
+.news-body { position: relative; }
 
 @media (max-width: 700px) {
-  .news-item { grid-template-columns: 48px 1fr; gap: 0.7rem; }
-  .news-logo { width: 48px; height: 29px; }
+  .news-mark { width: 128px; opacity: 0.1; }
 }
 
 .news-date { font-size: 0.75rem; color: var(--blue); font-weight: 500; margin-bottom: 0.25rem; }
