@@ -239,8 +239,9 @@ header {
 }
 .view-all::after { content: ' →'; }
 
-/* News — the venue / agency logo rides behind the text as a faded watermark
-   on the right, since the column is too narrow to give it its own space. */
+/* News — the venue / agency logo rides behind the text as a faded watermark,
+   centred in the item, since the column is too narrow to give it its own
+   space beside the text. */
 .news-item {
   position: relative; overflow: hidden;
   margin-bottom: 0; padding: 0.75rem 1rem;
@@ -252,7 +253,7 @@ header {
 .news-item:hover { background: var(--blue-pale); }
 
 .news-mark {
-  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: 150px; max-height: 64px; object-fit: contain;
   opacity: 0.15; pointer-events: none; user-select: none;
 }
