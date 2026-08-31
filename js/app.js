@@ -183,7 +183,13 @@ function initSlider() {
 
 function renderHome() {
   const newsHTML = NEWS.map(n => {
-    return `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
+    // Badge on the left: venue logo for a paper, funding agency for a grant.
+    // Items without one collapse to a single column rather than leaving a gap.
+    const badge = n.image
+      ? `<div class="news-logo"><img src="${n.image}" alt="${n.imageAlt || ''}" loading="lazy"
+             onerror="this.closest('.news-item').classList.add('no-logo');this.parentElement.remove();"></div>`
+      : '';
+    return `<div class="news-item${n.image ? '' : ' no-logo'}">${badge}<div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div></div>`;
   }).join('');
 
   return `

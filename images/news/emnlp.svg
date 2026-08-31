@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 72" role="img" aria-label="EMNLP">
+  <rect x="1.5" y="1.5" width="117" height="69" rx="12" fill="#fce7f3" stroke="#fbcfe8" stroke-width="1.5"/>
+  <text x="60" y="36" text-anchor="middle" dominant-baseline="central"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="26" font-weight="700" letter-spacing="-0.5" fill="#be185d"
+        textLength="92" lengthAdjust="spacingAndGlyphs">EMNLP</text>
+</svg>
