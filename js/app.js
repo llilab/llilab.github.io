@@ -235,19 +235,54 @@ function renderHome() {
 }
 
 function renderResearch() {
-  const pubsLabel = L('Related Publications', '관련 게재 논문');
+  const byTitle = {};
+  PUBLICATIONS.forEach(p => { byTitle[p.title] = p; });
+
+  const highlightsLabel = L('Representative Work', '대표 연구');
+  const moreLabel = L('More in this area', '이 분야의 다른 논문');
 
   const items = RESEARCH.map((r, i) => {
-    // Related publications for this area, newest first
-    const related = r.id
-      ? PUBLICATIONS.filter(p => p.area === r.id).sort((a, b) => b.year - a.year)
-      : [];
+    // Highlights are named in data/research.js; everything else in the area
+    // is listed underneath so no paper has to be entered twice.
+    const picks = (r.highlights || [])
+      .map(h => ({ ...h, pub: byTitle[h.title] }))
+      .filter(h => h.pub);
+    const picked = new Set(picks.map(h => h.title));
+    const rest = PUBLICATIONS
+      .filter(p => p.area === r.id && !picked.has(p.title))
+      .sort((a, b) => b.year - a.year);
 
-    const pubsHTML = related.length ? `
+    const highlightsHTML = picks.length ? `
+      <div class="research-highlights">
+        <div class="research-pubs-label">${highlightsLabel}</div>
+        ${picks.map(h => {
+          const p = h.pub;
+          const figHTML = p.image
+            ? `<img src="${p.image}" alt="Figure from ${p.title}" loading="lazy"
+                   onerror="this.parentElement.classList.add('is-empty');this.remove();">`
+            : '';
+          const titleHTML = p.links && p.links.length
+            ? `<a href="${p.links[0].url}">${p.title}</a>`
+            : p.title;
+          return `
+          <article class="research-highlight">
+            <div class="research-highlight-fig${p.image ? '' : ' is-empty'}">${figHTML}</div>
+            <div class="research-highlight-body">
+              <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
+              <h4>${titleHTML}</h4>
+              <p class="research-highlight-note">${L(h.note, h.note_ko)}</p>
+              <div class="research-highlight-authors">${highlightPI(p.authors)}</div>
+            </div>
+          </article>`;
+        }).join('')}
+      </div>
+    ` : '';
+
+    const restHTML = rest.length ? `
       <div class="research-pubs">
-        <div class="research-pubs-label">${pubsLabel}</div>
+        <div class="research-pubs-label">${moreLabel}</div>
         <ul class="research-pub-list">
-          ${related.map(p => `
+          ${rest.map(p => `
             <li class="research-pub">
               <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
               <span class="research-pub-title">${p.title}</span>
@@ -258,15 +293,16 @@ function renderResearch() {
     ` : '';
 
     return `
-      <div class="research-item fade-in">
+      <section class="research-item fade-in">
         <div class="research-item-num">0${i + 1}</div>
         <h3>${r.title}</h3>
         <p>${L(r.description, r.description_ko)}</p>
         <div class="research-keywords">
           ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
         </div>
-        ${pubsHTML}
-      </div>
+        ${highlightsHTML}
+        ${restHTML}
+      </section>
     `;
   }).join('');
 
@@ -274,7 +310,8 @@ function renderResearch() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Research</h2>
-        <p>${L('Our research spans AI for Science, Efficient AI, Reliable & Robust AI, and LLM Agents.', '우리 연구는 과학을 위한 AI, 효율적 AI, 신뢰할 수 있는 AI, 그리고 LLM 에이전트를 아우릅니다.')}</p>
+        <p>${L('Our research spans AI for Science, Efficient AI, Reliable & Robust AI, and LLM Agents. Each area below opens with the papers that best represent where the work stands now.',
+              '우리 연구는 과학을 위한 AI, 효율적 AI, 신뢰할 수 있는 AI, 그리고 LLM 에이전트를 아우릅니다. 각 분야마다 현재 연구를 가장 잘 보여주는 대표 논문을 함께 소개합니다.')}</p>
       </div>
       <div class="research-items">${items}</div>
     </div>

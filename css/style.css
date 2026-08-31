@@ -393,6 +393,52 @@ header {
 }
 .research-item p {
   font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75;
+  max-width: 62ch;
+}
+
+/* Representative papers under each research area — the paper's own figure
+   beside a one-line summary, so the area reads as work rather than a list. */
+.research-highlights {
+  margin-top: 1.5rem; padding-top: 1.1rem;
+  border-top: 1px solid var(--border-light);
+  display: flex; flex-direction: column; gap: 1.1rem;
+}
+.research-highlight {
+  display: grid; grid-template-columns: 240px 1fr; gap: 1.25rem;
+  align-items: start;
+}
+.research-highlight-fig {
+  width: 240px; height: 104px; overflow: hidden;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: #fff; padding: 5px;
+  display: flex; align-items: center; justify-content: center;
+}
+/* contain, not cover: these are framework diagrams, and cropping one cuts
+   the half that explains the method. */
+.research-highlight-fig img {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  object-fit: contain; display: block;
+}
+.research-highlight-fig.is-empty { background: var(--border-light); border-style: dashed; }
+
+.research-highlight-body { min-width: 0; }
+.research-highlight-body .recent-tag { margin-bottom: 0.35rem; }
+.research-highlight-body h4 {
+  font-size: 0.95rem; font-weight: 600; line-height: 1.5;
+  color: var(--text); margin-bottom: 0.3rem;
+}
+.research-highlight-body h4 a { color: var(--text); }
+.research-highlight-body h4 a:hover { color: var(--blue); text-decoration: none; }
+.research-highlight-note {
+  font-size: 0.86rem; color: var(--text-secondary); line-height: 1.6;
+  margin-bottom: 0.3rem;
+}
+.research-highlight-authors { font-size: 0.8rem; color: var(--text-light); }
+.research-highlight-authors .me { font-weight: 600; color: var(--text-secondary); }
+
+@media (max-width: 720px) {
+  .research-highlight { grid-template-columns: 1fr; gap: 0.7rem; }
+  .research-highlight-fig { width: 100%; height: 130px; }
 }
 
 /* Related publications under each research item */

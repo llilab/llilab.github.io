@@ -1,145 +1,105 @@
 /**
  * ═══════════════════════════════════════════════════
- *  Research areas
+ *  Research areas (shown on the Research page)
  *
  *  HOW TO ADD A NEW RESEARCH AREA:
- *  Add a new object to the array. Provide an SVG
- *  illustration as a string in the `svg` field,
- *  or leave it empty for a plain gradient card.
+ *  Add an object to the array. `id` must match the
+ *  `area` field used in data/publications.js, so the
+ *  page can pull that area's papers automatically.
  *
  *  Fields:
+ *    id          — Area key, matched against PUBLICATIONS[].area
  *    title       — Area title
- *    description — Short description paragraph
+ *    description — Overview paragraph (EN), description_ko for KO
  *    keywords    — Array of keyword strings
- *    bgClass     — CSS class for card background gradient
- *    svg         — Inline SVG string for illustration
+ *    highlights  — Representative papers, newest first. `title` must
+ *                  match a paper title in data/publications.js exactly;
+ *                  the figure, venue, and authors are taken from there.
+ *                  `note` is a one-line summary shown under the title.
+ *
+ *  Papers of the area that are not highlighted are listed
+ *  automatically underneath, so nothing has to be repeated here.
  * ═══════════════════════════════════════════════════
  */
 const RESEARCH = [
   {
     id: 'ai4science',
     title: 'AI for Science',
-    description: 'We develop language model-based approaches for scientific discovery, including molecular property prediction, chemical language representation learning, and domain-adaptive pre-training for materials science. Our work bridges NLP techniques with domain-specific scientific knowledge.',
-    description_ko: '분자 물성 예측, 화학 언어 표현 학습, 재료과학을 위한 도메인 적응형 사전학습 등 과학적 발견을 위한 언어 모델 기반 접근법을 연구합니다. NLP 기법과 도메인 특화 과학 지식을 연결하는 것을 목표로 합니다.',
+    description: 'Science has its own languages: SMILES strings, reaction descriptions, decades of materials literature. We build language models that read them and connect that text to molecular structure and physical properties. Our work covers chemical language representation learning for molecular property prediction, cross-modal alignment between molecules and the text that describes them, and adapting general-purpose language models to materials science through domain-aware continued pre-training and knowledge transfer.',
+    description_ko: '과학에는 고유한 언어가 있습니다. SMILES 문자열, 반응 기술문, 수십 년간 축적된 재료 문헌이 그것입니다. 우리는 이러한 언어를 읽고 분자 구조 및 물성과 연결하는 언어 모델을 연구합니다. 분자 물성 예측을 위한 화학 언어 표현 학습, 분자와 이를 설명하는 텍스트 간의 교차 모달 정렬, 그리고 도메인 특화 추가 사전학습과 지식 전이를 통한 범용 언어 모델의 재료과학 적응을 다룹니다.',
     keywords: ['Molecular Property Prediction', 'Chemical Language Models', 'Materials Science NLP', 'Domain Adaptation'],
-    bgClass: 'ri-efficient',
-    svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
-      <defs><marker id="arrow1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#3b82f6" opacity="0.5"/></marker></defs>
-      <!-- Molecule structure (centered around x=80, y=82) -->
-      <circle cx="55" cy="82" r="20" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.6"/>
-      <text x="55" y="87" font-family="Pretendard, sans-serif" font-size="13" fill="#2563eb" font-weight="600" opacity="0.85" text-anchor="middle">C</text>
-      <circle cx="105" cy="55" r="20" fill="#1e40af" opacity="0.15" stroke="#1e40af" stroke-width="2" stroke-opacity="0.6"/>
-      <text x="105" y="60" font-family="Pretendard, sans-serif" font-size="13" fill="#1e40af" font-weight="600" opacity="0.85" text-anchor="middle">N</text>
-      <circle cx="105" cy="110" r="20" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.6"/>
-      <text x="105" y="115" font-family="Pretendard, sans-serif" font-size="13" fill="#2563eb" font-weight="600" opacity="0.85" text-anchor="middle">O</text>
-      <line x1="72" y1="72" x2="88" y2="63" stroke="#3b82f6" stroke-width="2" opacity="0.55"/>
-      <line x1="72" y1="92" x2="88" y2="102" stroke="#3b82f6" stroke-width="2" opacity="0.55"/>
-      <line x1="105" y1="75" x2="105" y2="90" stroke="#1e40af" stroke-width="2" opacity="0.45" stroke-dasharray="4,2"/>
-      <!-- Arrow 1 -->
-      <line x1="130" y1="82" x2="155" y2="82" stroke="#3b82f6" stroke-width="2.5" opacity="0.5" marker-end="url(#arrow1)"/>
-      <!-- LLM box (centered at x=200, y=82) -->
-      <rect x="163" y="50" width="74" height="64" rx="10" fill="#1e40af" opacity="0.1" stroke="#1e40af" stroke-width="1.5" stroke-opacity="0.35"/>
-      <text x="200" y="76" font-family="Pretendard, sans-serif" font-size="12" fill="#1e40af" font-weight="600" opacity="0.7" text-anchor="middle">Scientific</text>
-      <text x="200" y="93" font-family="Pretendard, sans-serif" font-size="12" fill="#1e40af" font-weight="600" opacity="0.7" text-anchor="middle">LM</text>
-      <!-- Arrow 2 -->
-      <line x1="244" y1="82" x2="269" y2="82" stroke="#3b82f6" stroke-width="2.5" opacity="0.5" marker-end="url(#arrow1)"/>
-      <!-- Prediction output (centered at x=310, y=82) -->
-      <rect x="277" y="55" width="66" height="24" rx="5" fill="#16a34a" opacity="0.18" stroke="#16a34a" stroke-width="1" stroke-opacity="0.35"/>
-      <text x="310" y="71" font-family="Pretendard, sans-serif" font-size="10" fill="#16a34a" font-weight="600" opacity="0.75" text-anchor="middle">Toxic: No</text>
-      <rect x="277" y="85" width="66" height="24" rx="5" fill="#3b82f6" opacity="0.12" stroke="#3b82f6" stroke-width="1" stroke-opacity="0.3"/>
-      <text x="310" y="101" font-family="Pretendard, sans-serif" font-size="10" fill="#2563eb" font-weight="600" opacity="0.7" text-anchor="middle">LogP: 2.1</text>
-      <!-- Labels -->
-      <text x="80" y="160" font-family="Pretendard, sans-serif" font-size="11" fill="#3b82f6" opacity="0.5" text-anchor="middle" font-weight="500">Molecular Input</text>
-      <text x="200" y="138" font-family="Pretendard, sans-serif" font-size="11" fill="#1e40af" opacity="0.5" text-anchor="middle" font-weight="500">Language Model</text>
-      <text x="310" y="130" font-family="Pretendard, sans-serif" font-size="11" fill="#2563eb" opacity="0.5" text-anchor="middle" font-weight="500">Prediction</text>
-    </svg>`,
+    highlights: [
+      {
+        title: 'Bridging the Gap Between Molecule and Textual Descriptions via Substructure-aware Alignment',
+        note: 'Aligns molecules and their textual descriptions at the level of substructures.',
+        note_ko: '분자와 텍스트 설명을 부분 구조 단위에서 정렬합니다.',
+      },
+      {
+        title: 'MolTRES: Improving Chemical Language Representation Learning for Molecular Property Prediction',
+        note: 'Strengthens chemical language representation learning for molecular property prediction.',
+        note_ko: '분자 물성 예측을 위한 화학 언어 표현 학습을 강화합니다.',
+      },
+      {
+        title: 'MELT: Materials-aware Continued Pre-training for Language Model Adaptation to Materials Science',
+        note: 'Adapts a general language model to materials science through materials-aware continued pre-training.',
+        note_ko: '재료 특화 추가 사전학습으로 범용 언어 모델을 재료과학에 적응시킵니다.',
+      },
+    ],
   },
   {
     id: 'efficient',
     title: 'Efficient AI',
-    description: 'We develop methods to reduce the computational cost of large-scale models without sacrificing performance. Our work includes dynamic token routing, information flow sparsification, memory-efficient training, model compression, and active learning for data-efficient training.',
-    description_ko: '성능을 희생하지 않으면서 대규모 모델의 연산 비용을 줄이는 방법을 연구합니다. 동적 토큰 라우팅, 정보 흐름 희소화, 메모리 효율적 학습, 모델 압축, 데이터 효율적 학습을 위한 능동 학습 등을 포함합니다.',
-    keywords: ['Sparse Transformers', 'Dynamic Token Routing', 'Memory-Efficient Training', 'Model Compression', 'Active Learning'],
-    bgClass: 'ri-peft',
-    svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
-      <!-- Large model block -->
-      <rect x="20" y="25" width="90" height="130" rx="10" fill="#15803d" opacity="0.08" stroke="#15803d" stroke-opacity="0.3" stroke-width="1.5"/>
-      <text x="65" y="48" font-family="Pretendard, sans-serif" font-size="11" fill="#15803d" font-weight="600" opacity="0.6" text-anchor="middle">Full Model</text>
-      <rect x="32" y="58" width="66" height="10" rx="3" fill="#15803d" opacity="0.12"/>
-      <rect x="32" y="72" width="66" height="10" rx="3" fill="#16a34a" opacity="0.45"/>
-      <rect x="32" y="86" width="66" height="10" rx="3" fill="#15803d" opacity="0.12"/>
-      <rect x="32" y="100" width="66" height="10" rx="3" fill="#16a34a" opacity="0.45"/>
-      <rect x="32" y="114" width="66" height="10" rx="3" fill="#15803d" opacity="0.12"/>
-      <rect x="32" y="128" width="66" height="10" rx="3" fill="#16a34a" opacity="0.45"/>
-      <!-- Lightning bolt -->
-      <polygon points="152,28 137,82 155,76 140,132 170,65 152,72 165,28" fill="#16a34a" opacity="0.4" stroke="#15803d" stroke-width="0.5" stroke-opacity="0.3"/>
-      <!-- Compressed model -->
-      <rect x="185" y="45" width="65" height="90" rx="10" fill="#16a34a" opacity="0.12" stroke="#16a34a" stroke-width="1.5" stroke-opacity="0.4"/>
-      <text x="217" y="68" font-family="Pretendard, sans-serif" font-size="11" fill="#15803d" font-weight="600" opacity="0.7" text-anchor="middle">Efficient</text>
-      <rect x="197" y="78" width="42" height="10" rx="3" fill="#16a34a" opacity="0.55"/>
-      <rect x="197" y="92" width="42" height="10" rx="3" fill="#16a34a" opacity="0.55"/>
-      <rect x="197" y="106" width="42" height="10" rx="3" fill="#16a34a" opacity="0.55"/>
-      <!-- Metrics -->
-      <rect x="270" y="38" width="78" height="42" rx="8" fill="#16a34a" opacity="0.08" stroke="#16a34a" stroke-width="1.5" stroke-opacity="0.25"/>
-      <text x="309" y="55" font-family="Pretendard, sans-serif" font-size="10" fill="#16a34a" opacity="0.6" text-anchor="middle" font-weight="500">Speed</text>
-      <text x="309" y="73" font-family="Pretendard, sans-serif" font-size="18" fill="#16a34a" opacity="0.75" text-anchor="middle" font-weight="700">3.2x</text>
-      <rect x="270" y="88" width="78" height="42" rx="8" fill="#15803d" opacity="0.08" stroke="#15803d" stroke-width="1.5" stroke-opacity="0.25"/>
-      <text x="309" y="105" font-family="Pretendard, sans-serif" font-size="10" fill="#15803d" opacity="0.6" text-anchor="middle" font-weight="500">Memory</text>
-      <text x="309" y="123" font-family="Pretendard, sans-serif" font-size="18" fill="#15803d" opacity="0.75" text-anchor="middle" font-weight="700">−60%</text>
-      <!-- Label -->
-      <text x="180" y="175" font-family="Pretendard, sans-serif" font-size="11" fill="#15803d" opacity="0.5" text-anchor="middle" font-weight="500">Acceleration &amp; Compression</text>
-    </svg>`,
+    description: 'Large models are limited less by ideas than by memory and compute. We look for the parts of a computation that actually carry signal and cut the rest. On the training side this means memory-efficient fine-tuning: deciding which blocks to update and how gradients should reach them, letting the forward pass tell the backward pass where to spend memory, and adapting a large model through a small guided proxy. On the inference side we sparsify information flows, route tokens dynamically so easy inputs take short paths, and prune model structure. We also study data efficiency through active learning and core-set selection.',
+    description_ko: '대규모 모델의 한계는 아이디어보다 메모리와 연산에서 옵니다. 우리는 연산 중 실제로 의미 있는 부분을 찾아내고 나머지를 줄입니다. 학습 측면에서는 어떤 블록을 갱신하고 그래디언트를 어떻게 전달할지 결정하는 방법, 순전파가 역전파의 메모리 사용처를 알려주는 방법, 작은 프록시로 큰 모델을 적응시키는 방법 등 메모리 효율적 미세조정을 연구합니다. 추론 측면에서는 정보 흐름을 희소화하고, 쉬운 입력이 짧은 경로를 지나도록 토큰을 동적으로 라우팅하며, 모델 구조를 가지치기합니다. 능동 학습과 코어셋 선택을 통한 데이터 효율성도 함께 다룹니다.',
+    keywords: ['Memory-Efficient Training', 'Sparse Transformers', 'Dynamic Token Routing', 'Model Compression', 'Active Learning'],
+    highlights: [
+      {
+        title: 'Rethinking Gradient Flow Through Frozen Blocks for Memory-Efficient Block-Coordinate Training',
+        note: 'Revisits how gradients travel through frozen blocks to make block-coordinate training memory-efficient.',
+        note_ko: '얼어붙은 블록을 통과하는 그래디언트 흐름을 재검토하여 블록 좌표 학습의 메모리 효율을 높입니다.',
+      },
+      {
+        title: 'KnowProxy: Adapting Large Language Models by Knowledge-guided Proxy',
+        note: 'Adapts large language models through a small knowledge-guided proxy.',
+        note_ko: '지식 기반의 작은 프록시를 통해 대규모 언어 모델을 적응시킵니다.',
+      },
+      {
+        title: 'Forward Knows Efficient Backward Path: Saliency-Guided Memory-Efficient Fine-tuning of Large Language Models',
+        note: 'Uses saliency from the forward pass to pick the backward path, cutting fine-tuning memory.',
+        note_ko: '순전파에서 얻은 중요도로 역전파 경로를 선택하여 미세조정 메모리를 줄입니다.',
+      },
+    ],
   },
   {
     id: 'nlp',
     title: 'Reliable & Robust AI',
-    description: 'We conduct foundational research in NLP including parameter-efficient fine-tuning, representation learning, robust training under noisy labels and dataset biases, and text classification.',
-    description_ko: '파라미터 효율적 미세조정, 표현 학습, 잡음 레이블 및 데이터셋 편향 하에서의 강건한 학습, 텍스트 분류 등 NLP의 기초 연구를 수행합니다.',
-    keywords: ['Robust Training', 'Bias Mitigation', 'Parameter-Efficient Fine-Tuning', 'Representation Learning'],
-    bgClass: 'ri-repr',
-    svg: `<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg">
-      <!-- Input text doc -->
-      <rect x="15" y="30" width="100" height="120" rx="8" fill="white" opacity="0.6" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.3"/>
-      <rect x="28" y="48" width="60" height="7" rx="2" fill="#7c3aed" opacity="0.3"/>
-      <rect x="28" y="61" width="74" height="7" rx="2" fill="#7c3aed" opacity="0.22"/>
-      <rect x="28" y="74" width="65" height="7" rx="2" fill="#7c3aed" opacity="0.3"/>
-      <rect x="28" y="87" width="70" height="7" rx="2" fill="#7c3aed" opacity="0.22"/>
-      <line x1="28" y1="68" x2="75" y2="68" stroke="#ef4444" stroke-width="2" opacity="0.5" stroke-dasharray="3,2"/>
-      <rect x="28" y="104" width="36" height="16" rx="4" fill="#7c3aed" opacity="0.15" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.25"/>
-      <text x="46" y="115" font-family="Pretendard, sans-serif" font-size="8" fill="#7c3aed" font-weight="600" opacity="0.7" text-anchor="middle">Adapter</text>
-      <rect x="70" y="104" width="36" height="16" rx="4" fill="#6d28d9" opacity="0.15" stroke="#6d28d9" stroke-width="1" stroke-opacity="0.25"/>
-      <text x="88" y="115" font-family="Pretendard, sans-serif" font-size="8" fill="#6d28d9" font-weight="600" opacity="0.7" text-anchor="middle">LoRA</text>
-      <!-- Arrow -->
-      <defs><marker id="arrow3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#7c3aed" opacity="0.5"/></marker></defs>
-      <line x1="122" y1="90" x2="145" y2="90" stroke="#7c3aed" stroke-width="2.5" opacity="0.5" marker-end="url(#arrow3)"/>
-      <!-- Transformer block -->
-      <rect x="152" y="30" width="78" height="120" rx="10" fill="#7c3aed" opacity="0.06" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.25"/>
-      <rect x="164" y="46" width="54" height="26" rx="5" fill="#7c3aed" opacity="0.15"/>
-      <text x="191" y="63" font-family="Pretendard, sans-serif" font-size="10" fill="#7c3aed" font-weight="600" opacity="0.7" text-anchor="middle">Attention</text>
-      <rect x="164" y="78" width="54" height="26" rx="5" fill="#7c3aed" opacity="0.12"/>
-      <text x="191" y="95" font-family="Pretendard, sans-serif" font-size="10" fill="#7c3aed" font-weight="600" opacity="0.6" text-anchor="middle">FFN</text>
-      <rect x="164" y="110" width="54" height="26" rx="5" fill="#7c3aed" opacity="0.15"/>
-      <text x="191" y="127" font-family="Pretendard, sans-serif" font-size="10" fill="#7c3aed" font-weight="600" opacity="0.7" text-anchor="middle">Output</text>
-      <!-- Arrow -->
-      <line x1="237" y1="90" x2="260" y2="90" stroke="#7c3aed" stroke-width="2.5" opacity="0.5" marker-end="url(#arrow3)"/>
-      <!-- Output tasks -->
-      <rect x="268" y="32" width="78" height="32" rx="7" fill="#16a34a" opacity="0.12" stroke="#16a34a" stroke-width="1.5" stroke-opacity="0.3"/>
-      <text x="307" y="52" font-family="Pretendard, sans-serif" font-size="11" fill="#16a34a" font-weight="600" opacity="0.7" text-anchor="middle">Classify</text>
-      <rect x="268" y="72" width="78" height="32" rx="7" fill="#7c3aed" opacity="0.1" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.25"/>
-      <text x="307" y="92" font-family="Pretendard, sans-serif" font-size="11" fill="#7c3aed" font-weight="600" opacity="0.65" text-anchor="middle">Generate</text>
-      <rect x="268" y="112" width="78" height="32" rx="7" fill="#ea580c" opacity="0.1" stroke="#ea580c" stroke-width="1.5" stroke-opacity="0.25"/>
-      <text x="307" y="132" font-family="Pretendard, sans-serif" font-size="11" fill="#ea580c" font-weight="600" opacity="0.65" text-anchor="middle">Understand</text>
-      <!-- Label -->
-      <text x="180" y="180" font-family="Pretendard, sans-serif" font-size="11" fill="#7c3aed" opacity="0.5" text-anchor="middle" font-weight="500">Language Understanding &amp; Generation</text>
-    </svg>`,
+    description: 'A model that scores well on a benchmark often leans on shortcuts in the data, and fine-tuning on imperfect labels makes that worse. We study how to keep models dependable when the data does not cooperate: mitigating dataset bias during parameter-efficient fine-tuning, keeping that fine-tuning robust and generalizable under noisy labels, and stabilizing training with adversarial and virtual-adversarial objectives. We also work on representation learning for words and subwords a model has never seen.',
+    description_ko: '벤치마크 점수가 높은 모델도 데이터의 지름길에 기대는 경우가 많고, 불완전한 레이블로 미세조정하면 문제는 더 커집니다. 우리는 데이터가 이상적이지 않은 상황에서도 모델을 신뢰할 수 있게 만드는 방법을 연구합니다. 파라미터 효율적 미세조정 과정에서의 데이터셋 편향 완화, 잡음 레이블 하에서의 강건하고 일반화되는 미세조정, 적대적·가상 적대적 목적함수를 통한 학습 안정화를 다룹니다. 모델이 학습 중 본 적 없는 단어와 서브워드에 대한 표현 학습도 함께 연구합니다.',
+    keywords: ['Bias Mitigation', 'Noisy Label Learning', 'Adversarial Training', 'Parameter-Efficient Fine-Tuning', 'Representation Learning'],
+    highlights: [
+      {
+        title: 'Curriculum Debiasing: Toward Robust Parameter-Efficient Fine-Tuning Against Dataset Biases',
+        note: 'Orders training so parameter-efficient fine-tuning does not latch onto dataset biases.',
+        note_ko: '학습 순서를 조절하여 파라미터 효율적 미세조정이 데이터셋 편향에 의존하지 않도록 합니다.',
+      },
+      {
+        title: 'Towards Robust and Generalized Parameter-Efficient Fine-Tuning for Noisy Label Learning',
+        note: 'Keeps parameter-efficient fine-tuning robust and generalizable when labels are noisy.',
+        note_ko: '레이블에 잡음이 있어도 파라미터 효율적 미세조정이 강건하고 일반화되도록 합니다.',
+      },
+      {
+        title: 'Improving Bias Mitigation through Bias Experts in Natural Language Understanding',
+        note: 'Improves bias mitigation in natural language understanding with dedicated bias experts.',
+        note_ko: '전용 편향 전문가 모델을 통해 자연어 이해에서의 편향 완화를 개선합니다.',
+      },
+    ],
   },
   {
     id: 'agent',
     title: 'LLM Agents',
-    description: 'We study language model agents that plan, use tools, and act in external environments, with a focus on reliable multi-step reasoning, memory, and collaboration between multiple agents.',
-    description_ko: '계획을 세우고 도구를 사용하며 외부 환경에서 동작하는 언어 모델 에이전트를 연구합니다. 신뢰할 수 있는 다단계 추론, 메모리, 여러 에이전트 간 협업에 중점을 둡니다.',
+    description: 'A newer direction for the lab. We study language model agents that plan, use tools, and act in external environments, with a focus on reliable multi-step reasoning, memory, and collaboration between multiple agents.',
+    description_ko: '연구실에서 새롭게 시작한 방향입니다. 계획을 세우고 도구를 사용하며 외부 환경에서 동작하는 언어 모델 에이전트를 연구하며, 신뢰할 수 있는 다단계 추론, 메모리, 여러 에이전트 간 협업에 중점을 둡니다.',
     keywords: ['Tool Use', 'Planning & Reasoning', 'Memory & Retrieval', 'Multi-Agent Collaboration'],
-    bgClass: 'ri-edu',
-    svg: ``,
+    highlights: [],
   },
 ];

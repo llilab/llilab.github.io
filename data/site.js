@@ -60,6 +60,7 @@ const SITE = {
   // `id` must match a renderer in js/app.js
   nav: [
     { id: 'home',         label: 'Home' },
+    { id: 'research',     label: 'Research' },
     { id: 'members',      label: 'Members' },
     { id: 'publications', label: 'Publications' },
     { id: 'joinus',       label: 'Join Us' },
