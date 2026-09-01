@@ -277,9 +277,11 @@ function renderResearch() {
       <section class="research-item fade-in">
         <div class="research-item-num">0${i + 1}</div>
         <h3>${r.title}</h3>
-        <p>${L(r.description, r.description_ko)}</p>
-        <div class="research-keywords">
-          ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
+        <div class="research-item-head">
+          <p>${L(r.description, r.description_ko)}</p>
+          <div class="research-keywords">
+            ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
+          </div>
         </div>
         ${highlightsHTML}
       </section>

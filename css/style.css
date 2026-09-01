@@ -393,7 +393,17 @@ header {
 }
 .research-item p {
   font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75;
-  max-width: 62ch;
+}
+/* The overview reads best at ~62ch, which leaves the right of a 960px page
+   empty. Put the keywords there instead of stretching the line length. */
+.research-item-head {
+  display: grid; grid-template-columns: minmax(0, 62ch) 1fr; gap: 2.5rem;
+  align-items: start;
+}
+.research-item-head .research-keywords { margin-top: 0.2rem; }
+
+@media (max-width: 820px) {
+  .research-item-head { grid-template-columns: 1fr; gap: 0; }
 }
 
 /* Representative papers under each research area — the paper's own figure
