@@ -84,7 +84,7 @@ const MEMBERS = [
     role: 'Undergraduate Intern',
     group: 'team',
     interests: ['Efficiency'],
-    photo: 'images/members/placeholder.svg',   // replace with images/members/yoo_yeonjoo.jpg when available
+    photo: 'images/members/yeonjoo_yoo.jpg',
     email: 'yyj@hufs.ac.kr',
     github: '',
     homepage: '',
