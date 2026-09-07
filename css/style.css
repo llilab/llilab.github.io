@@ -530,26 +530,19 @@ footer {
   position: relative;
   overflow: hidden;
   margin: 1.75rem 0 0;
-  padding: 1.7rem 1.75rem;
+  padding: 1.1rem 1.75rem;
   background: #fcfdff;
   border: 1px solid var(--border);
   border-radius: 8px;
 }
-.join-banner-mark {
-  position: absolute;
-  right: -14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 182px;
-  height: 190px;
-  background: url('../images/lai_logo.png') center / contain no-repeat;
-  opacity: 0.10;
-  pointer-events: none;
-}
 .join-banner-body {
   position: relative;
-  max-width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
+.join-banner-text { flex: 1; min-width: 0; }
 .join-banner-title {
   font-weight: 600;
   font-size: 1.05rem;
@@ -561,7 +554,7 @@ footer {
   font-size: 0.95rem;
   line-height: 1.65;
 }
-.join-banner-actions { margin-top: 0.85rem; }
+.join-banner-actions { flex-shrink: 0; }
 .join-banner-actions a {
   display: inline-block;
   background: var(--navy);
@@ -577,15 +570,9 @@ footer {
 }
 
 @media (max-width: 700px) {
-  .join-banner { padding: 1.35rem 1.25rem; }
-  .join-banner-body { max-width: 100%; }
-  /* Move the watermark out from behind the text, into the free corner
-     beside the button, so the wrapped copy stays clean. */
-  .join-banner-mark {
-    width: 108px; height: 113px;
-    right: -18px; top: auto; bottom: -14px; transform: none;
-    opacity: 0.07;
-  }
+  .join-banner { padding: 1.1rem 1.25rem; }
+  .join-banner-body { flex-direction: column; align-items: flex-start; gap: 0.85rem; }
+  .join-banner-text { max-width: 100%; }
 }
 
 /* ═══════════════ RESEARCH HIGHLIGHT SLIDER ═══════════════ */
