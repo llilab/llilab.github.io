@@ -380,7 +380,7 @@ function renderPublications() {
         <button role="tab" class="pub-tab${scope === 'intl' ? ' active' : ''}" aria-selected="${scope === 'intl'}"
                 onclick="setPubScope('intl')">${L('International', '국제')}<span class="pub-tab-count">${PUBLICATIONS.length}</span></button>
         <button role="tab" class="pub-tab${scope === 'domestic' ? ' active' : ''}" aria-selected="${scope === 'domestic'}"
-                onclick="setPubScope('domestic')">${L('Domestic Journals', '국내 학술지')}<span class="pub-tab-count">${domestic.length}</span></button>
+                onclick="setPubScope('domestic')">${L('Domestic', '국내 논문')}<span class="pub-tab-count">${domestic.length}</span></button>
       </div>
     ` : '';
 
