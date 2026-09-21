@@ -20,6 +20,12 @@
  */
 const NEWS = [
   {
+    date: 'Sep 2026',
+    content: 'Three papers accepted as <strong>oral</strong> presentations at <strong>HCLT 2026</strong>.',
+    content_ko: '<strong>HCLT 2026</strong>에 논문 3편이 <strong>구두 발표(Oral)</strong>로 게재 승인되었습니다.',
+    highlight: false,
+  },
+  {
     date: 'Aug 2026',
     content: 'Our lab has been selected for the <strong>Core Research Program (기본연구B)</strong> of the NRF, 2026–2029.',
     content_ko: '한국연구재단 <strong>핵심연구(기본연구B)</strong>에 선정되었습니다 (2026–2029).',
