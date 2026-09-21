@@ -21,8 +21,8 @@
 const NEWS = [
   {
     date: 'Sep 2026',
-    content: 'Three papers accepted as <strong>oral</strong> presentations at <strong>HCLT 2026</strong>.',
-    content_ko: '<strong>HCLT 2026</strong>에 논문 3편이 <strong>구두 발표(Oral)</strong>로 게재 승인되었습니다.',
+    content: 'Congrats to Chaeyoung Seo, Jin Hui Kim, and Eunyeong Cho! Three papers accepted as <strong>oral</strong> presentations at <strong>HCLT 2026</strong>.',
+    content_ko: '서채영, 김진희, 조은영 학생 축하합니다! <strong>HCLT 2026</strong>에 논문 3편이 <strong>구두 발표(Oral)</strong>로 게재 승인되었습니다.',
     highlight: false,
   },
   {
