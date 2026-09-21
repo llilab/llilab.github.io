@@ -240,11 +240,8 @@ header {
 }
 .view-all::after { content: ' →'; }
 
-/* News — the venue / agency logo rides behind the text as a faded watermark,
-   centred in the item, since the column is too narrow to give it its own
-   space beside the text. */
+/* News */
 .news-item {
-  position: relative; overflow: hidden;
   margin-bottom: 0; padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border-light);
   border-radius: 6px;
@@ -252,19 +249,6 @@ header {
 }
 .news-item:last-child { border-bottom: none; }
 .news-item:hover { background: var(--blue-pale); }
-
-.news-mark {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  width: 150px; max-height: 64px; object-fit: contain;
-  opacity: 0.15; pointer-events: none; user-select: none;
-}
-.news-item:hover .news-mark { opacity: 0.2; }
-
-.news-body { position: relative; }
-
-@media (max-width: 700px) {
-  .news-mark { width: 128px; opacity: 0.1; }
-}
 
 .news-date { font-size: 0.75rem; color: var(--blue); font-weight: 500; margin-bottom: 0.25rem; }
 .news-item p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65; }

@@ -197,14 +197,7 @@ function initSlider() {
 
 function renderHome() {
   const newsHTML = NEWS.map(n => {
-    // The venue / agency logo sits behind the text as a faded watermark on the
-    // right, the way the recruitment banner carries the lab mark. Space in this
-    // column is too tight for a logo of its own.
-    const mark = n.image
-      ? `<img class="news-mark" src="${n.image}" alt="" aria-hidden="true" loading="lazy"
-             onerror="this.remove();">`
-      : '';
-    return `<div class="news-item">${mark}<div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div></div>`;
+    return `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
   }).join('');
 
   return `
