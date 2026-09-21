@@ -2,8 +2,9 @@
  * ═══════════════════════════════════════════════════
  *  Domestic (Korean) papers — journals and conferences such as HCLT
  *  Shown under the "Domestic" tab of the Publications page, in the same
- *  format as the international list. The tab appears only once this list
- *  has at least one paper.
+ *  format as the international list but without the figure, and with
+ *  every lab member bolded (via `name` / `name_ko` in data/members.js).
+ *  The tab appears only once this list has at least one paper.
  *
  *  HOW TO ADD A PAPER:
  *  Same fields as data/publications.js — copy an entry and edit it.
@@ -11,8 +12,8 @@
  *
  *  Fields:
  *    title    — Title as published (Korean is fine)
- *    authors  — Author list; the PI's name is bolded automatically
- *               (both 'Yeachan Kim' and '김예찬' are recognised)
+ *    authors  — Author list, comma-separated; the PI and lab members
+ *               are bolded automatically
  *    venue    — Venue name ending in the year, e.g.
  *               'Annual Conference on Human and Language Technology (HCLT), 2026'
  *               The short badge ('HCLT 2026') is derived from it.
@@ -20,8 +21,6 @@
  *    type     — "conf" | "journal"
  *    links    — Array of { label, url }
  *    tags     — Array of keyword hashtags
- *    image    — (optional) path to a paper figure; a dashed placeholder
- *               is shown without one
  * ═══════════════════════════════════════════════════
  */
 const DOMESTIC_PUBLICATIONS = [

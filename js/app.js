@@ -44,6 +44,17 @@ function highlightPI(authors) {
     .reduce((out, name) => out.replace(name, `<span class="me">${name}</span>`), authors);
 }
 
+// Bold the PI and every lab member, current or alumni. Matches whole
+// author names so '김진희' never lights up inside a longer name.
+function highlightLab(authors) {
+  const names = new Set([SITE.piNameInPapers, SITE.piNameInPapersKo]);
+  MEMBERS.forEach(m => { names.add(m.name); if (m.name_ko) names.add(m.name_ko); });
+  return authors.split(/,\s*/).map(a => {
+    const bare = a.replace(/[*†]+$/, '').trim();
+    return names.has(bare) ? `<span class="me">${a}</span>` : a;
+  }).join(', ');
+}
+
 // ─── Utility: get tag CSS class from type ───
 function tagClass(type) {
   const map = { conf: 'tag-conf', journal: 'tag-journal', findings: 'tag-findings', industry: 'tag-industry', preprint: 'tag-preprint' };
@@ -329,19 +340,20 @@ function renderByYear(list, renderEntry) {
     `).join('');
 }
 
-function renderPubEntry(p) {
+// Domestic papers go without the figure and bold every lab member.
+function renderPubEntry(p, { domestic = false } = {}) {
   const tagsHTML = (p.tags && p.tags.length) ? `<div class="pub-tags">${p.tags.map(t => `<span class="pub-hashtag">#${t}</span>`).join('')}</div>` : '';
   const figHTML = p.image
     ? `<img src="${p.image}" alt="" loading="lazy"
            onerror="this.parentElement.classList.add('is-empty');this.remove();">`
     : '';
   return `
-      <div class="pub-entry">
-        <div class="pub-figure${p.image ? '' : ' is-empty'}">${figHTML}</div>
+      <div class="pub-entry${domestic ? ' no-figure' : ''}">
+        ${domestic ? '' : `<div class="pub-figure${p.image ? '' : ' is-empty'}">${figHTML}</div>`}
         <div class="pub-body">
           <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
           <h4>${p.title}</h4>
-          <div class="pub-authors">${highlightPI(p.authors)}</div>
+          <div class="pub-authors">${domestic ? highlightLab(p.authors) : highlightPI(p.authors)}</div>
           <div class="pub-venue-line"><em>${p.venue}</em></div>
           ${tagsHTML}
         </div>
@@ -363,7 +375,9 @@ function renderPublications() {
       </div>
     ` : '';
 
-  const listHTML = renderByYear(scope === 'domestic' ? domestic : PUBLICATIONS, renderPubEntry);
+  const listHTML = scope === 'domestic'
+    ? renderByYear(domestic, p => renderPubEntry(p, { domestic: true }))
+    : renderByYear(PUBLICATIONS, p => renderPubEntry(p));
 
   return `
     <div class="subpage">

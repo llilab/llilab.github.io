@@ -5,6 +5,8 @@
  *
  *  Each member supports:
  *    name      : Display name
+ *    name_ko   : Korean name (optional) — used to bold lab members in
+ *                Korean author lists on the Publications page
  *    role      : e.g. 'Ph.D. Student', 'M.S. Student',
  *                'Research Intern', 'Undergraduate Intern'
  *    interests : array of research-interest keywords (optional)
@@ -51,6 +53,7 @@ const MEMBERS = [
   },
   {
     name: 'Chaeyoung Seo',
+    name_ko: '서채영',
     role: 'Undergraduate Intern',
     group: 'team',
     interests: ['Efficiency'],
@@ -61,6 +64,7 @@ const MEMBERS = [
   },
   {
     name: 'Eunyeong Cho',
+    name_ko: '조은영',
     role: 'Undergraduate Intern',
     group: 'team',
     interests: ['Efficiency'],
@@ -71,6 +75,7 @@ const MEMBERS = [
   },
   {
     name: 'Jin Hui Kim',
+    name_ko: '김진희',
     role: 'Undergraduate Intern',
     group: 'team',
     interests: ['Efficiency'],
@@ -81,6 +86,7 @@ const MEMBERS = [
   },
   {
     name: 'Yeonjoo Yoo',
+    name_ko: '유연주',
     role: 'Undergraduate Intern',
     group: 'team',
     interests: ['Efficiency'],

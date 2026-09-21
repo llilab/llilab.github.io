@@ -321,6 +321,7 @@ header {
   display: grid; grid-template-columns: 150px 1fr; gap: 1rem; align-items: start;
 }
 .pub-entry:hover { border-left-color: var(--blue); }
+.pub-entry.no-figure { grid-template-columns: 1fr; }
 .pub-body { min-width: 0; }
 
 /* Paper figure thumbnail — a visual anchor, not something to read.
