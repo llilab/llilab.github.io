@@ -79,6 +79,7 @@ function shortVenue(venue, year, type) {
   if (v.includes('icprai'))                         return 'ICPRAI ' + year;
   if (v.includes('sac') || v.includes('sigapp'))    return 'SAC ' + year;
   if (v.includes('icci'))                           return 'ICCI*CC ' + year;
+  if (v.includes('hclt') || v.includes('human and language technology')) return 'HCLT ' + year;
   if (v.includes('preprint'))                       return 'Preprint';
   return venue.split(',')[0].substring(0, 20);
 }
@@ -101,6 +102,7 @@ function venueTagClass(venue, type) {
   if (v.includes('lrec'))                           return 'tag-lrec';
   if (v.includes('uai'))                            return 'tag-uai';
   if (v.includes('www'))                            return 'tag-www';
+  if (v.includes('hclt'))                           return 'tag-hclt';
   if (type === 'industry')                          return 'tag-industry';
   if (type === 'findings')                          return 'tag-findings';
   if (type === 'journal')                           return 'tag-journal';
@@ -327,7 +329,7 @@ function renderByYear(list, renderEntry) {
     `).join('');
 }
 
-function renderIntlEntry(p) {
+function renderPubEntry(p) {
   const tagsHTML = (p.tags && p.tags.length) ? `<div class="pub-tags">${p.tags.map(t => `<span class="pub-hashtag">#${t}</span>`).join('')}</div>` : '';
   const figHTML = p.image
     ? `<img src="${p.image}" alt="" loading="lazy"
@@ -347,29 +349,6 @@ function renderIntlEntry(p) {
     `;
 }
 
-// Domestic papers rarely have a figure, so they drop the thumbnail column
-// rather than showing a column of empty placeholders.
-function renderDomesticEntry(p) {
-  const journal = L(p.journal_en || p.journal, p.journal);
-  const venue = [journal, p.detail].filter(Boolean).join(', ');
-  const subtitle = (LANG === 'en' && p.title_en) ? `<div class="pub-title-en">${p.title_en}</div>` : '';
-  const links = (p.links && p.links.length)
-    ? `<div class="pub-entry-links">${renderLinks(p.links)}</div>`
-    : '';
-  return `
-      <div class="pub-entry is-domestic">
-        <div class="pub-body">
-          ${p.index ? `<span class="recent-tag tag-domestic">${p.index}</span>` : ''}
-          <h4>${p.title}</h4>
-          ${subtitle}
-          <div class="pub-authors">${highlightPI(p.authors)}</div>
-          <div class="pub-venue-line"><em>${venue}</em></div>
-          ${links}
-        </div>
-      </div>
-    `;
-}
-
 function renderPublications() {
   const domestic = (typeof DOMESTIC_PUBLICATIONS !== 'undefined') ? DOMESTIC_PUBLICATIONS : [];
   // The tab only exists once there is something to show in it.
@@ -384,9 +363,7 @@ function renderPublications() {
       </div>
     ` : '';
 
-  const listHTML = scope === 'domestic'
-    ? renderByYear(domestic, renderDomesticEntry)
-    : renderByYear(PUBLICATIONS, renderIntlEntry);
+  const listHTML = renderByYear(scope === 'domestic' ? domestic : PUBLICATIONS, renderPubEntry);
 
   return `
     <div class="subpage">

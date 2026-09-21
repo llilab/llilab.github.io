@@ -214,6 +214,7 @@ header {
 .tag-lrec     { background: #f0f9ff; color: #075985; }
 .tag-uai      { background: #faf5ff; color: #7e22ce; }
 .tag-www      { background: #fff7ed; color: #c2410c; }
+.tag-hclt     { background: #f0fdfa; color: #0f766e; }
 
 .recent-item h3 {
   font-size: 0.9rem; font-weight: 600; line-height: 1.5;
@@ -305,13 +306,6 @@ header {
   padding: 0 0.4rem; border-radius: 999px; line-height: 1.5;
 }
 .pub-tab.active .pub-tab-count { color: var(--blue); background: var(--blue-pale); border-color: var(--sky); }
-
-/* Domestic entries have no figure column */
-.pub-entry.is-domestic { grid-template-columns: 1fr; }
-/* Hangul has no italic; the browser's synthetic slant reads as a glitch */
-.pub-entry.is-domestic .pub-venue-line em { font-style: normal; }
-.pub-title-en { font-size: 0.84rem; color: var(--text-secondary); margin: -0.05rem 0 0.2rem; }
-.tag-domestic { background: #f0fdfa; color: #0f766e; }
 
 .pub-year-group { margin-bottom: 2.5rem; }
 .pub-year-label {
