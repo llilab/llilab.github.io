@@ -39,8 +39,9 @@ function updateLangToggle() {
 
 // ─── Utility: highlight PI name in author strings ───
 function highlightPI(authors) {
-  const name = SITE.piNameInPapers;
-  return authors.replace(name, `<span class="me">${name}</span>`);
+  // Domestic papers list the PI by Korean name.
+  return [SITE.piNameInPapers, SITE.piNameInPapersKo].filter(Boolean)
+    .reduce((out, name) => out.replace(name, `<span class="me">${name}</span>`), authors);
 }
 
 // ─── Utility: get tag CSS class from type ───
@@ -302,23 +303,37 @@ function renderResearch() {
   `;
 }
 
-function renderPublications() {
-  // Group by year
+// Which Publications tab is open: 'intl' or 'domestic'
+let PUB_SCOPE = 'intl';
+
+function setPubScope(scope) {
+  if (scope === PUB_SCOPE) return;
+  PUB_SCOPE = scope;
+  showPage('publications');
+}
+
+// Group entries by year, newest first, rendering each with `renderEntry`
+function renderByYear(list, renderEntry) {
   const byYear = {};
-  PUBLICATIONS.forEach(p => {
+  list.forEach(p => {
     if (!byYear[p.year]) byYear[p.year] = [];
     byYear[p.year].push(p);
   });
-  const years = Object.keys(byYear).sort((a, b) => b - a);
+  return Object.keys(byYear).sort((a, b) => b - a).map(year => `
+      <div class="pub-year-group fade-in">
+        <div class="pub-year-label">${year}</div>
+        ${byYear[year].map(renderEntry).join('')}
+      </div>
+    `).join('');
+}
 
-  const groupsHTML = years.map(year => {
-    const entries = byYear[year].map(p => {
-      const tagsHTML = (p.tags && p.tags.length) ? `<div class="pub-tags">${p.tags.map(t => `<span class="pub-hashtag">#${t}</span>`).join('')}</div>` : '';
-      const figHTML = p.image
-        ? `<img src="${p.image}" alt="" loading="lazy"
-               onerror="this.parentElement.classList.add('is-empty');this.remove();">`
-        : '';
-      return `
+function renderIntlEntry(p) {
+  const tagsHTML = (p.tags && p.tags.length) ? `<div class="pub-tags">${p.tags.map(t => `<span class="pub-hashtag">#${t}</span>`).join('')}</div>` : '';
+  const figHTML = p.image
+    ? `<img src="${p.image}" alt="" loading="lazy"
+           onerror="this.parentElement.classList.add('is-empty');this.remove();">`
+    : '';
+  return `
       <div class="pub-entry">
         <div class="pub-figure${p.image ? '' : ' is-empty'}">${figHTML}</div>
         <div class="pub-body">
@@ -330,15 +345,48 @@ function renderPublications() {
         </div>
       </div>
     `;
-    }).join('');
+}
 
-    return `
-      <div class="pub-year-group fade-in">
-        <div class="pub-year-label">${year}</div>
-        ${entries}
+// Domestic papers rarely have a figure, so they drop the thumbnail column
+// rather than showing a column of empty placeholders.
+function renderDomesticEntry(p) {
+  const journal = L(p.journal_en || p.journal, p.journal);
+  const venue = [journal, p.detail].filter(Boolean).join(', ');
+  const subtitle = (LANG === 'en' && p.title_en) ? `<div class="pub-title-en">${p.title_en}</div>` : '';
+  const links = (p.links && p.links.length)
+    ? `<div class="pub-entry-links">${renderLinks(p.links)}</div>`
+    : '';
+  return `
+      <div class="pub-entry is-domestic">
+        <div class="pub-body">
+          ${p.index ? `<span class="recent-tag tag-domestic">${p.index}</span>` : ''}
+          <h4>${p.title}</h4>
+          ${subtitle}
+          <div class="pub-authors">${highlightPI(p.authors)}</div>
+          <div class="pub-venue-line"><em>${venue}</em></div>
+          ${links}
+        </div>
       </div>
     `;
-  }).join('');
+}
+
+function renderPublications() {
+  const domestic = (typeof DOMESTIC_PUBLICATIONS !== 'undefined') ? DOMESTIC_PUBLICATIONS : [];
+  // The tab only exists once there is something to show in it.
+  const scope = domestic.length ? PUB_SCOPE : 'intl';
+
+  const tabs = domestic.length ? `
+      <div class="pub-tabs" role="tablist">
+        <button role="tab" class="pub-tab${scope === 'intl' ? ' active' : ''}" aria-selected="${scope === 'intl'}"
+                onclick="setPubScope('intl')">${L('International', '국제')}<span class="pub-tab-count">${PUBLICATIONS.length}</span></button>
+        <button role="tab" class="pub-tab${scope === 'domestic' ? ' active' : ''}" aria-selected="${scope === 'domestic'}"
+                onclick="setPubScope('domestic')">${L('Domestic Journals', '국내 학술지')}<span class="pub-tab-count">${domestic.length}</span></button>
+      </div>
+    ` : '';
+
+  const listHTML = scope === 'domestic'
+    ? renderByYear(domestic, renderDomesticEntry)
+    : renderByYear(PUBLICATIONS, renderIntlEntry);
 
   return `
     <div class="subpage">
@@ -346,7 +394,8 @@ function renderPublications() {
         <h2>Publications</h2>
         <p>${L('Selected papers. See', '선별된 논문 목록입니다. 전체 목록은')} <a href="${SITE.pi.scholar}" target="_blank">Google Scholar</a>${L(' for a complete list.', '를 참고해 주세요.')}</p>
       </div>
-      ${groupsHTML}
+      ${tabs}
+      ${listHTML}
     </div>
   `;
 }

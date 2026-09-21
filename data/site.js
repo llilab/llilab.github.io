@@ -27,6 +27,7 @@ const SITE = {
   // The PI's name as it appears in publication author lists
   // Used to auto-bold in publication entries
   piNameInPapers: 'Yeachan Kim',
+  piNameInPapersKo: '김예찬',     // bolded in domestic (Korean) author lists
 
   // Welcome message (Home page)
   welcome: {

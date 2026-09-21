@@ -283,6 +283,36 @@ header {
 .subpage-header p { color: var(--text-secondary); font-size: 0.92rem; }
 
 /* Publications Page */
+/* International / Domestic tabs — an underline bar, matching the main nav */
+.pub-tabs {
+  display: flex; gap: 1.5rem;
+  margin: -0.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.pub-tab {
+  appearance: none; background: none; border: none; cursor: pointer;
+  font: inherit; font-size: 0.92rem; font-weight: 500; color: var(--text-light);
+  padding: 0.55rem 0; margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+.pub-tab:hover { color: var(--text); }
+.pub-tab.active { color: var(--navy); font-weight: 600; border-bottom-color: var(--blue); }
+.pub-tab-count {
+  font-size: 0.7rem; font-weight: 600; color: var(--text-light);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 0 0.4rem; border-radius: 999px; line-height: 1.5;
+}
+.pub-tab.active .pub-tab-count { color: var(--blue); background: var(--blue-pale); border-color: var(--sky); }
+
+/* Domestic entries have no figure column */
+.pub-entry.is-domestic { grid-template-columns: 1fr; }
+/* Hangul has no italic; the browser's synthetic slant reads as a glitch */
+.pub-entry.is-domestic .pub-venue-line em { font-style: normal; }
+.pub-title-en { font-size: 0.84rem; color: var(--text-secondary); margin: -0.05rem 0 0.2rem; }
+.tag-domestic { background: #f0fdfa; color: #0f766e; }
+
 .pub-year-group { margin-bottom: 2.5rem; }
 .pub-year-label {
   font-size: 1.1rem; font-weight: 700; color: var(--navy);
