@@ -196,9 +196,20 @@ function initSlider() {
 // ═══════════════════════════════════════════════════
 
 function renderHome() {
-  const newsHTML = NEWS.map(n => {
-    return `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
-  }).join('');
+  // Show this year's news; anything from earlier years sits behind "More".
+  // "This year" is the year of the newest item rather than the clock, so the
+  // list never comes up empty in January before the first new item lands.
+  const newsYear = n => parseInt(String(n.date).slice(-4), 10);
+  const latestYear = Math.max(...NEWS.map(newsYear));
+  const newsItem = n => `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
+  const recentNews = NEWS.filter(n => newsYear(n) >= latestYear);
+  const olderNews = NEWS.filter(n => newsYear(n) < latestYear);
+  const newsHTML = recentNews.map(newsItem).join('') + (olderNews.length ? `
+        <div class="news-older" id="newsOlder" hidden>${olderNews.map(newsItem).join('')}</div>
+        <button type="button" class="news-more" aria-expanded="false" aria-controls="newsOlder"
+                onclick="toggleOlderNews(this)"
+                data-more="${L('More', '더보기')} (${olderNews.length})" data-less="${L('Less', '접기')}">${L('More', '더보기')} (${olderNews.length})</button>
+      ` : '');
 
   return `
     ${renderHighlightSlider()}
@@ -240,6 +251,14 @@ function renderHome() {
       </aside>
     </div>
   `;
+}
+
+function toggleOlderNews(btn) {
+  const older = document.getElementById('newsOlder');
+  const open = older.hidden;
+  older.hidden = !open;
+  btn.setAttribute('aria-expanded', String(open));
+  btn.textContent = open ? btn.dataset.less : btn.dataset.more;
 }
 
 function renderResearch() {
