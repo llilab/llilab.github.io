@@ -95,4 +95,14 @@ const MEMBERS = [
     github: '',
     homepage: '',
   },
+  {
+    name: 'Sihyeon Kim',
+    role: 'Undergraduate Intern',
+    group: 'team',
+    interests: ['NLP'],
+    photo: 'images/members/placeholder.svg',   // replace with images/members/sihyeon_kim.jpg when available
+    email: '',
+    github: '',
+    homepage: '',
+  },
 ];
