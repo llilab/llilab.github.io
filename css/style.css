@@ -909,6 +909,12 @@ footer {
   font-size: 0.82rem; color: var(--text-secondary); font-weight: 500;
   margin-bottom: 0.6rem;
 }
+/* An admitted-but-not-started degree, under the current role */
+.member-role:has(+ .member-incoming) { margin-bottom: 0.1rem; }
+.member-incoming {
+  font-size: 0.76rem; font-weight: 600; color: var(--blue);
+  margin-bottom: 0.6rem;
+}
 
 .member-interests {
   display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center;

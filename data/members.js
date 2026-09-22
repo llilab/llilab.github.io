@@ -9,6 +9,9 @@
  *                Korean author lists on the Publications page
  *    role      : e.g. 'Ph.D. Student', 'M.S. Student',
  *                'Research Intern', 'Undergraduate Intern'
+ *    incoming  : (optional) admitted to a degree program that has not
+ *                started yet, e.g. { role: 'M.S. Student', start: '2027.3' };
+ *                shown under the role as "Incoming M.S. Student (2027.3)"
  *    interests : array of research-interest keywords (optional)
  *    photo     : path to photo in images/members/ (optional)
  *                Use 'images/members/placeholder.svg' when the
@@ -55,6 +58,7 @@ const MEMBERS = [
     name: 'Chaeyoung Seo',
     name_ko: '서채영',
     role: 'Undergraduate Intern',
+    incoming: { role: 'M.S. Student', start: '2027.3' },
     group: 'team',
     interests: ['Efficiency'],
     photo: 'images/members/chaeyoung_seo.jpg',
@@ -99,6 +103,7 @@ const MEMBERS = [
     name: 'Sihyeon Kim',
     name_ko: '김시현',
     role: 'Undergraduate Intern',
+    incoming: { role: 'M.S. Student', start: '2027.3' },
     group: 'team',
     interests: ['NLP'],
     photo: 'images/members/placeholder.svg',   // replace with images/members/sihyeon_kim.jpg when available

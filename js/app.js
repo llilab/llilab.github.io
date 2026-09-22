@@ -565,6 +565,7 @@ function renderMembers() {
         <div class="member-photo-wrap">${photoHTML}</div>
         <div class="member-name">${m.name}</div>
         <div class="member-role">${m.role}</div>
+        ${m.incoming ? `<div class="member-incoming">Incoming ${m.incoming.role} (${m.incoming.start})</div>` : ''}
         ${interestsHTML}
         ${emailHTML}
         ${linksHTML}
