@@ -97,6 +97,7 @@ const MEMBERS = [
   },
   {
     name: 'Sihyeon Kim',
+    name_ko: '김시현',
     role: 'Undergraduate Intern',
     group: 'team',
     interests: ['NLP'],
