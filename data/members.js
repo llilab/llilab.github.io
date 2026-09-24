@@ -46,16 +46,6 @@ const ROLE_KO = {
 
 const MEMBERS = [
   {
-    name: 'Zheng Xu',
-    role: 'Research Intern',
-    group: 'team',
-    interests: ['AI4Science'],
-    photo: 'images/members/zheng_xu.jpg',
-    email: 'zheng.xu9158@gmail.com',
-    github: '',
-    homepage: '',
-  },
-  {
     name: 'Chaeyoung Seo',
     name_ko: '서채영',
     role: 'Undergraduate Intern',
