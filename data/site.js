@@ -52,8 +52,8 @@ const SITE = {
   // "Join Us" recruitment banner (Home page)
   recruitment: {
     title: 'Join Our Lab',
-    description: 'We are looking for motivated M.S./Ph.D. students and research interns.<br>If you are interested, please apply through the form.',
-    description_ko: '열정적인 석·박사 과정 학생과 연구 인턴을 모집하고 있습니다.<br>관심이 있으시다면 아래 양식을 통해 지원해 주세요.',
+    description: 'We are looking for motivated M.S./Ph.D. students and research interns.<br>If you are interested, please apply through <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank" rel="noopener">this form</a>.',
+    description_ko: '열정적인 석·박사 과정 학생과 연구 인턴을 모집하고 있습니다.<br>관심이 있으시다면 <a href="https://forms.gle/pAHdt5M8bjy6vpvK9" target="_blank" rel="noopener">지원 양식</a>을 작성해 주세요.',
   },
 
   // Navigation tabs
