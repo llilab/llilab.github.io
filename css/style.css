@@ -147,7 +147,9 @@ header {
 
 .welcome-intro {
   font-family: var(--serif);
-  font-size: 1.2rem; line-height: 1.85;
+  /* Same body size as the rest of the site (welcome-detail, subpage
+     intros, publication titles); the darker colour keeps it the lead. */
+  font-size: 0.92rem; line-height: 1.8;
   color: var(--text);
 }
 .welcome-intro strong { font-weight: 600; }
@@ -534,7 +536,6 @@ footer {
 @media (max-width: 700px) {
   .home-grid { grid-template-columns: 1fr; gap: 2rem; }
   .header-top h1 { font-size: 1.25rem; }
-  .welcome-intro { font-size: 1.05rem; }
   .main-nav a { margin-right: 1.25rem; font-size: 0.8rem; }
   .app-entry { grid-template-columns: 1fr; }
   .app-entry-icon { width: 44px; height: 44px; font-size: 1.2rem; }
