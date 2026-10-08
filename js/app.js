@@ -449,17 +449,26 @@ function renderApplications() {
 }
 
 function renderGallery() {
-  const items = GALLERY.map(g => `
-    <div class="gallery-item fade-in">
-      <div class="gallery-img-wrap">
-        <img src="${g.image}" alt="${g.caption}" class="gallery-img">
+  // One album per card: the card runs the full width and the shots tile
+  // inside it, so an occasion reads as a single block rather than loose photos.
+  const items = GALLERY.map(g => {
+    const shots = (g.images || [{ src: g.image, alt: g.caption }]).map(p => `
+      <figure class="gallery-shot">
+        <img src="${p.src}" alt="${p.alt || g.caption}" loading="lazy"
+             ${p.focus ? `style="object-position: ${p.focus};"` : ''}>
+      </figure>
+    `).join('');
+
+    return `
+      <div class="gallery-item fade-in">
+        <div class="gallery-head">
+          <p class="gallery-title">${g.caption}</p>
+          ${g.date ? `<span class="gallery-date">${g.date}</span>` : ''}
+        </div>
+        <div class="gallery-shots">${shots}</div>
       </div>
-      <div class="gallery-caption">
-        <p>${g.caption}</p>
-        ${g.date ? `<span class="gallery-date">${g.date}</span>` : ''}
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   return `
     <div class="subpage">
