@@ -188,15 +188,19 @@ header {
 .welcome-links a::after { content: ' →'; font-size: 0.9em; }
 
 /* Two-column */
-.home-grid {
-  display: grid; grid-template-columns: 1.2fr 1fr; gap: 3.5rem;
-  padding: 2rem 0 4rem;
-  align-items: start;
+/* Home reads top to bottom: welcome, then the call for students, then news. */
+.home-welcome { padding: 2rem 0 0; }
+.home-news { padding: 2.25rem 0 4rem; }
+/* News runs the full width here, so it sits in two columns to keep the
+   lines short enough to read. */
+.news-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+.news-list > .news-older,
+.news-list > .news-more { grid-column: 1 / -1; }
+.news-older { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+
+@media (max-width: 700px) {
+  .news-list, .news-older { grid-template-columns: 1fr; }
 }
-/* Left column: welcome + recent research */
-.home-main { min-width: 0; }
-/* Right column: news, top-aligned with the welcome text */
-.home-side { min-width: 0; }
 
 .home-section-title {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -558,7 +562,6 @@ footer {
 
 /* ═══════════════ RESPONSIVE ═══════════════ */
 @media (max-width: 700px) {
-  .home-grid { grid-template-columns: 1fr; gap: 2rem; }
   .header-top h1 { font-size: 1.25rem; }
   .main-nav a { margin-right: 1.25rem; font-size: 0.8rem; }
   .app-entry { grid-template-columns: 1fr; }

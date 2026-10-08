@@ -211,8 +211,28 @@ function renderHome() {
                 data-more="${L('More', '더보기')} (${olderNews.length})" data-less="${L('Less', '접기')}">${L('More', '더보기')} (${olderNews.length})</button>
       ` : '');
 
+  // Research Highlights is parked for now. renderHighlightSlider() is still
+  // here and still works: put its call back at the top of the markup below
+  // to bring the slider back.
   return `
-    ${renderHighlightSlider()}
+    <div class="home-welcome fade-in">
+      <div class="home-section-title">${L('Welcome', '환영합니다')}</div>
+      <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
+
+      <div class="directions">
+        <div class="directions-label">${L('Research Directions', '연구 방향')}</div>
+        <ul class="direction-list">
+          ${RESEARCH.map(r => `
+            <li class="direction-item">
+              <span class="direction-title">${r.title}</span>
+              <span class="direction-keywords">${r.keywords.join(' · ')}</span>
+            </li>
+          `).join('')}
+        </ul>
+      </div>
+
+      <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
+    </div>
 
     <div class="join-banner fade-in">
       <div class="join-banner-body">
@@ -223,30 +243,12 @@ function renderHome() {
       </div>
     </div>
 
-    <div class="home-grid">
-      <div class="home-main fade-in">
-        <div class="home-section-title">${L('Welcome', '환영합니다')}</div>
-        <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
-
-        <div class="directions">
-          <div class="directions-label">${L('Research Directions', '연구 방향')}</div>
-          <ul class="direction-list">
-            ${RESEARCH.map(r => `
-              <li class="direction-item">
-                <span class="direction-title">${r.title}</span>
-                <span class="direction-keywords">${r.keywords.join(' · ')}</span>
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-
-        <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
-      </div>
-      <aside class="home-side fade-in">
-        <div class="home-section-title">News</div>
+    <section class="home-news fade-in">
+      <div class="home-section-title">News</div>
+      <div class="news-list">
         ${newsHTML}
-      </aside>
-    </div>
+      </div>
+    </section>
   `;
 }
 
