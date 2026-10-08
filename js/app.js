@@ -206,9 +206,13 @@ function renderHome() {
   const newsMark = n => n.image
     ? `<img src="${n.image}" alt="${n.imageAlt || ''}" loading="lazy" onerror="this.remove();">`
     : (n.badge ? `<span class="news-badge">${n.badge}</span>` : '');
+  // An acceptance says how many papers, then lists their titles underneath.
+  const newsPapers = n => (n.papers && n.papers.length)
+    ? `<ul class="news-papers">${n.papers.map(t => `<li>${t}</li>`).join('')}</ul>`
+    : '';
   const newsItem = n => `<div class="news-item">
           <div class="news-logo">${newsMark(n)}</div>
-          <div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>
+          <div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p>${newsPapers(n)}</div>
         </div>`;
   const recentNews = NEWS.filter(n => newsYear(n) >= latestYear);
   const olderNews = NEWS.filter(n => newsYear(n) < latestYear);
@@ -229,26 +233,20 @@ function renderHome() {
 
       <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
 
-      <figure class="campus">
-        <img src="images/campus.jpg" alt="${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')}"
-             loading="lazy" onerror="this.parentElement.remove();">
-        <figcaption>${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')} ·
-          ${L('cropped and brightened from a photo by', '원본 사진')}
-          <a href="https://commons.wikimedia.org/wiki/File:Hankuk_University_of_Foreign_Studies_Seoul_campus_20180914_090938.jpg" target="_blank" rel="noopener">LERK</a>,
-          <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>
-        </figcaption>
-      </figure>
+      <img class="campus" src="images/campus.jpg"
+           alt="${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')}"
+           loading="lazy" onerror="this.remove();">
     </div>
 
-    <div class="join-banner fade-in">
-      <div class="join-banner-body">
-        <img class="join-mark" src="images/join.svg" alt="" loading="lazy" onerror="this.remove();">
-        <div class="join-banner-text">
-          <div class="join-banner-title">${SITE.recruitment.title}</div>
-          <p>${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>
+    <section class="home-join fade-in">
+      <div class="home-section-title">${SITE.recruitment.title}</div>
+      <div class="join-row">
+        <div class="join-mark-col">
+          <img class="join-mark" src="images/join.svg" alt="" loading="lazy" onerror="this.remove();">
         </div>
+        <p class="join-text">${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>
       </div>
-    </div>
+    </section>
 
     <section class="home-news fade-in">
       <div class="home-section-title">News</div>
