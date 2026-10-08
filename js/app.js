@@ -201,7 +201,15 @@ function renderHome() {
   // list never comes up empty in January before the first new item lands.
   const newsYear = n => parseInt(String(n.date).slice(-4), 10);
   const latestYear = Math.max(...NEWS.map(newsYear));
-  const newsItem = n => `<div class="news-item"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>`;
+  // Each item carries the venue or agency mark in a fixed left column, so the
+  // list scans by logo. Items without a logo file fall back to a text badge.
+  const newsMark = n => n.image
+    ? `<img src="${n.image}" alt="${n.imageAlt || ''}" loading="lazy" onerror="this.remove();">`
+    : (n.badge ? `<span class="news-badge">${n.badge}</span>` : '');
+  const newsItem = n => `<div class="news-item">
+          <div class="news-logo">${newsMark(n)}</div>
+          <div class="news-body"><div class="news-date">${n.date}</div><p>${L(n.content, n.content_ko)}</p></div>
+        </div>`;
   const recentNews = NEWS.filter(n => newsYear(n) >= latestYear);
   const olderNews = NEWS.filter(n => newsYear(n) < latestYear);
   const newsHTML = recentNews.map(newsItem).join('') + (olderNews.length ? `

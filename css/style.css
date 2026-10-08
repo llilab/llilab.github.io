@@ -191,16 +191,8 @@ header {
 /* Home reads top to bottom: welcome, then the call for students, then news. */
 .home-welcome { padding: 2rem 0 0; }
 .home-news { padding: 2.25rem 0 4rem; }
-/* News runs the full width here, so it sits in two columns to keep the
-   lines short enough to read. */
-.news-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
-.news-list > .news-older,
-.news-list > .news-more { grid-column: 1 / -1; }
-.news-older { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
-
-@media (max-width: 700px) {
-  .news-list, .news-older { grid-template-columns: 1fr; }
-}
+/* One column, full width, each item led by its venue or agency mark. */
+.news-list, .news-older { display: flex; flex-direction: column; }
 
 .home-section-title {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -266,10 +258,27 @@ header {
 
 /* News */
 .news-item {
-  margin-bottom: 0; padding: 0.75rem 1rem;
+  display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 1.25rem;
+  align-items: start;
+  margin: 0 -0.75rem; padding: 0.85rem 0.75rem;
   border-bottom: 1px solid var(--border-light);
   border-radius: 6px;
   transition: background 0.2s;
+}
+.news-logo {
+  width: 84px; min-height: 36px;
+  display: flex; align-items: center; justify-content: center;
+}
+.news-logo img { max-width: 84px; max-height: 40px; object-fit: contain; display: block; }
+.news-badge {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-light); border: 1px solid var(--border); border-radius: 4px;
+  padding: 0.25rem 0.45rem;
+}
+
+@media (max-width: 560px) {
+  .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .news-logo { justify-content: flex-start; }
 }
 .news-item:last-child { border-bottom: none; }
 .news-item:hover { background: var(--blue-pale); }
