@@ -7,8 +7,8 @@
  */
 const GALLERY = [
   {
-    image: 'images/gallery/talk1.png',
-    caption: '2025 하반기 학술대회: 언어연구소, 언어공학연구소, 세미오시스연구센터 공동 개최',
-    date: '2025',
+    image: 'images/gallery/hclt2026.jpg',
+    caption: 'Annual Conference on Human and Language Technology (HCLT) 2026, Busan, South Korea',
+    date: '2026',
   },
 ];

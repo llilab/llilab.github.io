@@ -64,6 +64,7 @@ const SITE = {
     { id: 'research',     label: 'Research' },
     { id: 'members',      label: 'Members' },
     { id: 'publications', label: 'Publications' },
+    { id: 'gallery',      label: 'Gallery' },
     { id: 'joinus',       label: 'Join Us' },
   ],
 };

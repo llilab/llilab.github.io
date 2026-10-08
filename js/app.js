@@ -463,13 +463,10 @@ function renderGallery() {
     <div class="subpage">
       <div class="subpage-header">
         <h2>Gallery</h2>
+        <p>${L('Conferences, talks, and everyday moments from the lab.', '학회와 발표, 연구실의 일상을 담은 기록입니다.')}</p>
       </div>
       <div class="gallery-grid">
         ${items}
-      </div>
-      <div style="display:flex; flex-direction:column; align-items:center; padding:3rem 0 2rem;">
-        <img src="images/updating.svg" alt="Updating" style="width:60px; height:60px; margin-bottom:1rem;">
-        <p style="color:var(--text-light); font-style:italic; text-align:center; font-size:0.9rem;">${L('More photos coming soon.', '더 많은 사진이 곧 공개됩니다.')}</p>
       </div>
     </div>
   `;
