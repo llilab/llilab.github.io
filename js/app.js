@@ -233,6 +233,7 @@ function renderHome() {
         <img src="images/campus.jpg" alt="${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')}"
              loading="lazy" onerror="this.parentElement.remove();">
         <figcaption>${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')} ·
+          ${L('cropped and brightened from a photo by', '원본 사진')}
           <a href="https://commons.wikimedia.org/wiki/File:Hankuk_University_of_Foreign_Studies_Seoul_campus_20180914_090938.jpg" target="_blank" rel="noopener">LERK</a>,
           <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>
         </figcaption>

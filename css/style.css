@@ -195,7 +195,7 @@ header {
    photo's CC BY-SA licence. */
 .campus { margin: 1.5rem 0 0; }
 .campus img {
-  width: 100%; aspect-ratio: 2 / 1; object-fit: cover;
+  width: 100%; aspect-ratio: 3.4 / 1; object-fit: cover;
   display: block; border-radius: 10px;
 }
 .campus figcaption {
