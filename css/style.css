@@ -190,6 +190,20 @@ header {
 /* Two-column */
 /* Home reads top to bottom: welcome, then the call for students, then news. */
 .home-welcome { padding: 2rem 0 0; }
+/* Seoul campus, under the welcome text. The file is cropped 2:1 and served at
+   2x, so it needs no art direction in CSS; the credit line is required by the
+   photo's CC BY-SA licence. */
+.campus { margin: 1.5rem 0 0; }
+.campus img {
+  width: 100%; aspect-ratio: 2 / 1; object-fit: cover;
+  display: block; border-radius: 10px;
+}
+.campus figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.72rem; color: var(--text-light); line-height: 1.5;
+}
+.campus figcaption a { color: var(--text-light); text-decoration: underline; }
+.campus figcaption a:hover { color: var(--blue); }
 .home-news { padding: 2.25rem 0 4rem; }
 /* One column, full width, each item led by its venue or agency mark. */
 .news-list, .news-older { display: flex; flex-direction: column; }
