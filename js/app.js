@@ -219,18 +219,6 @@ function renderHome() {
       <div class="home-section-title">${L('Welcome', '환영합니다')}</div>
       <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
 
-      <div class="directions">
-        <div class="directions-label">${L('Research Directions', '연구 방향')}</div>
-        <ul class="direction-list">
-          ${RESEARCH.map(r => `
-            <li class="direction-item">
-              <span class="direction-title">${r.title}</span>
-              <span class="direction-keywords">${r.keywords.join(' · ')}</span>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-
       <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
     </div>
 
