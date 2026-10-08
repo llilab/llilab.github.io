@@ -232,6 +232,7 @@ function renderHome() {
 
     <div class="join-banner fade-in">
       <div class="join-banner-body">
+        <img class="join-mark" src="images/join.svg" alt="" loading="lazy" onerror="this.remove();">
         <div class="join-banner-text">
           <div class="join-banner-title">${SITE.recruitment.title}</div>
           <p>${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>
