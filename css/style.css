@@ -424,7 +424,7 @@ header {
 /* One diagram per area, drawn to the site's palette. It animates on a slow
    loop and holds a readable still frame for reduced-motion viewers. */
 .research-illus {
-  width: 100%; aspect-ratio: 320 / 160; display: block;
+  width: 100%; aspect-ratio: 320 / 190; display: block;
   border: 1px solid var(--border); border-radius: 8px; background: var(--bg);
 }
 .research-aside .research-keywords { margin-top: 0; }

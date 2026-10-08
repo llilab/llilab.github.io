@@ -1,62 +1,111 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img"
-     aria-label="Tokens routed through frozen and active transformer blocks while memory use falls">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 190" width="320" height="190" role="img"
+     aria-label="The active block walks up a frozen transformer stack, tokens rise and some take a bypass, the gradient path reaches only the active block, and the memory gauge falls as the information flow sparsifies">
   <style>
-    .lbl    { font-family: -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif;
-              font-size: 9px; fill: #9ca3af; letter-spacing: 0.04em; }
-    .lbl-on { fill: #1e40af; }
-    .frozen { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
-    .active { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.3; }
-    .rail   { stroke: #e5e7eb; stroke-width: 1; }
-    .tok    { fill: #3b82f6; }
-    .t1 { animation: rise 4.2s ease-in-out infinite }
-    .t2 { animation: rise 4.2s ease-in-out infinite .35s }
-    .t3 { animation: rise-short 4.2s ease-in-out infinite .7s }
-    .t4 { animation: rise 4.2s ease-in-out infinite 1.05s }
-    .t5 { animation: rise-short 4.2s ease-in-out infinite 1.4s }
-    .grad { fill: none; stroke: #3b82f6; stroke-width: 1.3; stroke-dasharray: 4 3;
-            animation: drip 1.4s linear infinite; }
-    .mem  { transform-box: fill-box; transform-origin: 50% 100%; animation: shrink 4.2s ease-in-out infinite; }
-    @keyframes rise       { 0% { transform: translateY(0); opacity: 0 }
-                            12% { opacity: 1 }
-                            70%, 100% { transform: translateY(-96px); opacity: 0 } }
-    @keyframes rise-short { 0% { transform: translateY(0); opacity: 0 }
-                            12% { opacity: 1 }
-                            45%, 100% { transform: translateY(-38px); opacity: 0 } }
-    @keyframes drip       { to { stroke-dashoffset: -14 } }
-    @keyframes shrink     { 0%, 100% { transform: scaleY(1) } 55% { transform: scaleY(0.42) } }
+    .lbl   { font-family: -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif;
+             font-size: 8px; fill: #9ca3af; letter-spacing: 0.06em; }
+    .on    { fill: #1e40af; }
+    .block { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .rail  { fill: none; stroke: #f3f4f6; stroke-width: 1; }
+    .tick  { fill: none; stroke: #e5e7eb; stroke-width: 1; }
+    .tok   { fill: #3b82f6; transform-box: fill-box; }
+
+    /* the active block walks up the stack: block-coordinate training */
+    .active { animation: walk 10s steps(1, end) infinite; }
+    .atag   { animation: walk 10s steps(1, end) infinite; }
+    .gline  { fill: none; stroke: #3b82f6; stroke-width: 1.3; stroke-dasharray: 4 3;
+              transform-box: fill-box; transform-origin: 50% 0%;
+              animation: reach 10s steps(1, end) infinite, drip 1.3s linear infinite; }
+    .ghead  { fill: #3b82f6; animation: head 10s steps(1, end) infinite; }
+
+    .r1 { animation: rise 3.4s ease-in-out infinite }
+    .r2 { animation: rise 3.4s ease-in-out infinite .28s }
+    .r3 { animation: rise-mid 3.4s ease-in-out infinite .56s }
+    .r4 { animation: rise 3.4s ease-in-out infinite .84s }
+    .r5 { animation: rise-mid 3.4s ease-in-out infinite 1.12s }
+    .r6 { animation: rise 3.4s ease-in-out infinite 1.4s }
+    .bypass { fill: none; stroke: #93c5fd; stroke-width: 1.2; stroke-dasharray: 3 3;
+              animation: drip 1.3s linear infinite reverse; }
+    .btok   { fill: #93c5fd; transform-box: fill-box; animation: skip 3.4s ease-in-out infinite .5s; }
+    .mem    { transform-box: fill-box; transform-origin: 50% 100%; animation: shrink 10s ease-in-out infinite; }
+    .sp     { animation: sparse 3.4s ease-in-out infinite; }
+
+    @keyframes walk   { 0% { transform: translateY(0) }      20% { transform: translateY(-26px) }
+                        40% { transform: translateY(-52px) } 60% { transform: translateY(-78px) }
+                        80% { transform: translateY(-104px) } 100% { transform: translateY(0) } }
+    @keyframes reach  { 0% { transform: scaleY(1) }    20% { transform: scaleY(.78) }
+                        40% { transform: scaleY(.56) } 60% { transform: scaleY(.34) }
+                        80% { transform: scaleY(.13) } 100% { transform: scaleY(1) } }
+    @keyframes head   { 0% { transform: translateY(0) }      20% { transform: translateY(-26px) }
+                        40% { transform: translateY(-52px) } 60% { transform: translateY(-78px) }
+                        80% { transform: translateY(-104px) } 100% { transform: translateY(0) } }
+    @keyframes rise     { 0% { transform: translateY(0); opacity: 0 } 12% { opacity: 1 }
+                          72%, 100% { transform: translateY(-124px); opacity: 0 } }
+    @keyframes rise-mid { 0% { transform: translateY(0); opacity: 0 } 12% { opacity: 1 }
+                          44%, 100% { transform: translateY(-48px); opacity: 0 } }
+    @keyframes skip     { 0% { transform: translate(0, 0); opacity: 0 } 15% { opacity: 1 }
+                          70%, 100% { transform: translate(6px, -82px); opacity: 0 } }
+    @keyframes drip     { to { stroke-dashoffset: -14 } }
+    @keyframes shrink   { 0%, 100% { transform: scaleY(1) } 50% { transform: scaleY(.38) } }
+    @keyframes sparse   { 0%, 20% { opacity: 1 } 55%, 100% { opacity: .12 } }
     @media (prefers-reduced-motion: reduce) {
-      .t1, .t2, .t3, .t4, .t5 { animation: none; opacity: 1 }
-      .grad, .mem { animation: none }
+      .active, .atag, .gline, .ghead, .r1, .r2, .r3, .r4, .r5, .r6,
+      .btok, .bypass, .mem, .sp { animation: none; opacity: 1; transform: none }
     }
   </style>
 
   <!-- memory gauge -->
-  <text class="lbl" x="33" y="22" text-anchor="middle">MEMORY</text>
-  <rect x="27" y="30" width="12" height="100" rx="6" fill="#f3f4f6"></rect>
-  <rect class="mem" x="27" y="30" width="12" height="100" rx="6" fill="#3b82f6" opacity="0.75"></rect>
+  <text class="lbl" x="24" y="17" text-anchor="middle">MEMORY</text>
+  <rect x="18" y="24" width="12" height="132" rx="6" fill="#f3f4f6"></rect>
+  <rect class="mem" x="18" y="24" width="12" height="132" rx="6" fill="#3b82f6" opacity="0.75"></rect>
+  <path class="tick" d="M32 57 h5 M32 90 h5 M32 123 h5"></path>
 
-  <!-- token rails -->
-  <path class="rail" d="M88 134 V26 M110 134 V26 M132 134 V26 M154 134 V26 M176 134 V26"></path>
+  <!-- token rails and the frozen stack -->
+  <path class="rail" d="M70 158 V28 M92 158 V28 M114 158 V28 M136 158 V28 M158 158 V28 M180 158 V28"></path>
+  <rect class="block" x="58" y="134" width="136" height="22" rx="6"></rect>
+  <rect class="block" x="58" y="108" width="136" height="22" rx="6"></rect>
+  <rect class="block" x="58" y="82" width="136" height="22" rx="6"></rect>
+  <rect class="block" x="58" y="56" width="136" height="22" rx="6"></rect>
+  <rect class="block" x="58" y="30" width="136" height="22" rx="6"></rect>
 
-  <!-- transformer blocks, frozen below and active on top -->
-  <rect class="frozen" x="70" y="98" width="124" height="24" rx="6"></rect>
-  <rect class="frozen" x="70" y="64" width="124" height="24" rx="6"></rect>
-  <rect class="active" x="70" y="30" width="124" height="24" rx="6"></rect>
-  <text class="lbl" x="200" y="114">frozen</text>
-  <text class="lbl" x="200" y="80">frozen</text>
-  <text class="lbl lbl-on" x="200" y="46">active</text>
-
-  <!-- tokens flowing up; two of them exit early -->
+  <!-- tokens rising; two stop early, one takes the bypass -->
   <g>
-    <rect class="tok t1" x="84" y="130" width="8" height="8" rx="2"></rect>
-    <rect class="tok t2" x="106" y="130" width="8" height="8" rx="2"></rect>
-    <rect class="tok t3" x="128" y="130" width="8" height="8" rx="2"></rect>
-    <rect class="tok t4" x="150" y="130" width="8" height="8" rx="2"></rect>
-    <rect class="tok t5" x="172" y="130" width="8" height="8" rx="2"></rect>
+    <rect class="tok r1" x="66" y="160" width="8" height="8" rx="2"></rect>
+    <rect class="tok r2" x="88" y="160" width="8" height="8" rx="2"></rect>
+    <rect class="tok r3" x="110" y="160" width="8" height="8" rx="2"></rect>
+    <rect class="tok r4" x="132" y="160" width="8" height="8" rx="2"></rect>
+    <rect class="tok r5" x="154" y="160" width="8" height="8" rx="2"></rect>
+    <rect class="tok r6" x="176" y="160" width="8" height="8" rx="2"></rect>
   </g>
+  <path class="bypass" d="M196 150 C214 134 214 96 198 72"></path>
+  <rect class="btok" x="192" y="146" width="7" height="7" rx="2"></rect>
 
-  <!-- the backward path stops at the active block -->
-  <text class="lbl lbl-on" x="272" y="22" text-anchor="middle">GRADIENT</text>
-  <path class="grad" d="M272 30 V54"></path>
-  <path d="M272 60 l-4 -7 h8 Z" fill="#3b82f6"></path>
+  <!-- the one block being updated walks up the stack -->
+  <rect class="active" x="56" y="132" width="140" height="26" rx="8"
+        fill="#3b82f6" fill-opacity="0.07" stroke="#3b82f6" stroke-width="1.4"></rect>
+  <text class="lbl on atag" x="202" y="148">ACTIVE</text>
+
+  <!-- the backward pass only has to reach that block -->
+  <text class="lbl on" x="240" y="17" text-anchor="middle">GRADIENT</text>
+  <path class="gline" d="M240 24 V145"></path>
+  <path class="ghead" d="M240 150 l-4 -7 h8 Z"></path>
+
+  <!-- information flow sparsifies -->
+  <text class="lbl" x="258" y="40">SPARSE FLOW</text>
+  <g>
+    <rect class="sp" x="258" y="48" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+    <rect x="269" y="48" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+    <rect class="sp" x="280" y="48" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.2s"></rect>
+    <rect x="291" y="48" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+    <rect class="sp" x="302" y="48" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.4s"></rect>
+    <rect x="258" y="59" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+    <rect class="sp" x="269" y="59" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.1s"></rect>
+    <rect class="sp" x="280" y="59" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.5s"></rect>
+    <rect x="291" y="59" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+    <rect class="sp" x="302" y="59" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.3s"></rect>
+    <rect class="sp" x="258" y="70" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.45s"></rect>
+    <rect x="269" y="70" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+    <rect class="sp" x="280" y="70" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.15s"></rect>
+    <rect class="sp" x="291" y="70" width="8" height="8" rx="1.5" fill="#cbd5e1" style="animation-delay:.55s"></rect>
+    <rect x="302" y="70" width="8" height="8" rx="1.5" fill="#cbd5e1"></rect>
+  </g>
 </svg>
