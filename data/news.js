@@ -20,14 +20,16 @@ const NEWS = [
     date: 'Oct 2026',
     content: 'Our lab has been selected for <strong>Lambda\'s Research Grant Program</strong>, which supports our research with GPU compute.',
     content_ko: '<strong>Lambda Research Grant Program</strong>에 선정되어 연구용 GPU 자원을 지원받게 되었습니다.',
-    badge: 'Lambda',
+    image: 'images/news/lambda.svg',
+    imageAlt: 'Lambda',
     highlight: false,
   },
   {
     date: 'Sep 2026',
     content: 'Three papers accepted as <strong>oral</strong> presentations at <strong>HCLT 2026</strong>. Congrats to Chaeyoung, Jin Hui, and Eunyeong!',
     content_ko: '<strong>HCLT 2026</strong>에 논문 3편이 <strong>구두 발표(Oral)</strong>로 게재 승인되었습니다. 채영, 진희, 은영 학생 축하합니다!',
-    badge: 'HCLT',
+    image: 'images/news/hclt.png',
+    imageAlt: '언어공학연구회 SigHclt',
     highlight: false,
   },
   {

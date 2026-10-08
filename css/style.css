@@ -266,7 +266,7 @@ header {
   transition: background 0.2s;
 }
 .news-logo {
-  width: 84px; min-height: 36px;
+  width: 84px; min-height: 36px; align-self: center;
   display: flex; align-items: center; justify-content: center;
 }
 .news-logo img { max-width: 84px; max-height: 40px; object-fit: contain; display: block; }
