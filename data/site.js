@@ -31,11 +31,11 @@ const SITE = {
 
   // Welcome message (Home page)
   welcome: {
-    intro: `Welcome to the <strong>Language &amp; Adaptive Intelligence Lab (LAI Lab)</strong>.
+    intro: `Welcome to the <strong>Language &amp; Adaptive Intelligence Lab (LAI Lab)</strong> at HUFS.
       We pursue research in natural language processing, with a focus on building efficient and adaptive large language models.
       Our work covers a broad range of topics including model efficiency, reliable adaptation and alignment,
       and language applications across diverse real-world domains such as science and industry.`,
-    intro_ko: `<strong>언어·적응형 지능 연구실(LAI Lab)</strong>에 오신 것을 환영합니다.
+    intro_ko: `한국외국어대학교(HUFS) <strong>언어·적응형 지능 연구실(LAI Lab)</strong>에 오신 것을 환영합니다.
       저희는 자연어 처리를 연구하며, 특히 효율적이고 적응력 있는 대규모 언어 모델을 구축하는 데 집중하고 있습니다.
       연구 주제는 모델 효율성, 신뢰할 수 있는 적응 및 정렬(alignment),
       그리고 과학·산업 등 다양한 실제 도메인에서의 언어 응용에 이르기까지 폭넓게 아우릅니다.`,

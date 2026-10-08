@@ -236,17 +236,20 @@ function renderHome() {
       <img class="campus" src="images/campus.jpg"
            alt="${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')}"
            loading="lazy" onerror="this.remove();">
-    </div>
 
-    <section class="home-join fade-in">
-      <div class="home-section-title">${SITE.recruitment.title}</div>
+      <!-- The call for students closes the welcome rather than standing as its
+           own section: the mark keeps the news rows' left column. -->
       <div class="join-row">
         <div class="join-mark-col">
           <img class="join-mark" src="images/join.svg" alt="" loading="lazy" onerror="this.remove();">
         </div>
-        <p class="join-text">${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>
+        <div class="join-text">
+          <span class="join-title">${SITE.recruitment.title}</span>
+          <p>${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>
+        </div>
       </div>
-    </section>
+
+    </div>
 
     <section class="home-news fade-in">
       <div class="home-section-title">News</div>
