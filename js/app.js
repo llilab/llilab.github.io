@@ -303,13 +303,8 @@ function renderResearch() {
         <h3>${r.title}</h3>
         <div class="research-item-head">
           <p>${L(r.description, r.description_ko)}</p>
-          <div class="research-aside">
-            ${r.illustration ? `<img class="research-illus" src="${r.illustration}" alt=""
-                   loading="lazy" onerror="this.remove();">` : ''}
-            <div class="research-keywords">
-              ${r.keywords.map(k => `<span class="keyword">${k}</span>`).join('')}
-            </div>
-          </div>
+          ${r.illustration ? `<img class="research-illus" src="${r.illustration}" alt=""
+                 loading="lazy" onerror="this.remove();">` : ''}
         </div>
         ${highlightsHTML}
       </section>
