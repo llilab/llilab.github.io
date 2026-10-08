@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img"
+     aria-label="A molecular substructure being aligned with the phrase that describes it">
+  <style>
+    .panel { fill: #ffffff; stroke: #e5e7eb; stroke-width: 1; }
+    .lbl   { font-family: -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif;
+             font-size: 9px; fill: #9ca3af; letter-spacing: 0.04em; }
+    .smiles{ font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 8px; fill: #9ca3af; }
+    .bond  { fill: none; stroke: #0d1b2a; stroke-width: 1.5; stroke-linecap: round; }
+    .bondi { fill: none; stroke: #0d1b2a; stroke-width: 1; stroke-linecap: round; }
+    .atom  { fill: #ffffff; stroke: #0d1b2a; stroke-width: 1.3; }
+    .bar   { fill: #e5e7eb; }
+    .hl    { animation: glow 6s ease-in-out infinite; }
+    .link  { fill: none; stroke: #3b82f6; stroke-width: 1.3; stroke-dasharray: 3 3;
+             animation: flow 1.5s linear infinite, appear 6s ease-in-out infinite; }
+    @keyframes glow   { 0%, 10% { opacity: 0 } 22%, 62% { opacity: 1 } 76%, 100% { opacity: 0 } }
+    @keyframes appear { 0%, 12% { opacity: 0 } 24%, 60% { opacity: 1 } 74%, 100% { opacity: 0 } }
+    @keyframes flow   { to { stroke-dashoffset: -12 } }
+    @media (prefers-reduced-motion: reduce) {
+      .hl, .link { animation: none; opacity: 1 }
+    }
+  </style>
+
+  <text class="lbl" x="12" y="20">MOLECULE</text>
+  <text class="lbl" x="188" y="20">DESCRIPTION</text>
+
+  <rect class="panel" x="10" y="28" width="130" height="116" rx="8"></rect>
+  <rect class="panel" x="186" y="28" width="124" height="116" rx="8"></rect>
+
+  <!-- benzene-like ring with one substituent -->
+  <path class="bond" d="M75 58 L95.8 70 L95.8 94 L75 106 L54.2 94 L54.2 70 Z"></path>
+  <path class="bondi" d="M77 64 L91 72"></path>
+  <path class="bondi" d="M91.8 76 L91.8 88"></path>
+  <path class="bondi" d="M73 100 L59 92"></path>
+  <path class="bond" d="M95.8 70 L112 61"></path>
+  <circle class="atom" cx="115" cy="59" r="4.5"></circle>
+  <text class="smiles" x="75" y="130" text-anchor="middle">C1=CC=CC=C1 C(=O)O</text>
+
+  <!-- highlighted substructure -->
+  <g class="hl">
+    <circle cx="104" cy="65" r="15" fill="#3b82f6" opacity="0.14"></circle>
+    <path d="M95.8 70 L112 61" fill="none" stroke="#1e40af" stroke-width="1.8" stroke-linecap="round"></path>
+    <circle cx="115" cy="59" r="4.5" fill="#ffffff" stroke="#1e40af" stroke-width="1.6"></circle>
+  </g>
+
+  <!-- caption lines -->
+  <rect class="bar" x="198" y="54" width="88" height="6" rx="3"></rect>
+  <rect class="bar" x="198" y="70" width="100" height="6" rx="3"></rect>
+  <rect class="bar" x="198" y="86" width="74" height="6" rx="3"></rect>
+  <rect class="bar" x="198" y="102" width="92" height="6" rx="3"></rect>
+
+  <!-- the phrase that matches the substructure -->
+  <g class="hl">
+    <rect x="214" y="66" width="52" height="14" rx="4" fill="#3b82f6" opacity="0.14"></rect>
+    <rect x="216" y="70" width="48" height="6" rx="3" fill="#1e40af"></rect>
+  </g>
+
+  <path class="link" d="M122 72 C148 72 166 70 194 72"></path>
+  <path class="link" d="M120 88 C148 90 168 82 194 78"></path>
+</svg>

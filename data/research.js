@@ -9,6 +9,7 @@
  *
  *  Fields:
  *    id          — Area key, matched against PUBLICATIONS[].area
+ *    illustration— Animated SVG shown beside the overview (images/research/)
  *    title       — Area title
  *    description — Overview paragraph (EN), description_ko for KO
  *    keywords    — Array of keyword strings
@@ -24,6 +25,7 @@
 const RESEARCH = [
   {
     id: 'ai4science',
+    illustration: 'images/research/ai4science.svg',
     title: 'AI for Science',
     description: 'Science has its own languages: SMILES strings, reaction descriptions, decades of materials literature. We build language models that read them and connect that text to molecular structure and physical properties. Our work covers chemical language representation learning for molecular property prediction, cross-modal alignment between molecules and the text that describes them, and adapting general-purpose language models to materials science through domain-aware continued pre-training and knowledge transfer.',
     description_ko: '과학에는 고유한 언어가 있습니다. SMILES 문자열, 반응 기술문, 수십 년간 축적된 재료 문헌이 그것입니다. 우리는 이러한 언어를 읽고 분자 구조 및 물성과 연결하는 언어 모델을 연구합니다. 분자 물성 예측을 위한 화학 언어 표현 학습, 분자와 이를 설명하는 텍스트 간의 교차 모달 정렬, 그리고 도메인 특화 추가 사전학습과 지식 전이를 통한 범용 언어 모델의 재료과학 적응을 다룹니다.',
@@ -48,6 +50,7 @@ const RESEARCH = [
   },
   {
     id: 'efficient',
+    illustration: 'images/research/efficient.svg',
     title: 'Efficient AI',
     description: 'Large models are limited less by ideas than by memory and compute. We look for the parts of a computation that actually carry signal and cut the rest. On the training side this means memory-efficient fine-tuning: deciding which blocks to update and how gradients should reach them, letting the forward pass tell the backward pass where to spend memory, and adapting a large model through a small guided proxy. On the inference side we sparsify information flows, route tokens dynamically so easy inputs take short paths, and prune model structure. We also study data efficiency through active learning and core-set selection.',
     description_ko: '대규모 모델의 한계는 아이디어보다 메모리와 연산에서 옵니다. 우리는 연산 중 실제로 의미 있는 부분을 찾아내고 나머지를 줄입니다. 학습 측면에서는 어떤 블록을 갱신하고 그래디언트를 어떻게 전달할지 결정하는 방법, 순전파가 역전파의 메모리 사용처를 알려주는 방법, 작은 프록시로 큰 모델을 적응시키는 방법 등 메모리 효율적 미세조정을 연구합니다. 추론 측면에서는 정보 흐름을 희소화하고, 쉬운 입력이 짧은 경로를 지나도록 토큰을 동적으로 라우팅하며, 모델 구조를 가지치기합니다. 능동 학습과 코어셋 선택을 통한 데이터 효율성도 함께 다룹니다.',
@@ -72,6 +75,7 @@ const RESEARCH = [
   },
   {
     id: 'nlp',
+    illustration: 'images/research/reliable.svg',
     title: 'Reliable & Robust AI',
     description: 'A model that scores well on a benchmark often leans on shortcuts in the data, and fine-tuning on imperfect labels makes that worse. We study how to keep models dependable when the data does not cooperate: mitigating dataset bias during parameter-efficient fine-tuning, keeping that fine-tuning robust and generalizable under noisy labels, and stabilizing training with adversarial and virtual-adversarial objectives. We also work on representation learning for words and subwords a model has never seen.',
     description_ko: '벤치마크 점수가 높은 모델도 데이터의 지름길에 기대는 경우가 많고, 불완전한 레이블로 미세조정하면 문제는 더 커집니다. 우리는 데이터가 이상적이지 않은 상황에서도 모델을 신뢰할 수 있게 만드는 방법을 연구합니다. 파라미터 효율적 미세조정 과정에서의 데이터셋 편향 완화, 잡음 레이블 하에서의 강건하고 일반화되는 미세조정, 적대적·가상 적대적 목적함수를 통한 학습 안정화를 다룹니다. 모델이 학습 중 본 적 없는 단어와 서브워드에 대한 표현 학습도 함께 연구합니다.',

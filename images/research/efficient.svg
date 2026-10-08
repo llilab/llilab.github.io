@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160" role="img"
+     aria-label="Tokens routed through frozen and active transformer blocks while memory use falls">
+  <style>
+    .lbl    { font-family: -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', sans-serif;
+              font-size: 9px; fill: #9ca3af; letter-spacing: 0.04em; }
+    .lbl-on { fill: #1e40af; }
+    .frozen { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .active { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.3; }
+    .rail   { stroke: #e5e7eb; stroke-width: 1; }
+    .tok    { fill: #3b82f6; }
+    .t1 { animation: rise 4.2s ease-in-out infinite }
+    .t2 { animation: rise 4.2s ease-in-out infinite .35s }
+    .t3 { animation: rise-short 4.2s ease-in-out infinite .7s }
+    .t4 { animation: rise 4.2s ease-in-out infinite 1.05s }
+    .t5 { animation: rise-short 4.2s ease-in-out infinite 1.4s }
+    .grad { fill: none; stroke: #3b82f6; stroke-width: 1.3; stroke-dasharray: 4 3;
+            animation: drip 1.4s linear infinite; }
+    .mem  { transform-box: fill-box; transform-origin: 50% 100%; animation: shrink 4.2s ease-in-out infinite; }
+    @keyframes rise       { 0% { transform: translateY(0); opacity: 0 }
+                            12% { opacity: 1 }
+                            70%, 100% { transform: translateY(-96px); opacity: 0 } }
+    @keyframes rise-short { 0% { transform: translateY(0); opacity: 0 }
+                            12% { opacity: 1 }
+                            45%, 100% { transform: translateY(-38px); opacity: 0 } }
+    @keyframes drip       { to { stroke-dashoffset: -14 } }
+    @keyframes shrink     { 0%, 100% { transform: scaleY(1) } 55% { transform: scaleY(0.42) } }
+    @media (prefers-reduced-motion: reduce) {
+      .t1, .t2, .t3, .t4, .t5 { animation: none; opacity: 1 }
+      .grad, .mem { animation: none }
+    }
+  </style>
+
+  <!-- memory gauge -->
+  <text class="lbl" x="33" y="22" text-anchor="middle">MEMORY</text>
+  <rect x="27" y="30" width="12" height="100" rx="6" fill="#f3f4f6"></rect>
+  <rect class="mem" x="27" y="30" width="12" height="100" rx="6" fill="#3b82f6" opacity="0.75"></rect>
+
+  <!-- token rails -->
+  <path class="rail" d="M88 134 V26 M110 134 V26 M132 134 V26 M154 134 V26 M176 134 V26"></path>
+
+  <!-- transformer blocks, frozen below and active on top -->
+  <rect class="frozen" x="70" y="98" width="124" height="24" rx="6"></rect>
+  <rect class="frozen" x="70" y="64" width="124" height="24" rx="6"></rect>
+  <rect class="active" x="70" y="30" width="124" height="24" rx="6"></rect>
+  <text class="lbl" x="200" y="114">frozen</text>
+  <text class="lbl" x="200" y="80">frozen</text>
+  <text class="lbl lbl-on" x="200" y="46">active</text>
+
+  <!-- tokens flowing up; two of them exit early -->
+  <g>
+    <rect class="tok t1" x="84" y="130" width="8" height="8" rx="2"></rect>
+    <rect class="tok t2" x="106" y="130" width="8" height="8" rx="2"></rect>
+    <rect class="tok t3" x="128" y="130" width="8" height="8" rx="2"></rect>
+    <rect class="tok t4" x="150" y="130" width="8" height="8" rx="2"></rect>
+    <rect class="tok t5" x="172" y="130" width="8" height="8" rx="2"></rect>
+  </g>
+
+  <!-- the backward path stops at the active block -->
+  <text class="lbl lbl-on" x="272" y="22" text-anchor="middle">GRADIENT</text>
+  <path class="grad" d="M272 30 V54"></path>
+  <path d="M272 60 l-4 -7 h8 Z" fill="#3b82f6"></path>
+</svg>
