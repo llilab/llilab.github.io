@@ -592,15 +592,21 @@ footer {
 }
 .join-banner-body {
   position: relative;
-  display: flex; align-items: center; justify-content: center; gap: 1.25rem;
+  display: flex; align-items: center; justify-content: center;
   text-align: center;
 }
-.join-banner-text { min-width: 0; }
+/* The copy stays on the banner's centre line; the mark sits out at the left
+   rather than pushing the heading off centre. */
+.join-banner-text { min-width: 0; padding: 0 6.5rem; }
 /* A new node joining the lab's network, in the space the button left. */
-.join-mark { width: 92px; height: 60px; flex-shrink: 0; display: block; }
+.join-mark {
+  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+  width: 76px; height: 64px; display: block;
+}
 
-@media (max-width: 560px) {
+@media (max-width: 700px) {
   .join-mark { display: none; }
+  .join-banner-text { padding: 0; }
 }
 .join-banner-title {
   font-weight: 600;
