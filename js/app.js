@@ -238,11 +238,13 @@ function renderHome() {
            loading="lazy" onerror="this.remove();">
 
       <!-- The call for students closes the welcome rather than standing as its
-           own section: the mark keeps the news rows' left column. -->
+           own section. The mark is parked: the text alone reads quieter here. -->
       <div class="join-row">
+        <!-- mark parked for now
         <div class="join-mark-col">
           <img class="join-mark" src="images/join.svg" alt="" loading="lazy" onerror="this.remove();">
         </div>
+        -->
         <div class="join-text">
           <span class="join-title">${SITE.recruitment.title}</span>
           <p>${L(SITE.recruitment.description, SITE.recruitment.description_ko)}</p>

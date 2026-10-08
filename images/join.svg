@@ -1,65 +1,108 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 64" width="76" height="64" role="img"
-     aria-label="Signals travelling across the lab's network as a new member joins an open place">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 104" width="168" height="104" role="img"
+     aria-label="The lab drawn as a tree in leaf, putting out one more branch toward a leaf that has yet to open">
   <style>
-    .edge { fill: none; stroke: #cbd5e1; stroke-width: 1.3; stroke-linecap: round;
-            stroke-dasharray: 3.5 3.5; animation: flow 1.5s linear infinite; }
-    .e2 { animation-duration: 1.9s }  .e3 { animation-duration: 1.3s }
-    .e4 { animation-duration: 2.2s }  .e5 { animation-duration: 1.7s }
-    .hub  { fill: #1e40af; transform-box: fill-box; transform-origin: 50% 50%;
-            animation: beat 2.6s ease-in-out infinite; }
-    .node { fill: #1e40af; transform-box: fill-box; transform-origin: 50% 50%;
-            animation: blip 2.4s ease-in-out infinite; }
-    .n2 { animation-delay: .4s; fill: #3b82f6 }  .n3 { animation-delay: .8s }
-    .n4 { animation-delay: 1.2s; fill: #3b82f6 } .n5 { animation-delay: 1.6s }
+    /* palette taken from the lab logo: charcoal pot, teal-blue left, green right */
+    .wood  { fill: #434a4e }
+    .limb-b { fill: none; stroke: #378aae; stroke-width: 2.4; stroke-linecap: round }
+    .limb-g { fill: none; stroke: #6ca463; stroke-width: 2.4; stroke-linecap: round }
+    .twig-b { fill: none; stroke: #7bbcd3; stroke-width: 1.5; stroke-linecap: round }
+    .twig-g { fill: none; stroke: #9cc994; stroke-width: 1.5; stroke-linecap: round }
+    .soil  { fill: none; stroke: #c8cdd0; stroke-width: 1.8; stroke-linecap: round }
 
-    .slot { fill: none; stroke: #93c5fd; stroke-width: 1.3; stroke-dasharray: 3 2.5;
-            transform-box: fill-box; transform-origin: 50% 50%;
-            animation: slot 5s ease-in-out infinite, spin 9s linear infinite; }
-    .join-edge { fill: none; stroke: #3b82f6; stroke-width: 1.5; stroke-linecap: round;
-                 stroke-dasharray: 24; animation: link 5s ease-in-out infinite; }
-    .join-node { fill: #3b82f6; transform-box: fill-box; transform-origin: 50% 50%;
-                 animation: land 5s cubic-bezier(.3,1.4,.5,1) infinite; }
-    .pulse { fill: none; stroke: #3b82f6; stroke-width: 1.2; transform-box: fill-box;
-             transform-origin: 50% 50%; animation: pulse 5s ease-out infinite; }
+    .sap { fill: none; stroke-width: 1.8; stroke-linecap: round;
+           stroke-dasharray: 5 28; animation: rise 3s linear infinite }
+    .s1 { stroke: #a3d4e3 }
+    .s2 { stroke: #c6e0bd; animation-duration: 3.8s; animation-delay: .7s }
+    .s3 { stroke: #a3d4e3; animation-duration: 2.5s; animation-delay: 1.4s }
 
-    @keyframes flow  { to { stroke-dashoffset: -14 } }
-    @keyframes beat  { 0%, 100% { transform: scale(1) } 50% { transform: scale(1.12) } }
-    @keyframes blip  { 0%, 70%, 100% { transform: scale(1); opacity: .85 }
-                       35% { transform: scale(1.3); opacity: 1 } }
-    @keyframes slot  { 0%, 24% { opacity: 1 } 34%, 100% { opacity: 0 } }
-    @keyframes spin  { to { transform: rotate(360deg) } }
-    @keyframes link  { 0%, 22% { stroke-dashoffset: 24 } 40%, 92% { stroke-dashoffset: 0 }
-                       100% { stroke-dashoffset: 24 } }
-    @keyframes land  { 0%, 26% { transform: translate(10px, 9px) scale(0); opacity: 0 }
-                       42%, 92% { transform: translate(0, 0) scale(1); opacity: 1 }
-                       100% { transform: translate(10px, 9px) scale(0); opacity: 0 } }
-    @keyframes pulse { 0%, 42% { transform: scale(.6); opacity: 0 }
-                       54% { opacity: .5 } 74%, 100% { transform: scale(2.4); opacity: 0 } }
+    /* every leaf turns on the point where it meets its twig */
+    .leaf { transform-box: fill-box; transform-origin: 50% 100%;
+            animation: flutter 4.6s ease-in-out infinite }
+    .a { animation-delay: .25s } .b { animation-delay: .6s }  .c { animation-delay: .95s }
+    .d { animation-delay: 1.3s } .e { animation-delay: 1.65s } .f { animation-delay: 2s }
+    .g { animation-delay: 2.35s } .h { animation-delay: 2.7s } .i { animation-delay: 3.05s }
+
+    .new-limb { fill: none; stroke: #58a84d; stroke-width: 2.1; stroke-linecap: round;
+                stroke-dasharray: 30; animation: grow 5.5s ease-in-out infinite }
+    .socket { fill: none; stroke: #9cc994; stroke-width: 1.3; stroke-dasharray: 3.5 2.8;
+              animation: socket 5.5s ease-in-out infinite }
+    .new-leaf { transform-box: fill-box; transform-origin: 50% 100%;
+                animation: sprout 5.5s cubic-bezier(.3,1.5,.5,1) infinite }
+    .ring { fill: none; stroke: #58a84d; stroke-width: 1.3; transform-box: fill-box;
+            transform-origin: 50% 50%; animation: ring 5.5s ease-out infinite }
+
+    @keyframes rise    { to { stroke-dashoffset: -66 } }
+    @keyframes flutter { 0%, 100% { transform: rotate(-4.5deg) } 50% { transform: rotate(5deg) } }
+    @keyframes grow    { 0%, 26% { stroke-dashoffset: 30 } 46%, 92% { stroke-dashoffset: 0 }
+                         100% { stroke-dashoffset: 30 } }
+    @keyframes socket  { 0%, 30% { opacity: 1 } 44%, 100% { opacity: 0 } }
+    @keyframes sprout  { 0%, 40% { transform: scale(0); opacity: 0 }
+                         56%, 92% { transform: scale(1); opacity: 1 }
+                         100% { transform: scale(0); opacity: 0 } }
+    @keyframes ring    { 0%, 54% { transform: scale(.5); opacity: 0 }
+                         64% { opacity: .5 } 84%, 100% { transform: scale(2.2); opacity: 0 } }
     @media (prefers-reduced-motion: reduce) {
-      .edge, .hub, .node, .join-node, .slot, .pulse { animation: none }
-      .slot, .pulse { opacity: 0 }
-      .join-edge { animation: none; stroke-dashoffset: 0 }
-      .join-node { opacity: 1 }
+      .sap, .leaf, .socket, .new-leaf, .ring { animation: none }
+      .socket, .ring { opacity: 0 }
+      .new-limb { animation: none; stroke-dashoffset: 0 }
     }
   </style>
 
-  <!-- signals keep moving along the links -->
-  <path class="edge"    d="M38 32 L16 21"></path>
-  <path class="edge e2" d="M38 32 L16 45"></path>
-  <path class="edge e3" d="M38 32 L38 10"></path>
-  <path class="edge e4" d="M38 32 L60 21"></path>
-  <path class="edge e5" d="M38 32 L38 54"></path>
+  <defs>
+    <g id="lf">
+      <path d="M0 -7.2 C4.9 -4 4.9 3.6 0 7.2 C-4.9 3.6 -4.9 -4 0 -7.2 Z"></path>
+      <path d="M0 -5 V5.4" fill="none" stroke="#ffffff" stroke-opacity=".45"
+            stroke-width=".9" stroke-linecap="round"></path>
+    </g>
+    <g id="lfo">
+      <path d="M0 -7.2 C4.9 -4 4.9 3.6 0 7.2 C-4.9 3.6 -4.9 -4 0 -7.2 Z"></path>
+    </g>
+  </defs>
 
-  <circle class="node"    cx="16" cy="21" r="3.6"></circle>
-  <circle class="node n2" cx="16" cy="45" r="3.2"></circle>
-  <circle class="node n3" cx="38" cy="10" r="3.6"></circle>
-  <circle class="node n4" cx="60" cy="21" r="3.2"></circle>
-  <circle class="node n5" cx="38" cy="54" r="3.6"></circle>
-  <circle class="hub" cx="38" cy="32" r="5.2"></circle>
+  <!-- trunk, boughs, twigs -->
+  <path class="wood" d="M47 99 C50 88 51 80 51 70 L57 70 C57 80 58 88 61 99 Z"></path>
+  <path class="limb-b" d="M54 70 C46 62 38 56 28 50"></path>
+  <path class="limb-b" d="M54 70 C50 58 46 46 42 34"></path>
+  <path class="limb-b" d="M54 70 C55 56 56 44 56 28"></path>
+  <path class="limb-g" d="M54 70 C64 60 74 52 86 44"></path>
+  <path class="twig-b" d="M38 56 C34 48 31 42 29 36"></path>
+  <path class="twig-b" d="M48 52 C52 44 56 38 62 32"></path>
+  <path class="twig-g" d="M70 55 C76 48 82 44 88 40"></path>
+  <path class="twig-g" d="M86 44 C96 40 106 36 114 32"></path>
+  <path class="twig-g" d="M78 49 C84 44 90 38 96 34"></path>
 
-  <!-- the open place, and the person who takes it -->
-  <circle class="slot" cx="60" cy="45" r="5"></circle>
-  <path class="join-edge" d="M38 32 L60 45"></path>
-  <circle class="pulse" cx="60" cy="45" r="5"></circle>
-  <circle class="join-node" cx="60" cy="45" r="4.4"></circle>
+  <path class="sap s1" d="M54 99 C54 86 54 78 54 70 C55 56 56 44 56 28"></path>
+  <path class="sap s2" d="M54 99 C54 86 54 78 54 70 C64 60 74 52 86 44 C96 40 106 36 114 32"></path>
+  <path class="sap s3" d="M54 99 C54 86 54 78 54 70 C46 62 38 56 28 50"></path>
+
+  <!-- canopy: teal-blue on the logo's left side, green on its right -->
+  <g transform="translate(26 50) rotate(-55) scale(.85)"><use class="leaf a" href="#lf" fill="#67b2cc"></use></g>
+  <g transform="translate(22 40) rotate(-47) scale(.8)"><use class="leaf d"  href="#lf" fill="#378aae"></use></g>
+  <g transform="translate(30 38) rotate(-37) scale(.95)"><use class="leaf b" href="#lf" fill="#1f6a88"></use></g>
+  <g transform="translate(32 27) rotate(-28) scale(.9)"><use class="leaf g"  href="#lf" fill="#378aae"></use></g>
+  <g transform="translate(40 44) rotate(-28) scale(.85)"><use class="leaf e" href="#lf" fill="#a3d4e3"></use></g>
+  <g transform="translate(42 30) rotate(-17)"><use class="leaf c"            href="#lf" fill="#1f6a88"></use></g>
+  <g transform="translate(44 18) rotate(-11) scale(.9)"><use class="leaf h"  href="#lf" fill="#378aae"></use></g>
+  <g transform="translate(52 36) rotate(-3) scale(.95)"><use class="leaf f"  href="#lf" fill="#67b2cc"></use></g>
+  <g transform="translate(54 24) rotate(0) scale(1.05)"><use class="leaf i"  href="#lf" fill="#1f6a88"></use></g>
+  <g transform="translate(56 12) rotate(3) scale(.85)"><use class="leaf b"   href="#lf" fill="#6ca463"></use></g>
+  <g transform="translate(64 30) rotate(14)"><use class="leaf e"             href="#lf" fill="#4b8a44"></use></g>
+  <g transform="translate(66 18) rotate(13) scale(.9)"><use class="leaf a"   href="#lf" fill="#6ca463"></use></g>
+  <g transform="translate(74 40) rotate(34) scale(.9)"><use class="leaf g"   href="#lf" fill="#97c58d"></use></g>
+  <g transform="translate(76 28) rotate(28)"><use class="leaf c"             href="#lf" fill="#4b8a44"></use></g>
+  <g transform="translate(86 36) rotate(43) scale(.95)"><use class="leaf i"  href="#lf" fill="#6ca463"></use></g>
+  <g transform="translate(88 24) rotate(36) scale(.85)"><use class="leaf d"  href="#lf" fill="#c6e0bd"></use></g>
+  <g transform="translate(98 32) rotate(49) scale(.9)"><use class="leaf f"   href="#lf" fill="#4b8a44"></use></g>
+  <g transform="translate(108 27) rotate(52) scale(.85)"><use class="leaf h" href="#lf" fill="#6ca463"></use></g>
+  <g transform="translate(116 33) rotate(60) scale(.8)"><use class="leaf b"  href="#lf" fill="#97c58d"></use></g>
+
+  <!-- one more branch, and the leaf that opens when someone joins -->
+  <path class="new-limb" d="M118 31 C127 29 135 27 143 25"></path>
+  <g transform="translate(148 23) rotate(58)">
+    <use class="socket" href="#lfo"></use>
+    <circle class="ring" cx="0" cy="0" r="8.5"></circle>
+    <use class="new-leaf" href="#lf" fill="#58a84d"></use>
+  </g>
+
+  <path class="soil" d="M30 100 H78"></path>
 </svg>
