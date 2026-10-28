@@ -19,7 +19,6 @@ html { overflow-y: scroll; }
   --border-light: #f3f4f6;
   --bg: #ffffff;
   --surface: #f9fafb;
-  --header-bg: #f7f9fb;
   --content: 960px;
   /* Pretendard covers Latin and Hangul in one family, so EN/KO keep the
      same metrics and the layout does not shift on language switch.
@@ -37,12 +36,9 @@ a { color: var(--blue); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ═══════════════ HEADER ═══════════════ */
-/* A faint cool tint is the whole of it: enough to lift the header off the
-   white page while it is stuck to the top, with the usual hairline under it.
-   A coloured rule here competes with the active nav tab's own underline. */
 header {
-  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
+  background: var(--bg);
   position: sticky; top: 0; z-index: 100;
 }
 
