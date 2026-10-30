@@ -131,15 +131,23 @@ function renderHighlightSlider() {
   const slides = PUBLICATIONS.filter(p => p.featured && p.image).slice(0, 5);
   if (slides.length === 0) return '';
 
-  const slidesHTML = slides.map((p, i) => `
+  // Several featured papers have no link yet. A bare href="#" looks clickable
+  // and goes nowhere, so the title is plain text until there is somewhere to go.
+  const slidesHTML = slides.map((p, i) => {
+    const url = p.links[0]?.url;
+    const title = url
+      ? `<a href="${url}" target="_blank" rel="noopener">${p.title}</a>`
+      : p.title;
+    return `
     <div class="slider-slide" data-index="${i}" style="background-image:url('${p.image}')">
       <div class="slider-overlay">
         <span class="recent-tag ${venueTagClass(p.venue, p.type)}">${shortVenue(p.venue, p.year, p.type)}</span>
-        <h3><a href="${p.links[0]?.url || '#'}">${p.title}</a></h3>
+        <h3>${title}</h3>
         <div class="slider-venue">${p.venue}</div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 
   const dotsHTML = slides.map((_, i) =>
     `<button class="slider-dot${i === 0 ? ' active' : ''}" data-slide="${i}" aria-label="Go to slide ${i + 1}"></button>`
@@ -223,19 +231,15 @@ function renderHome() {
                 data-more="${L('More', '더보기')} (${olderNews.length})" data-less="${L('Less', '접기')}">${L('More', '더보기')} (${olderNews.length})</button>
       ` : '');
 
-  // Research Highlights is parked for now. renderHighlightSlider() is still
-  // here and still works: put its call back at the top of the markup below
-  // to bring the slider back.
+  // Highlights lead: the work is what a visitor came for. The welcome and the
+  // call for students follow, and news closes the page.
   return `
+    ${renderHighlightSlider()}
+
     <div class="home-welcome fade-in">
-      <div class="home-section-title">${L('Welcome', '환영합니다')}</div>
       <p class="welcome-intro">${L(SITE.welcome.intro, SITE.welcome.intro_ko)}</p>
 
       <a href="#publications" class="view-all" onclick="showPage('publications');return false;">${L('View all publications', '전체 논문 보기')}</a>
-
-      <img class="campus" src="images/campus.jpg"
-           alt="${L('Hankuk University of Foreign Studies, Seoul Campus', '한국외국어대학교 서울캠퍼스')}"
-           loading="lazy" onerror="this.remove();">
 
       <!-- The call for students closes the welcome rather than standing as its
            own section. The mark is parked: the text alone reads quieter here. -->
