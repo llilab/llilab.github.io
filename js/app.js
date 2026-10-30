@@ -761,17 +761,18 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   updateLangToggle();
 
-  // Build header with logo
+  // Build header: the lockup reads wordmark, full name, then the mark closing
+  // it on the right. One link, so there is a single home target.
   const headerTop = document.querySelector('.header-top');
   headerTop.innerHTML = `
     <a href="#home" class="header-logo-link" onclick="showPage('home');return false;">
-      <img src="images/lai_logo.png" alt="${SITE.labName}" class="header-logo">
       <span class="header-logo-title">${SITE.labShort}</span>
       <span class="header-logo-divider"></span>
       <div class="header-logo-text">
         <span class="header-logo-subtitle">${SITE.labName}</span>
         <span class="header-logo-univ">${SITE.university}</span>
       </div>
+      <img src="images/lai_logo.png" alt="${SITE.labName}" class="header-logo">
     </a>
   `;
 

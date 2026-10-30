@@ -47,8 +47,11 @@ header {
   padding: 1.2rem 2rem 0;
 }
 
+/* The mark closes the lockup on the right, so it must not be pushed out of
+   line when the name wraps on a narrow screen. */
 .header-logo-link { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
 .header-logo-link:hover { text-decoration: none; opacity: 0.85; }
+.header-logo-link .header-logo { flex-shrink: 0; }
 /* The mark is a tree in a pot, so it grows out of the pot once on load and
    leans in slightly on hover. It plays once, not on a loop: the header is
    sticky, and something moving up there the whole time is a distraction. */
