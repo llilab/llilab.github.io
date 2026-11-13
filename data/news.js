@@ -29,14 +29,16 @@ const NEWS = [
     date: 'Sep 2026',
     content: 'Prof. Kim is serving as <strong>PI</strong> of a project on <strong>AI-based performance analysis for national team athletes</strong>, funded by the Korean Sport &amp; Olympic Committee.',
     content_ko: '김예찬 교수가 대한체육회의 <strong>국가대표를 위한 AI 경기력 분석</strong> 과제의 <strong>연구책임자(PI)</strong>를 맡았습니다.',
-    badge: 'KSOC',
+    image: 'images/news/ksoc.svg',
+    imageAlt: '대한체육회 Korean Sport & Olympic Committee',
     highlight: false,
   },
   {
     date: 'Sep 2026',
     content: 'Prof. Kim is serving as <strong>PI</strong> of a project on a <strong>basketball analysis agent</strong>, funded by the Korea Basketball Association.',
     content_ko: '김예찬 교수가 대한농구협회의 <strong>농구 분석 에이전트</strong> 과제의 <strong>연구책임자(PI)</strong>를 맡았습니다.',
-    badge: 'KBA',
+    image: 'images/news/kba.png',
+    imageAlt: '대한민국농구협회 Korea Basketball Association',
     highlight: false,
   },
   {
