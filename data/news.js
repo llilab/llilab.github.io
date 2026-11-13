@@ -35,8 +35,8 @@ const NEWS = [
   },
   {
     date: 'Sep 2026',
-    content: 'Prof. Kim is serving as <strong>PI</strong> of a project on a <strong>basketball analysis agent</strong>, funded by the Korea Basketball Association.',
-    content_ko: '김예찬 교수가 대한민국농구협회의 <strong>농구 분석 에이전트</strong> 과제의 <strong>연구책임자(PI)</strong>를 맡았습니다.',
+    content: 'Prof. Kim is serving as <strong>PI</strong> of a project on a <strong>basketball analysis AI agent</strong>, funded by the Korea Basketball Association.',
+    content_ko: '김예찬 교수가 대한민국농구협회의 <strong>농구 분석 AI 에이전트</strong> 과제의 <strong>연구책임자(PI)</strong>를 맡았습니다.',
     image: 'images/news/kba.png',
     imageAlt: '대한민국농구협회 Korea Basketball Association',
     highlight: false,
