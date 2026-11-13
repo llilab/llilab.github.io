@@ -27,6 +27,20 @@ const NEWS = [
   },
   {
     date: 'Sep 2026',
+    content: 'Prof. Kim is serving as <strong>PI</strong> of a project on <strong>AI-based performance analysis for national team athletes</strong>, funded by the Korean Sport &amp; Olympic Committee.',
+    content_ko: '김예찬 교수가 대한체육회의 <strong>국가대표를 위한 AI 경기력 분석</strong> 과제의 <strong>연구책임자(PI)</strong>를 맡았습니다.',
+    badge: 'KSOC',
+    highlight: false,
+  },
+  {
+    date: 'Sep 2026',
+    content: 'Prof. Kim is serving as <strong>PI</strong> of a project on a <strong>basketball analysis agent</strong>, funded by the Korea Basketball Association.',
+    content_ko: '김예찬 교수가 대한농구협회의 <strong>농구 분석 에이전트</strong> 과제의 <strong>연구책임자(PI)</strong>를 맡았습니다.',
+    badge: 'KBA',
+    highlight: false,
+  },
+  {
+    date: 'Sep 2026',
     content: 'Three papers accepted as <strong>oral</strong> presentations at <strong>HCLT 2026</strong>. Congrats to Chaeyoung, Jin Hui, and Eunyeong!',
     content_ko: '<strong>HCLT 2026</strong>에 논문 3편이 <strong>구두 발표(Oral)</strong>로 게재 승인되었습니다. 채영, 진희, 은영 학생 축하합니다!',
     papers: [
