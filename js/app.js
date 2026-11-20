@@ -767,12 +767,12 @@ document.addEventListener('DOMContentLoaded', () => {
   headerTop.innerHTML = `
     <a href="#home" class="header-logo-link" onclick="showPage('home');return false;">
       <span class="header-logo-title">${SITE.labShort}</span>
+      <img src="images/lai_logo.png" alt="${SITE.labName}" class="header-logo">
       <span class="header-logo-divider"></span>
       <div class="header-logo-text">
         <span class="header-logo-subtitle">${SITE.labName}</span>
         <span class="header-logo-univ">${SITE.university}</span>
       </div>
-      <img src="images/lai_logo.png" alt="${SITE.labName}" class="header-logo">
     </a>
   `;
 
