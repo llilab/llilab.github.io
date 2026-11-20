@@ -272,7 +272,11 @@ header {
   width: 124px; min-height: 36px; align-self: center;
   display: flex; align-items: center; justify-content: center;
 }
-.news-logo img { max-width: 124px; max-height: 44px; object-fit: contain; display: block; }
+/* The box is wider than it is tall, so a wide wordmark fills the width while a
+   square emblem runs out of height first and reads far smaller. Giving the
+   height more room evens them out: wordmarks are unaffected (still capped by
+   the width) and emblems grow to match their weight. */
+.news-logo img { max-width: 124px; max-height: 58px; object-fit: contain; display: block; }
 .news-badge {
   font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--text-light); border: 1px solid var(--border); border-radius: 4px;

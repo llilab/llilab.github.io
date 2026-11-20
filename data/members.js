@@ -102,4 +102,15 @@ const MEMBERS = [
     github: '',
     homepage: '',
   },
+  {
+    name: 'Yunseo Lee',
+    name_ko: '이윤서',
+    role: 'Undergraduate Intern',
+    group: 'team',
+    interests: ['LLM'],
+    photo: 'images/members/placeholder.svg',   // replace with images/members/yunseo_lee.jpg when available
+    email: 'dldbstj777@hufs.ac.kr',
+    github: '',
+    homepage: '',
+  },
 ];

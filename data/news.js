@@ -18,6 +18,14 @@
  */
 const NEWS = [
   {
+    date: 'Nov 2026',
+    content: 'Our lab has been selected for the <strong>R&amp;D Innovation Program</strong> of the KISTI National Supercomputing Center, providing GPU compute for our research (<strong>70,000 GH200 GPU hours</strong>).',
+    content_ko: '<strong>KISTI 국가슈퍼컴퓨팅센터 R&amp;D혁신 프로그램</strong>에 선정되어 연구용 GPU 자원(<strong>GH200 70,000시간</strong>)을 지원받게 되었습니다.',
+    image: 'images/news/kisti.svg',
+    imageAlt: '한국과학기술정보연구원 KISTI',
+    highlight: false,
+  },
+  {
     date: 'Oct 2026',
     content: 'Our lab has been selected for the <strong>Lambda Research Grant</strong>, providing GPU compute for our research.',
     content_ko: '<strong>Lambda Research Grant</strong>에 선정되어 연구용 GPU 자원을 지원받게 되었습니다.',
