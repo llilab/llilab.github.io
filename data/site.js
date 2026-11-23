@@ -32,11 +32,13 @@ const SITE = {
   // Welcome message (Home page)
   welcome: {
     intro: `Welcome to the <strong>Language &amp; Adaptive Intelligence Lab (LAI Lab)</strong> at HUFS.
-      We pursue research in natural language processing, with a focus on building efficient and adaptive large language models.
-      Our work covers a broad range of topics including model efficiency, reliable adaptation and alignment,
+      We pursue research in natural language processing, building <strong>language intelligence</strong> rather than ever larger models:
+      systems that spend their capacity where it matters, adapt to the domain in front of them, and stay dependable on imperfect data.
+      Our work covers model efficiency, reliable adaptation and alignment,
       and language applications across diverse real-world domains such as science and industry.`,
     intro_ko: `한국외국어대학교(HUFS) <strong>언어·적응형 지능 연구실(LAI Lab)</strong>에 오신 것을 환영합니다.
-      저희는 자연어 처리를 연구하며, 특히 효율적이고 적응력 있는 대규모 언어 모델을 구축하는 데 집중하고 있습니다.
+      저희는 자연어 처리를 연구하며, 더 큰 모델이 아니라 <strong>언어 지능</strong>을 만드는 데 집중합니다.
+      연산을 꼭 필요한 곳에 쓰고, 마주한 분야에 적응하며, 불완전한 데이터에서도 흔들리지 않는 시스템을 지향합니다.
       연구 주제는 모델 효율성, 신뢰할 수 있는 적응 및 정렬(alignment),
       그리고 과학·산업 등 다양한 실제 도메인에서의 언어 응용에 이르기까지 폭넓게 아우릅니다.`,
     detail: `Led by Prof. Yeachan Kim, the lab is part of the Division of Language & AI at
