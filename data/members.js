@@ -23,16 +23,23 @@
  *    homepage  : personal homepage URL (optional)
  *    scholar   : Google Scholar URL (optional)
  *
- *  Members are grouped by the `group` field. Groups are
- *  rendered in the order listed in MEMBER_GROUPS below.
+ *  Members are grouped by the `group` field — 'grad' (석·박사과정),
+ *  'undergrad' (학부 연구생), 'alumni'. Groups render in the order
+ *  listed in MEMBER_GROUPS below. If `group` is left out, it is inferred
+ *  from `role` (see roleGroup() in js/app.js), so a new member never
+ *  silently disappears from the page.
  * ═══════════════════════════════════════════════════
  */
 
-// Order + labels of the member groups (sections)
+// Order + labels of the member groups (sections).
+// A section with no members is skipped unless showWhenEmpty is set, so the
+// Graduate Students heading appears by itself the moment the first
+// M.S./Ph.D. student is added here.
 const MEMBER_GROUPS = [
-  { id: 'team',   label: 'Research Team' },   // M.S./Ph.D. students + interns
+  { id: 'grad',      label: 'Graduate Students',         label_ko: '대학원생' },
+  { id: 'undergrad', label: 'Undergraduate Researchers', label_ko: '학부 연구생' },
   // showWhenEmpty: render the section header even when there are no members yet
-  { id: 'alumni', label: 'Alumni', showWhenEmpty: true, emptyText: '' },
+  { id: 'alumni',    label: 'Alumni', label_ko: '졸업생', showWhenEmpty: true, emptyText: '' },
 ];
 
 // Korean labels for member roles (mapped from the English `role` string)
@@ -48,10 +55,9 @@ const MEMBERS = [
   {
     name: 'Chaeyoung Seo',
     name_ko: '서채영',
-    role: 'Undergraduate Intern',
+    role: 'Research Intern',
     incoming: { degree: 'M.S.', start: 'Spring 2027' },
-    group: 'team',
-    interests: ['Efficiency'],
+    group: 'grad',
     photo: 'images/members/chaeyoung_seo.jpg',
     email: 'a9nes@hufs.ac.kr',
     github: '',
@@ -61,8 +67,7 @@ const MEMBERS = [
     name: 'Eunyeong Cho',
     name_ko: '조은영',
     role: 'Undergraduate Intern',
-    group: 'team',
-    interests: ['Efficiency'],
+    group: 'undergrad',
     photo: 'images/members/eunyeong_cho.jpg',
     email: 'jjeeyy77@naver.com',
     github: '',
@@ -72,8 +77,7 @@ const MEMBERS = [
     name: 'Jin Hui Kim',
     name_ko: '김진희',
     role: 'Undergraduate Intern',
-    group: 'team',
-    interests: ['Efficiency'],
+    group: 'undergrad',
     photo: 'images/members/jin_hui_kim.jpg',
     email: 'kkkjh46@hufs.ac.kr',
     github: '',
@@ -83,8 +87,8 @@ const MEMBERS = [
     name: 'Yeonjoo Yoo',
     name_ko: '유연주',
     role: 'Undergraduate Intern',
-    group: 'team',
-    interests: ['Efficiency'],
+    group: 'undergrad',
+    interests: ['KV Cache Compression'],
     photo: 'images/members/yeonjoo_yoo.jpg',
     email: 'yyj@hufs.ac.kr',
     github: '',
@@ -93,10 +97,9 @@ const MEMBERS = [
   {
     name: 'Sihyeon Kim',
     name_ko: '김시현',
-    role: 'Undergraduate Intern',
+    role: 'Research Intern',
     incoming: { degree: 'M.S.', start: 'Spring 2027' },
-    group: 'team',
-    interests: ['NLP'],
+    group: 'grad',
     photo: 'images/members/placeholder.svg',   // replace with images/members/sihyeon_kim.jpg when available
     email: '',
     github: '',
@@ -106,9 +109,9 @@ const MEMBERS = [
     name: 'Yunseo Lee',
     name_ko: '이윤서',
     role: 'Undergraduate Intern',
-    group: 'team',
-    interests: ['LLM'],
-    photo: 'images/members/placeholder.svg',   // replace with images/members/yunseo_lee.jpg when available
+    group: 'undergrad',
+    interests: ['Optimizer Design'],
+    photo: 'images/members/yunseo_lee.jpg',
     email: 'dldbstj777@hufs.ac.kr',
     github: '',
     homepage: '',

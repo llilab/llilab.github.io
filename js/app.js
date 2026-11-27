@@ -554,6 +554,14 @@ function professorProfileHTML() {
   `;
 }
 
+// `group` 가 비었거나 MEMBER_GROUPS 에 없는 이름이면 role 로 짐작한다.
+// 이게 없으면 오타 하나에 멤버가 화면에서 조용하게 사라진다.
+// 역사적으로 쓰이던 'team' 도 여기서 흡수된다.
+function memberGroup(m) {
+  if (m.group && MEMBER_GROUPS.some(g => g.id === m.group)) return m.group;
+  return /Ph\.D\.|M\.S\./.test(m.role || '') ? 'grad' : 'undergrad';
+}
+
 function renderMembers() {
   const initials = (name) =>
     name.trim().split(/\s+/).map(n => n[0]).join('').substring(0, 2).toUpperCase();
@@ -582,7 +590,7 @@ function renderMembers() {
       <div class="member-card fade-in">
         <div class="member-photo-wrap">${photoHTML}</div>
         <div class="member-name">${m.name}</div>
-        <div class="member-role">${m.role}</div>
+        <div class="member-role">${L(m.role, ROLE_KO[m.role])}</div>
         ${m.incoming ? `<div class="member-incoming">Incoming ${m.incoming.degree} (${m.incoming.start})</div>` : ''}
         ${interestsHTML}
         ${emailHTML}
@@ -592,14 +600,14 @@ function renderMembers() {
   }
 
   const sectionsHTML = MEMBER_GROUPS.map(g => {
-    const people = MEMBERS.filter(m => m.group === g.id);
+    const people = MEMBERS.filter(m => memberGroup(m) === g.id);
     if (!people.length && !g.showWhenEmpty) return '';
     const body = people.length
       ? `<div class="member-grid">${people.map(card).join('')}</div>`
       : (g.emptyText ? `<p class="member-empty">${g.emptyText}</p>` : '');
     return `
       <div class="member-section fade-in">
-        <div class="member-group-title">${g.label}</div>
+        <div class="member-group-title">${L(g.label, g.label_ko)}</div>
         ${body}
       </div>
     `;
@@ -607,7 +615,7 @@ function renderMembers() {
 
   const facultyHTML = `
     <div class="member-section">
-      <div class="member-group-title">Faculty</div>
+      <div class="member-group-title">${L('Faculty', '지도교수')}</div>
       ${professorProfileHTML()}
     </div>
   `;
