@@ -1,0 +1,224 @@
+/* ═══════════════════════════════════════════════════
+ *  시안 B 테마 레이어 — css/style.css 다음에 로드된다.
+ *
+ *  style.css 는 색을 전부 CSS 변수로 쓰고 있어서(var() 204회),
+ *  :root 만 갈아끼우면 Research / Members / Publications / Gallery /
+ *  Join Us 까지 전 페이지 색이 한 번에 바뀐다.
+ *  나머지는 마스트헤드와 Home 레이아웃만 덮는다.
+ * ═══════════════════════════════════════════════════ */
+
+:root{
+  /* 테마 10 — 네이비 · 코럴. 베이스는 짙은 네이비로 두고 강조만 따뜻한 적색으로.
+     파생값(navy-mid / blue-light / pale / sky)은 흰색과 섞어 계산했다.
+     링크 #BF4426 의 흰 배경 대비 5.16, 흰 글자/머리띠 대비 15.79 — 둘 다 AA 통과 */
+  --navy:#10233d;
+  --navy-mid:#2d3d54;
+  --blue:#bf4426;          /* 링크·강조 — style.css 전체가 이 변수를 쓴다 */
+  --blue-light:#cc6951;
+  --row-hover:#f9ece9; --blue-pale:#fbf2f0;
+  --sky:#f2dad4;
+  --text:#15202a;
+  --text-secondary:#333c46;
+  --text-light:#737d87;
+  --border:#e1e5e9;
+  --border-light:#f1f3f5;
+  --surface:#f6f7f8;
+  --content:1000px;
+  /* 사진 위에서 가라앉지 않는 밝은 코럴 — L·A·I·Lab 강조와 어두운 배경 링크용.
+     가림막 대비 6.44 */
+  --accent-lite:#ff8a6b;
+  /* 가림막 바탕색 — 머리띠 네이비를 38% 어둡게 */
+  --scrim:10,22,38;
+}
+
+/* ═══════════════ 마스트헤드 ═══════════════
+   바에 네이비 면을 깔면 사진과 경계가 생긴다. 면을 없애고 사진을 바 뒤까지
+   올린 뒤, 위에서 떨어지는 그라디언트로 메뉴가 놓이는 띠만 어둡게 한다. */
+header{
+  border-bottom:0;
+  background:var(--navy);
+  position:static;            /* 사진 마스트헤드는 따라붙지 않는다 */
+}
+.mast{position:relative;overflow:hidden;background:var(--navy)}
+.mast-bg{position:absolute;inset:0;
+  background:url('../images/campus.jpg') center/cover no-repeat;opacity:.55;
+  /* 아주 느린 드리프트. 확대는 1.055 까지만 — 사진이 이미 cover 로 1.1배쯤
+     늘어나 있어서 더 키우면 눈에 띄게 뭉갠다. transform 만 써서 리페인트가 없다 */
+  transform-origin:54% 58%;
+  animation:mast-drift 38s ease-in-out infinite alternate;
+  will-change:transform;backface-visibility:hidden}
+@keyframes mast-drift{
+  from{transform:scale(1) translate3d(0,0,0)}
+  to  {transform:scale(1.055) translate3d(-1.1%,-0.7%,0)}
+}
+/* 움직임을 줄여 달라고 설정한 사용자에게는 멈춰 둔다 */
+@media (prefers-reduced-motion:reduce){ .mast-bg{animation:none} }
+/* 위 — 메뉴가 하늘 위에 놓여도 읽히도록. 215px 안에서 완전히 사라진다 */
+.mast-scrim-top{position:absolute;inset:0;background:linear-gradient(180deg,
+  rgba(var(--scrim),.92) 0,rgba(var(--scrim),.74) 74px,
+  rgba(var(--scrim),.34) 150px,rgba(var(--scrim),0) 215px)}
+/* 왼쪽 — 표제가 건물 기둥 위에서도 읽히도록 */
+.mast-scrim-left{position:absolute;inset:0;background:linear-gradient(90deg,
+  rgba(var(--scrim),.86) 0%,rgba(var(--scrim),.76) 42%,
+  rgba(var(--scrim),.44) 72%,rgba(var(--scrim),.2) 100%)}
+.mast-bar,.mast-hero{position:relative}
+.mast-inner{max-width:var(--content);margin:0 auto;padding:0 2rem}
+.mast-bar .mast-inner{display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding-top:15px;padding-bottom:15px}
+
+/* 로고 블록 — style.css 의 .header-top 여백을 걷어낸다 */
+.mast .header-top{max-width:none;margin:0;padding:0;flex:none}
+.mast .header-logo-link{gap:9px}
+.mast .header-logo-link:hover{opacity:1}
+.mast .header-logo-title{color:#fff;font-size:38px;letter-spacing:-.02em}
+.mast .header-logo{height:44px;filter:brightness(0) invert(1)}
+.mast .header-logo-divider{background:rgba(255,255,255,.22)}
+.mast .header-logo-subtitle{color:rgba(255,255,255,.72);font-size:11px}
+.mast .header-logo-univ{color:rgba(255,255,255,.58);font-size:11px}
+/* 전역 a:hover{text-decoration:underline} 이 로고에도 걸린다 — 끊는다 */
+.mast .header-logo-link,.mast .header-logo-link:hover{text-decoration:none}
+
+/* 내비 — 사진 위에 놓이므로 밝은 글자로 */
+.mast .main-nav{max-width:none;margin:0;padding:0;border:0;background:none;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mast .main-nav a{margin-right:0}
+.mast .main-nav a{color:rgba(255,255,255,.76);font-size:13px;padding:0 0 2px;border:0;margin:0}
+.mast .main-nav a:hover{color:#fff;text-decoration:none;background:none}
+.mast .main-nav a.active{color:#fff;font-weight:650;
+  border-bottom:2px solid var(--accent-lite);background:none}
+.mast .lang-toggle{background:rgba(255,255,255,.14);margin-left:5px}
+.mast .lang-toggle button{color:rgba(255,255,255,.72);padding:4px 9px}
+.mast .lang-toggle button:hover{color:#fff}
+.mast .lang-toggle button.active{background:#fff;color:var(--navy);box-shadow:none}
+
+/* 히어로 */
+.mast-hero .mast-inner{padding-top:40px;padding-bottom:50px}
+.mast-title{font-size:40px;line-height:1.2;font-weight:700;color:#fff;letter-spacing:-.028em;
+  max-width:780px}
+.mast-title em{font-style:normal;color:var(--accent-lite)}
+/* 표제 타자 효과 — .tw-ghost 가 완성된 표제를 투명하게 깔아 칸을 먼저 잡고,
+   실제로 찍히는 .tw-live 를 그 위에 겹쳐 놓는다. 글자가 늘어나다 두 줄로
+   접히는 폭에서도 아래 소개 문단이 밀려 내려가지 않는다. */
+.tw{position:relative;display:block}
+.tw-ghost{visibility:hidden}
+.tw-live{position:absolute;left:0;top:0;right:0}
+/* 커서 — 찍는 동안은 켜 둔 채 따라가고, 다 찍은 뒤부터 깜빡인다 */
+.tw-live::after{content:'|';color:var(--accent-lite);font-weight:300;margin-left:.05em}
+.tw-live.is-done::after{animation:tw-caret 1.06s step-end infinite}
+.tw-live.no-caret::after{content:none}
+@keyframes tw-caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.tw-live::after{animation:none}}
+.mast-sub{font-size:16.5px;line-height:1.68;color:rgba(255,255,255,.84);margin-top:18px;max-width:700px}
+.mast-sub strong{color:#fff;font-weight:600}
+/* efficient · adaptive · safe — 표제의 L·A·I 와 같은 코럴. 가림막 대비 6.44 */
+.mast-sub em{font-style:normal;color:var(--accent-lite);font-weight:600}
+.mast-meta{font-size:14px;color:rgba(255,255,255,.72);margin-top:16px;padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.18);max-width:700px;line-height:1.7}
+.mast-meta a{color:var(--accent-lite)}
+
+/* 서브페이지에서는 히어로를 접고 띠만 남긴다 — 사진은 Home 의 몫이다 */
+header:not([data-page="home"]) .mast-hero{display:none}
+header:not([data-page="home"]) .mast-bg{opacity:.4}
+header:not([data-page="home"]) .mast-scrim-top{
+  background:linear-gradient(180deg,rgba(var(--scrim),.92) 0,rgba(var(--scrim),.86) 100%)}
+
+/* ═══════════════ Home ═══════════════ */
+.page{padding-top:2.4rem}
+.welcome-intro{font-size:1rem;line-height:1.8;color:var(--text-secondary);
+  max-width:760px;margin-bottom:2.6rem}
+/* 섹션 간격은 margin 하나로만 잡는다. style.css:205 의
+   .home-news{padding:2.25rem 0 4rem} 가 위로는 .page 의 2.4rem 여백에,
+   아래로는 이 margin 에 더해져 히어로→News 74px,
+   News→Publications 106px 를 만들고 있었다. */
+.home-news,.home-pubs{margin-bottom:2.6rem;padding-top:0;padding-bottom:0}
+.b-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  margin-bottom:1.1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+/* 시안의 섹션 제목 — style.css 의 0.72rem 대문자 라벨이 아니라 19px 굵은 제목 */
+.b-head .home-section-title{margin:0;padding:0;border:0;
+  font-size:19px;font-weight:700;letter-spacing:-.018em;text-transform:none;color:var(--text)}
+.b-head .view-all{margin:0;font-size:.78rem}
+
+/* News — 로고가 왼쪽 칸 한가운데 선다 */
+.news-item{grid-template-columns:200px minmax(0,1fr);gap:1.6rem;align-items:center;
+  padding:19px 12px;margin:0 -12px;border-bottom:1px solid var(--border);
+  transition:background-color .16s ease}
+/* 줄 전체에 옅은 면을 깐다. 패딩과 같은 크기의 음수 마진이 있어
+   본문 x 좌표는 그대로이고 면만 좌우로 12px 더 나간다 */
+.news-item:hover{background:var(--row-hover)}
+.news-logo{width:200px;min-height:0}
+/* 워드마크(비율 3.3~5.8:1)는 면적이 같아지도록(약 4,850px²) 높이를 따로 준다.
+   다만 정사각에 가까운 엠블럼(kba 0.91 · lai_logo 0.96 · acl 1.48)에 같은 높이를
+   주면 면적이 1/3 토막 난다 — 38px 일 때 KBA 는 1,315px² 로 NRF(4,847px²)의 27%.
+   kba.png 은 여백이 0% 라 잘라낼 것도 없으므로 높이를 직접 키운다.
+   면적을 완전히 맞추려면 73px 이 필요하지만 그러면 그 줄만 111px 로 솟아서,
+   56px 으로 타협했다(KBA 51×56 ≈ 2,860px², 종전의 2.2배).
+   KBA 줄은 본문이 2줄이라 로고를 키워도 높이가 안 변하고,
+   본문이 1줄인 줄(lai_logo)만 78 → 94px 가 된다 */
+.news-logo img{max-width:200px;max-height:none;height:var(--h,34px);width:auto}
+/* 워드마크 — 비율에서 h=√(4,850/비율) 로 계산 */
+.news-logo img[src*="kisti.svg"]    {--h:31px}   /* 5.02:1 */
+.news-logo img[src*="lambda.svg"]   {--h:33px}   /* 4.59:1 */
+.news-logo img[src*="ksoc.svg"]     {--h:38px}   /* 3.32:1 */
+.news-logo img[src*="hclt.png"]     {--h:37px}   /* 3.62:1 */
+.news-logo img[src*="nrf.svg"]      {--h:38px}   /* 3.36:1 */
+.news-logo img[src*="iclr2026.svg"] {--h:37px}   /* 3.36:1 */
+.news-logo img[src*="emnlp2026.png"]{--h:29px}   /* 5.77:1 */
+.news-logo img[src*="emnlp2025.png"]{--h:28px}   /* 6.12:1 */
+.news-logo img[src*="acl2025.png"]  {--h:33px}   /* 4.59:1 */
+.news-logo img[src*="acl2026.png"]  {--h:30px}   /* 5.22:1 */
+/* 정사각형에 가까운 엠블럼 — 같은 높이를 주면 면적이 1/3 토막 난다 */
+.news-logo img[src*="kba.png"]      {--h:56px}   /* 0.91:1 */
+.news-logo img[src*="lai_logo.png"] {--h:56px}   /* 0.96:1 */
+.news-logo img[src*="acl.svg"]      {--h:46px}   /* 1.48:1 */
+/* highlight:true 인 소식도 다른 줄과 똑같이 그린다. 고정된 면·왼쪽 색선은
+   hover 상태처럼 보여서 뺐다 — 면은 이제 hover 에만 쓴다 */
+/* 날짜 — style.css 는 틸색 12px 로 쓴다. 시안은 회색 11.5px 대문자 */
+.news-date{font-size:11.5px;font-weight:700;color:#99a2aa;
+  letter-spacing:.09em;text-transform:uppercase;line-height:1.15;margin-bottom:3px}
+/* 줄 높이는 로고(최대 38px)가 아니라 텍스트 블록(47px)이 정한다.
+   이미지 여백(패딩 19px)은 그대로 두고 텍스트 쪽만 좁혀 줄을 낮춘다 */
+.news-body{line-height:1.58}
+.news-papers{margin-top:.2rem}
+.news-papers li{line-height:1.5}
+/* style.css:207 이 .news-older 에 display:flex 를 주는 바람에 UA 의
+   [hidden]{display:none} 이 눌려, '더보기' 버튼이 눌러도 아무 일이 없었다.
+   (실제 사이트에도 그대로 있는 문제다) */
+.news-older[hidden]{display:none}
+
+/* Recent publications — 대표 그림 / 제목 / 학회. News 와 같은 리듬이 된다 */
+/* 그림 열은 News 로고 열과 같은 200px — 두 섹션의 본문 시작점이 어긋나지 않는다 */
+.pub-row{display:grid;grid-template-columns:200px minmax(0,1fr) 104px;gap:1.6rem;
+  align-items:center;padding:14px 0;border-top:1px solid var(--border)}
+.pub-row:first-child{border-top:0;padding-top:0}
+/* Publications 페이지의 .pub-figure 와 같은 치수 — 읽으라는 게 아니라 시각적 앵커 */
+.pub-fig{width:200px;height:125px;overflow:hidden;border:1px solid var(--border);
+  border-radius:6px;background:#fff;display:flex;align-items:center;justify-content:center}
+.pub-fig img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.pub-fig.is-empty{background:var(--border-light);border-style:dashed}
+.pub-row-t{font-size:.95rem;line-height:1.5;color:var(--text);font-weight:600}
+.pub-row-au{display:block;font-size:.82rem;color:var(--text-light);font-weight:400;margin-top:2px}
+.pub-row-v{font-size:.75rem;color:var(--navy);font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;text-align:right;white-space:nowrap}
+
+/* ═══════════════ 서브페이지 · 푸터 ═══════════════ */
+.subpage-header h2{letter-spacing:-.02em}
+footer{background:var(--navy);border-top:0;color:rgba(255,255,255,.65)}
+footer strong{color:#fff}
+footer a{color:var(--accent-lite)}
+
+@media (max-width:900px){
+  .mast-inner{padding:0 1.25rem}
+  .mast-bar .mast-inner{flex-direction:column;align-items:flex-start;gap:11px}
+  .mast .main-nav{gap:14px}
+  .mast .header-logo-text{display:none}
+  .mast .header-logo-divider{display:none}
+  .mast-hero .mast-inner{padding-top:30px;padding-bottom:34px}
+  .mast-title{font-size:29px;line-height:1.2}
+  .news-item{grid-template-columns:minmax(0,1fr);gap:.7rem}
+  .news-logo{width:auto;justify-content:flex-start}
+  .news-logo img{height:calc(var(--h,34px) * .88);max-width:100%}
+  /* 좁은 화면 — 그림은 왼쪽에 작게 두고 제목·학회를 오른쪽에 쌓는다 */
+  .pub-row{grid-template-columns:110px minmax(0,1fr);gap:4px 1rem;align-items:start}
+  .pub-fig{width:110px;height:69px;grid-row:1 / span 2}
+  .pub-row-v{text-align:left;grid-column:2}
+}
