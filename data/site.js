@@ -34,42 +34,40 @@ const SITE = {
     intro: `Welcome to the <strong>Language &amp; Adaptive Intelligence Lab (LAI Lab)</strong> at HUFS.
       A model is something you train; <strong>intelligence</strong> is what survives contact with a new
       domain, a tight memory budget, and data that does not cooperate. We work on that difference —
-      making <strong>language intelligence</strong> efficient, adaptive, and safe — through
-      memory-efficient fine-tuning and efficient reasoning, domain adaptation by continued
-      pre-training and knowledge-guided proxies, and robustness to biased or noisy data.
+      building <strong>language intelligence</strong> through memory-efficient fine-tuning and
+      efficient reasoning, domain adaptation by continued pre-training and knowledge-guided
+      proxies, and robustness to biased or noisy data.
       We carry it into fields that have a language of their own, from molecules and materials
       to the performance records of national teams.`,
     intro_ko: `한국외국어대학교(HUFS) <strong>언어·적응형 지능 연구실(LAI Lab)</strong>에 오신 것을 환영합니다.
       모델은 학습시키면 만들어지지만, <strong>지능</strong>은 처음 보는 분야와 빠듯한 메모리,
-      말을 듣지 않는 데이터를 견뎌 내야 비로소 지능입니다. 저희는 그 차이를 연구합니다 —
-      <strong>언어 지능</strong>을 효율적이고, 적응력 있고, 안전하게 만드는 일입니다.
+      말을 듣지 않는 데이터를 견뎌 내야 비로소 지능입니다. 저희는 그 차이를 연구합니다.
       메모리 효율적 미세조정과 효율적 추론, 추가 사전학습과 지식 기반 프록시를 통한 도메인 적응,
-      편향되거나 잡음이 섞인 데이터에 대한 강건성이 그 방법입니다.
+      편향되거나 잡음이 섞인 데이터에 대한 강건성으로 <strong>언어 지능</strong>을 만들어 갑니다.
       그리고 이를 고유한 언어를 가진 분야로 가져갑니다. 분자와 소재에서 국가대표 경기 기록까지.`,
     // 첫 화면 히어로용 짧은 버전. "더 큰 모델이 아니라 지능" 이 한 문장에서
     // 바로 드러나야 한다. 비워 두면 히어로가 intro 를 그대로 쓴다.
-    // <em> 세 개가 연구실이 내세우는 세 가지다 — 히어로에서 색으로 강조된다.
-    // (intro 는 현재 라이브 사이트가 그대로 쓰므로 <em> 을 넣지 않았다. style.css
-    //  에는 .welcome-intro em 규칙이 없어 이탤릭으로 기울어 버린다.)
+    // efficient / adaptive / safe 를 구호처럼 내세우지 않는다. 같은 세 가지를
+    // 형용사가 아니라 지능이 실제로 해내는 일로 풀어 쓴다. 강조는 '언어 지능'
+    // 하나에만 둔다 — 셋을 나란히 강조하면 슬로건으로 읽힌다.
     lead: `We do not set out to build larger language models. We set out to build
-      <strong>language intelligence</strong> — <em>efficient</em> enough to run on the compute at hand,
-      <em>adaptive</em> enough to meet a domain it has never seen,
-      and <em>safe</em> enough to be trusted once it is there.`,
+      <strong>language intelligence</strong> — one that runs on the compute at hand,
+      meets a domain it has never seen, and holds up on data that does not cooperate.`,
     lead_ko: `저희가 만들려는 것은 더 큰 언어 모델이 아니라 <strong>언어 지능</strong>입니다.
-      주어진 연산 안에서 돌아갈 만큼 <em>효율적</em>이고, 처음 보는 분야에도 <em>적응</em>하며,
-      그곳에서 믿고 맡길 만큼 <em>안전한</em> 지능입니다.`,
+      주어진 연산 안에서 돌아가고, 처음 보는 분야에도 통하며,
+      말을 듣지 않는 데이터에서도 흔들리지 않는 지능입니다.`,
 
     detail: `Led by Prof. Yeachan Kim, the lab is part of the Division of Language &amp; AI at
       Hankuk University of Foreign Studies (HUFS), Seoul. Our recent work appears at ACL, EMNLP,
       ICLR and in TACL, and is supported by the NRF Core Research Program (2026–2029) together with
       compute grants from the KISTI National Supercomputing Center and Lambda. We collaborate with
       groups in materials science, industry, and sport, and we welcome students who want to build
-      language intelligence that is efficient, adaptive, and safe.`,
+      language intelligence.`,
     detail_ko: `본 연구실은 김예찬 교수가 이끌며, 서울 소재 한국외국어대학교(HUFS) 언어·AI융합학부에 속해 있습니다.
       최근 연구는 ACL, EMNLP, ICLR, TACL에 발표되고 있으며, 한국연구재단 핵심연구(기본연구B, 2026–2029)와
       KISTI 국가슈퍼컴퓨팅센터·Lambda의 연산 자원 지원을 받고 있습니다.
       소재과학, 산업계, 스포츠 분야의 연구진과 협력하고 있으며,
-      효율적이고 적응력 있으며 안전한 언어 지능을 함께 만들어 갈 학생을 환영합니다.`,
+      언어 지능을 함께 만들어 갈 학생을 환영합니다.`,
   },
 
   // "Join Us" recruitment banner (Home page)
