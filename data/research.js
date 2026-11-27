@@ -54,7 +54,8 @@ const RESEARCH = [
     title: 'Efficient AI',
     description: 'Large models are limited less by ideas than by memory and compute. We look for the parts of a computation that actually carry signal and cut the rest. On the training side this means memory-efficient fine-tuning: deciding which blocks to update and how gradients should reach them, letting the forward pass tell the backward pass where to spend memory, and adapting a large model through a small guided proxy. On the inference side we sparsify information flows, route tokens dynamically so easy inputs take short paths, and prune model structure. We also study data efficiency through active learning and core-set selection.',
     description_ko: '대규모 모델의 한계는 아이디어보다 메모리와 연산에서 옵니다. 우리는 연산 중 실제로 의미 있는 부분을 찾아내고 나머지를 줄입니다. 학습 측면에서는 어떤 블록을 갱신하고 그래디언트를 어떻게 전달할지 결정하는 방법, 순전파가 역전파의 메모리 사용처를 알려주는 방법, 작은 프록시로 큰 모델을 적응시키는 방법 등 메모리 효율적 미세조정을 연구합니다. 추론 측면에서는 정보 흐름을 희소화하고, 쉬운 입력이 짧은 경로를 지나도록 토큰을 동적으로 라우팅하며, 모델 구조를 가지치기합니다. 능동 학습과 코어셋 선택을 통한 데이터 효율성도 함께 다룹니다.',
-    keywords: ['Memory-Efficient Training', 'Sparse Transformers', 'Dynamic Token Routing', 'Model Compression', 'Active Learning'],
+    keywords: ['Memory-Efficient Training', 'Optimizer Design', 'Sparse Transformers',
+               'Dynamic Token Routing', 'KV Cache Compression', 'Model Compression', 'Active Learning'],
     highlights: [
       {
         title: 'Rethinking Gradient Flow Through Frozen Blocks for Memory-Efficient Block-Coordinate Training',
